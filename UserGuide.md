@@ -43,10 +43,10 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 ### Use Cases:
 
-**System:** YapeMaster
-**Actor:** Usuario
-**Use Case:** UC-01 Crear cuenta
-**MMS:**
+**System:** YapeMaster  
+**Actor:** Usuario  
+**Use Case:** UC-01 Crear cuenta  
+**MMS:**  
 1. El usuario se registra como YapeNegocio.
 1. Se comprueba la existencia de una cuenta ligada a BCP.
 1. El usuario entra a la web de YapeMaster. 
