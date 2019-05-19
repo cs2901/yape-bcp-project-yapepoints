@@ -37,4 +37,27 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 * YapeMaster: Plataforma web (disponible en móvil) de Yape que permite a un restaurante administrar información de los cupones que ofrece y de pagos hechos con Yape en su negocio.
 * Yapero: Usuario de Yape.
 
-#Anexo A (User Stories and Use Cases).
+# Anexo A (User Stories and Use Cases).
+### User Stories:
+https://github.com/cs2901/yape-bcp-project-yapepoints/issues
+
+### Use Cases:
+
+**System** | YapeMaster
+**Actor** | Usuario
+**Use Case** | UC-01 Crear cuenta
+**MMS** |
+1. El usuario se registra como YapeNegocio.
+1. Se comprueba la existencia de una cuenta ligada a BCP.
+1. El usuario entra a la web de YapeMaster. 
+1. El usuario completa los datos necesarios: 
+    1. Nombre del restaurante
+    1. RUC
+    1. Razón social
+    1. Dirección (confirmar en Google Maps).
+    1. Distrito, Provincia y Departamento
+    1. Horario de atención.
+1. El sistema hace la validación.
+1. El sistema confirma la existencia del restaurante en la base de datos de YapeNegocio.
+1. El sistema autoriza la creación de la cuenta en YapeMaster.
+
