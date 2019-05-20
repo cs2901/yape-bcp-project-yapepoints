@@ -59,3 +59,16 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 * Solicita que complete todos los campos
 6. El sistema detecta que ya hay un usuario registrado con la información ingresada  
 * Redirecciona al formulario
+
+**System** YapeMaster  
+**Actor** Usuario  
+**Use Case** UC-02 Agregar una nueva promoción  
+**Preconditions** UC-01, Estar logueado  
+**MMS**  
+1. El usuario con acceso selecciona la opción Agregar Cupón.
+1. El usuario carga una imagen (personalizada o predeterminada).
+1. El usuario le pone nombre al cupón.
+1. El usuario describe la promoción.
+1. El usuario llena un formulario con parámetros de la promoción (stock, fecha, requisitos).
+1. El usuario da click en publicar.
+1. El sistema le muestra al usuario su cupón publicado.  
