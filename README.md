@@ -1,2 +1,4 @@
-# project
-[Project Specification](Projectv1-1.pdf)
+# YapeCupones
+
+- [User Guide](./UserGuide.md)
+- [Developer Guide](./DeveloperGuide.md)
