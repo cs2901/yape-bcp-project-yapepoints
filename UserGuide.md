@@ -21,7 +21,7 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 * Interoperabilidad: la plataforma debe funcionar como un complemento de Yape, no como un servicio independiente.
 
 # Features
-* YapePoints, filtrar cupones: **filtrar**.
+* YapeCupones, filtrar cupones: **filtrar**.
 * YapeMaster, agregar promoción: **agregar**.
 * YapeMaster, editar promoción: **modificar**.
 * YapeMaster, eliminar promoción: **eliminar**.
@@ -96,9 +96,9 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El sistema elimina el cupón.
 
 
-#### YapePoints
+#### YapeCupones
 
-**System** YapePoints  
+**System** YapeCupones  
 **Actor** Usuario de Yape  
 **Use Case** UC-05 Acceder a pestaña Cupones  
 **Preconditions** Estar logueado a Yape  
@@ -106,7 +106,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. Hacer click en el menú de opciones de Yape.
 1. Hacer click en cupones.
 
-**System** YapePoints  
+**System** YapeCupones  
 **Actor** Usuario de Yape  
 **Use Case** UC-06 Selecciona un cupón  
 **Preconditions** UC-05, el usuario está logueado.  
@@ -116,7 +116,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El usuario ve un cupón que le interesa
 1. El usuario selecciona ver dirección
 
-**System** YapePoints  
+**System** YapeCupones  
 **Actor** Usuario de Yape  
 **Use Case** UC-07 Usuario quiere filtrar cupones.  
 **Preconditions** UC-05, el usuario está logueado.  
