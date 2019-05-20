@@ -94,3 +94,34 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El propietario selecciona la opción ***Eliminar Cupón***
 1. El sistema le pide al usuario confirmar la acción.
 1. El sistema elimina el cupón.
+
+
+#### YapePoints
+
+**System** YapePoints  
+**Actor** Usuario de Yape  
+**Use Case** UC-05 Acceder a pestaña Cupones  
+**Preconditions** Estar logueado a Yape  
+**MMS**  
+1. Hacer click en el menú de opciones de Yape.
+1. Hacer click en cupones.
+
+**System** YapePoints  
+**Actor** Usuario de Yape  
+**Use Case** UC-06 Selecciona un cupón  
+**Preconditions** UC-05, el usuario está logueado.  
+**MMS**  
+1. El usuario hace click a la pestaña YapeCupones.
+1. El usuario busca un cupón en la vista principal con los filtros que necesite.
+1. El usuario ve un cupón que le interesa
+1. El usuario selecciona ver dirección
+
+**System** YapePoints  
+**Actor** Usuario de Yape  
+**Use Case** UC-07 Usuario quiere filtrar cupones.  
+**Preconditions** UC-05, el usuario está logueado.  
+**MMS**  
+1. El usuario ingresa a la app de Yape y selecciona la pestaña YapeCupones.
+1. El usuario selecciona un distrito.
+1. La aplicación muestra los cupones.
+
