@@ -62,6 +62,8 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 
 
+
+
 **System** YapeMaster  
 **Actor** Usuario  
 **Use Case** UC-02 Agregar una nueva promoción  
