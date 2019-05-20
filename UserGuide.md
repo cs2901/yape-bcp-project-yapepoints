@@ -61,9 +61,6 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 * Redirecciona al formulario
 
 
-
-
-
 **System** YapeMaster  
 **Actor** Usuario  
 **Use Case** UC-02 Agregar una nueva promoción  
@@ -76,3 +73,14 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El usuario llena un formulario con parámetros de la promoción (stock, fecha, requisitos).
 1. El usuario da click en publicar.
 1. El sistema le muestra al usuario su cupón publicado.  
+
+
+**System** YapeMaster  
+**Actor** Usuario  
+**Use Case** UC-03 Editar cupón.  
+**Preconditions** UC-02  
+**MMS**    
+1. El usuario selecciona la vista de cupones.
+1. El usuario selecciona el cupón que desea editar.
+1. Edita el cupón.
+1. Guarda los cambios.
