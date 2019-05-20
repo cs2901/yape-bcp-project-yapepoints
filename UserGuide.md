@@ -55,7 +55,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El sistema crea la cuenta en YapeMaster y redirecciona a una vista de Log in
 
 **Extentions**      
-5. El sistema detecta que hay campos sin completar
-    Solicita que complete todos los campos
-6. El sistema detecta que ya hay un usuario registrado con la información ingresada
-    Redirecciona al formulario
+5. El sistema detecta que hay campos sin completar  
+* Solicita que complete todos los campos
+6. El sistema detecta que ya hay un usuario registrado con la información ingresada  
+* Redirecciona al formulario
