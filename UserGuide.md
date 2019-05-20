@@ -84,3 +84,13 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El usuario selecciona el cupón que desea editar.
 1. Edita el cupón.
 1. Guarda los cambios.
+
+**System** YapeMaster  
+**Actor** Usuario  
+**Use Case** UC-04 Eliminar promoción  
+**Preconditions** UC-02  
+**MMS**  
+1. El propietario selecciona el cupón que desea eliminar.
+1. El propietario selecciona la opción ***Eliminar Cupón***
+1. El sistema le pide al usuario confirmar la acción.
+1. El sistema elimina el cupón.
