@@ -60,8 +60,8 @@
 - -- Router.java
 - -- Main.java
 - ----------------
-- **/Yape
-- -- **/views
+- **/Yape**
+- -- **/views**
 - ------ Landing.java
 - ------ Coupon.java
 
