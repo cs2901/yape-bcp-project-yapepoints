@@ -60,6 +60,8 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 6. El sistema detecta que ya hay un usuario registrado con la información ingresada  
 * Redirecciona al formulario
 
+
+
 **System** YapeMaster  
 **Actor** Usuario  
 **Use Case** UC-02 Agregar una nueva promoción  
