@@ -27,7 +27,8 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 * Restaurantes, eliminar promoción: **eliminar**.
 
 # FAQ
-
+- ¿Desde que dispositivos puedo acceder a YapeMaster?
+  Es una aplicación web y solo necesitas de un navegador web en tu computadora o celular.
 
 # Glossary
 * Ticket: Precio de un almuerzo o menú.
