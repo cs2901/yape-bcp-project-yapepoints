@@ -46,7 +46,7 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 
 # Code Structure
 
-- **/YapeCopones**
+- **/YapeCupones**
 - -- **/model**
 - ------ User.java
 - ------ Coupon.java
