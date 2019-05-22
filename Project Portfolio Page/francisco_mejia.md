@@ -11,7 +11,6 @@ pequeños negocios publicar sus ofertas para que estas puedan ser mostradas en l
 
 - Lista de Non-Functional Requirements
 - Revision de todos los Requirements
-- Desarrollo de User Stories
 
 ### Other Contributions:
 
