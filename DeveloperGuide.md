@@ -1,9 +1,10 @@
 # Introduction
-El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un solo lugar (YapeCupones) y a los restaurantes, las facilidades para promocionar su negocio mediante cupones de descuento en Yape (YapeMaster).
+El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un solo lugar y a los restaurantes, las facilidades para promocionar su negocio mediante cupones de descuento en Yape.
 
-Tanto YapeCupones como YapeMaster existen fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un YapeNegocio para registrarse en YapeMaster.
+YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un YapeNegocio para registrarse.
 
 El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima. 
+
 # Features
 
 - **landing:** Renderiza el landing page
