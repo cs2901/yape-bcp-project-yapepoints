@@ -1,8 +1,8 @@
 # Introduction
 
-El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un solo lugar (YapeCupones) y a los restaurantes, las facilidades para promocionar su negocio mediante cupones de descuento en Yape (YapeMaster).
+El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un solo lugar y a los restaurantes, las facilidades para promocionar su negocio mediante cupones de descuento en Yape.
 
-Tanto YapeCupones como YapeMaster existen fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un YapeNegocio para registrarse en YapeMaster.
+YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un YapeNegocio para registrarse.
 
 El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima. 
 
@@ -34,7 +34,7 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 * Ticket: Precio de un almuerzo o menú.
 * Restaurante: Establecimiento en el que se preparan y sirven comidas. Nos enfocamos en restaurantes cercanos al centro laboral y de estudios con un ticket promedio menor a S/.20 por menú o almuerzo.
 * Yape: Sistema creado por el BCP que permite hacer transferencias usando el número de celular.
-* YapePoints: Plataforma web (disponible en móvil) sincronizada con Yape que permite a un Yapero encontrar los mejores descuentos y a un restaurante administrar información de los cupones que ofrece y de pagos hechos con Yape en su negocio.
+* YapeCupones: Plataforma web (disponible en móvil) sincronizada con Yape que permite a un Yapero encontrar los mejores descuentos y a un restaurante administrar información de los cupones que ofrece y de pagos hechos con Yape en su negocio.
 * Yapero: Usuario de Yape.
 
 # Anexo A (User Stories and Use Cases).
@@ -42,16 +42,16 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 ### Use Cases:
-**System** YapePoints  
+**System** YapeCupones  
 **Actor** Dueño de negocio  
 **Use Case** UC-01 Crear cuenta  
 **MMS**     
-1. El usuario entra a la web de YapePoints  
+1. El usuario entra a la web de YapeCupones  
 1. El usuario hace click en Registrarse como Restaurante  
 1. El sistema redirecciona a un formulario 
 1. El usuario completa el formulario
 1. El sistema solicita confirmación de la data ingresada
-1. El sistema crea la cuenta en YapePoints y redirecciona a una vista de Log in
+1. El sistema crea la cuenta en YapeCupones y redirecciona a una vista de Log in
 
 **Extentions**      
 5. El sistema detecta que hay campos sin completar  
@@ -60,7 +60,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 * Redirecciona al formulario
 
 
-**System** YapePoints    
+**System** YapeCupones    
 **Actor** Usuario  
 **Use Case** UC-02 Agregar una nueva promoción  
 **Preconditions** UC-01, Estar logueado  
@@ -74,7 +74,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El sistema le muestra al usuario su cupón publicado.  
 
 
-**System** YapePoints    
+**System** YapeCupones    
 **Actor** Usuario  
 **Use Case** UC-03 Editar cupón.  
 **Preconditions** UC-02  
@@ -84,7 +84,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. Edita el cupón.
 1. Guarda los cambios.
 
-**System** YapePoints    
+**System** YapeCupones    
 **Actor** Usuario  
 **Use Case** UC-04 Eliminar promoción  
 **Preconditions** UC-02  
@@ -94,8 +94,6 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El sistema le pide al usuario confirmar la acción.
 1. El sistema elimina el cupón.
 
-
-#### YapeCupones
 
 **System** YapeCupones  
 **Actor** Usuario de Yape  
