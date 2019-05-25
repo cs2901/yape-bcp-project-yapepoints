@@ -136,5 +136,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. El usuario selecciona un distrito.
 1. La aplicación muestra los cupones.
 
+Diagrama de los Use Cases:
+
     ![](./diagrams/Use_Case_Tree.png)
 
