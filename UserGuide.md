@@ -61,7 +61,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 
 **System** YapeCupones    
-**Actor** Usuario  
+**Actor** Personal de negocio  
 **Use Case** UC-02 Agregar una nueva promoción  
 **Preconditions** UC-01, Estar logueado  
 **MMS**  
@@ -75,7 +75,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 
 **System** YapeCupones    
-**Actor** Usuario  
+**Actor** Personal de negocio  
 **Use Case** UC-03 Editar cupón.  
 **Preconditions** UC-02  
 **MMS**    
@@ -85,7 +85,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 1. Guarda los cambios.
 
 **System** YapeCupones    
-**Actor** Usuario  
+**Actor** Personal de negocio  
 **Use Case** UC-04 Eliminar promoción  
 **Preconditions** UC-02  
 **MMS**  
