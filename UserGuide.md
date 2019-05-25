@@ -43,7 +43,7 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 ### Use Cases:
 **System** YapeCupones  
-**Actor** Dueño de negocio  
+**Actor** Personal de negocio
 **Use Case** UC-01 Crear cuenta  
 **MMS**     
 1. El usuario entra a la web de YapeCupones  
@@ -59,6 +59,20 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 6. El sistema detecta que ya hay un usuario registrado con la información ingresada  
 * Redirecciona al formulario
 
+**System** YapeCupones  
+**Actor** Personal de negocio
+**Use Case** UC-02 Log in  
+**MMS**     
+1. El usuario entra a la web de YapeCupones  
+1. El usuario hace click en Log in  
+1. El sistema redirecciona a un formulario 
+1. El usuario completa el formulario con usuario y contraseña
+1. El sistema valida los datos ingresados.
+1. El usuario accede.
+
+**Extentions**      
+5. El sistema detecta que el usuario o contraseña ingresados no coinciden.
+* Solicita que vuelva a completar los campos.
 
 **System** YapeCupones    
 **Actor** Personal de negocio  
