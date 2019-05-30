@@ -140,3 +140,8 @@ https://github.com/cs2901/yape-bcp-project-yapepoints/issues
 
 ![](./diagrams/UseCaseDiagram.png)
 
+## Diagramas de secuencia:
+![](./diagrams/d_1.png)
+![](./diagrams/d_2.png)
+![](./diagrams/d_3.png)
+
