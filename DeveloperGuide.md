@@ -27,7 +27,7 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 
 - Architecture diagram
 
-    ![](./diagrams/Architecture-Diagram.png)
+    ![](./diagrams/Architecture-Diagram1.png)
     ![](./diagrams/Architecture-Diagram2.png)
 - Class diagram
 
