@@ -12,7 +12,8 @@ app de Yape.
 
 - List of Features
 - Revision de Requirements
-- Use Cases (Update y elaboracion)
+- Use Cases
+- Use Cases diagram
 - User Stories (Update)
 
 ### Contributions to the Developer Guide:
