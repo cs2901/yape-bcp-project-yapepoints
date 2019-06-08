@@ -12,17 +12,21 @@ public class Auth {
     @Autowired
     private UserService users;
 
-    @RequestMapping("/")
-    public String foo(Model model) {
+    @RequestMapping("/example")
+    public String example(Model model) {
         try {
+            // En el primer formulario llamar a este método
             users.createUser("Jose Leonidas", "Garcia Gonzales", "12345678", "1234");
-            //users.createUser("Primer nombre", "Segundo nombre", "12345678", "1234");
-            //for (User user: users.findAll()) {
-            //    System.out.println(user);
-            //}
-            System.out.println(users.findByDni("12345678"));
+            // En el segundo formulario llamar a este método
+            users.setBankInformation("12345678", "Mi numero de cuenta");
+            // En el tercer formulario llamar a este método
+            users.setBusiness("12345678", "Negocio1", "Un negocio", "url");
+            // For debugging
+            for (User user: users.findAll()) {
+                System.out.println(user);
+            }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            model.addAttribute("error", e.getMessage());
         }
         return "greeting";
     }
