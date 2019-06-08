@@ -18,12 +18,16 @@ public class UserService {
 
     // TO DO
     // ENCRYPT PASSWORD
-    public void createUser (String given_name, String family_name, String dni, String password) throws Exception {
+    public void createUser (String email, String given_name, String family_name, String dni, String password) throws Exception {
         try {
             if (findByDni(dni) != null) {
                 throw new Exception("DNI en uso");
             }
+            if (findByEmail(email) != null) {
+                throw new Exception("Email en uso");
+            }
             User user = new User();
+            user.setEmail(email);
             user.setGiven_name(given_name);
             user.setFamily_name(family_name);
             user.setDni(dni);
@@ -73,6 +77,7 @@ public class UserService {
             if (user.getBusiness_name() == null) return false;
             if (user.getBusiness_description() == null) return false;
             if (user.getBusiness_map_url() == null) return false;
+            return true;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -83,6 +88,14 @@ public class UserService {
             return users.findByDni(dni);
         } catch (Exception e) {
             throw new Exception("Error intentando obtener usuario con dni " + dni);
+        }
+    }
+
+    private User findByEmail (String email) throws Exception {
+        try {
+            return users.findByEmail(email);
+        } catch (Exception e) {
+            throw new Exception("Error intentando obtener usuario con email " + email);
         }
     }
 
