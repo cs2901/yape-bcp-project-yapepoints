@@ -15,6 +15,7 @@ public class Auth {
     @RequestMapping("/example")
     public String example(Model model) {
         try {
+            users.deleteAll();
             // En el primer formulario llamar a este método
             users.createUser("Jose Leonidas", "Garcia Gonzales", "12345678", "1234");
             // En el segundo formulario llamar a este método
@@ -25,6 +26,14 @@ public class Auth {
             for (User user: users.findAll()) {
                 System.out.println(user);
             }
+            if (users.filledBankAccountInformation("12345678")) {
+                System.out.println("Esta funcion será util para el middleware");
+            }
+            if (users.filledBusinessInformation("12345678")) {
+                System.out.println("Lo mismo que lo anterior. La idea sería obtener el dni a partir de las sesion logeada actual");
+            }
+            System.out.println(users.filledBankAccountInformation("12345678"));
+
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
         }
