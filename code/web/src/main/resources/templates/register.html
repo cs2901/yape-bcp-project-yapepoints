@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>YapePromociones</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/login.css">
+
+
+<div class="container" name="form_container" style="max-width: 30em;">
+<br>
+<h4 style="text-align: center">Crear cuenta: Paso 1</h4><br>
+	<form action = "/login" >
+	<a>Nombre:</a>
+	<input type="text" name="firstname" >
+	<a>Apellido:</a>
+	<input type="text" name="lastname" >
+	<a>Dni:</a>
+	<input type="number" name="dni" >
+	<a>Contraseña:</a>
+	<input type="password" name="password" >
+	<a>Verificar contraseña:</a>
+	<input type="password" name="verify" >
+	<a>gmail:</a>
+	<input type="text" name="mail" >
+		<button type="button" onclick="window.location.href='register_local'">Siguiente</button>
+	<br><a href="/">Volver</a>
+	</form>
+
+
+</div>
+</body>
+</html>
