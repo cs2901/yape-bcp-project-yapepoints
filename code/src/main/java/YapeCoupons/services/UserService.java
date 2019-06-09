@@ -4,11 +4,8 @@ import YapeCoupons.model.User;
 import YapeCoupons.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.util.List;
-
-import static org.springframework.util.Assert.*;
 
 @Service
 public class UserService {
@@ -83,7 +80,7 @@ public class UserService {
         }
     }
 
-    private User findByDni (String dni) throws Exception {
+    public User findByDni (String dni) throws Exception {
         try {
             return users.findByDni(dni);
         } catch (Exception e) {
@@ -91,7 +88,7 @@ public class UserService {
         }
     }
 
-    private User findByEmail (String email) throws Exception {
+    public User findByEmail (String email) throws Exception {
         try {
             return users.findByEmail(email);
         } catch (Exception e) {

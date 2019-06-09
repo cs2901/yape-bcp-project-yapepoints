@@ -15,7 +15,7 @@ public class Auth {
     @RequestMapping("/example")
     public String example(Model model) {
         try {
-            //users.deleteAll();
+            users.deleteAll();
             // En el primer formulario llamar a este método
             users.createUser("jose.garcia@utec.edu.pe", "Jose Leonidas", "Garcia Gonzales", "12345678", "1234");
             // En el segundo formulario llamar a este método
