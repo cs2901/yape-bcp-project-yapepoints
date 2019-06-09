@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>YapePromociones</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/static/login.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="container">
+<style>
+  input{
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    max-width: 35em;
+  }
+
+  .newcupon{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .box {
+    margin-bottom: 2em;
+  }
+</style>
+
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#front-image')
+        .attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+
+<div class="row" style="margin: 2em;">
+  <div class="col-lg-5">
+
+    <form class="newcupon" action="/repos" method="POST" enctype="multipart/form-data">
+      <div class="box">
+      <a>Nombre de promocion:</a>
+      <input name="nombre_promo" id="nombre_promo" type="text" class="form-control">
+      </div>
+      <div class="box">
+      <a>Description</a>
+      <input name="description" id="description" type="text" class="form-control" placeholder="¿Que contiene la promocion?">
+      </div>
+      <div class="box">
+      <a>Fecha de expiracion:</a>
+      <input name="fecha_expiracion" id="fecha_expiracion"  class="form-control">
+      </div>
+      <div class="box">
+      <a>Elija una imagen</a>
+      <div class="custom-file">
+      <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
+      </div>
+      </div>
+      <button type="button" onclick="window.location.href='pag_inicio'">Crear cupon</button>
+
+
+    </form>
+  </div>
+
+  <div class="col-lg-7">
+    <img id="front-image" src="" alt="your image" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
+  </div>
+</div>
+</div>
+</body>
+</html>

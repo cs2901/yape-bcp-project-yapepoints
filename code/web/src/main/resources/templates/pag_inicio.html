@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>YapePromociones</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/login.css">
+
+<br>
+<div class="container" name="form_container" style="max-width: 80em; align-items : center;">
+  <h2 style="text-align: left;">Don Bigotes</h2><br>
+  <a href="/"><h6 style="text-align: left;">Salir</h6></a>
+  <a href="/"><h6 style="text-align: left;">Cambiar informacion</h6></a>
+
+  <button type="button" onclick="window.location.href='create_coupon'">Crear cupon</button>
+
+  <table style="width: 100%; align-self: center;" >
+    <tr>
+      <th>Promociones</th>
+      <th>Opciones</th>
+    </tr>
+
+
+    <tr>
+      <div class="conatiner">
+        <td><div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="img.jpg" class="card-img" style="width: 190; height: 200">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a href="/cupon"><h5 class="card-title">Oferta: 2 x 1 en emparedados</h5></a>
+                <p class="card-text">Text text text text text text text text text text text text text text text text text tet</p>
+                <p class="card-text"><small class="text-muted">Date</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </td>
+        <td>
+          <button type="button" onclick="window.location.href='create_coupon'">Editar</button>
+          <button type="button" onclick="window.location.href='create_coupon'">Borrar</button>
+        </td>
+      </div>
+    </tr>
+
+
+
+  </table>
+
+
+
+
+</div>
+</body>
+</html>
