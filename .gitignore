@@ -1,5 +1,6 @@
-code/.grandle/
-code/grandle/
-code/.idea/
-code/out/
-
+code/web/.grandle/
+code/web/grandle/
+code/web/.idea/
+code/web/out/
+code/web/gradlew
+code/web/gradlew.bat

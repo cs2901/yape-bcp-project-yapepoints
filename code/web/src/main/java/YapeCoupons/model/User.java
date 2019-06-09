@@ -11,6 +11,9 @@ public class User {
     @Indexed(unique = true)
     private String dni;
 
+    @Indexed(unique = true)
+    private String email;
+
     private String given_name;
     private String family_name;
     private String password;
@@ -20,6 +23,9 @@ public class User {
     private String business_map_url;
 
     public User () {}
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }
@@ -45,11 +51,12 @@ public class User {
     public String getBusiness_map_url() { return business_map_url; }
     public void setBusiness_map_url(String business_map_url) { this.business_map_url = business_map_url; }
 
+    // For debugging
     @Override
     public String toString () {
         return String.format(
-                "User[id=%s, given_name=%s, dni=%s, password=%s, bank_account=%s, business_name=%s]",
-                _id, given_name, dni, password, bank_account, business_name
+                "User[id=%s, given_name=%s, dni=%s, email=%s, password=%s, bank_account=%s, business_name=%s]",
+                _id, given_name, dni, email, password, bank_account, business_name
         );
     }
 }
