@@ -5,7 +5,6 @@
 <body>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="/static/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="container">
@@ -44,7 +43,7 @@ function readURL(input) {
 <div class="row" style="margin: 2em;">
   <div class="col-lg-5">
 
-    <form class="newcupon" action="/repos" method="POST" enctype="multipart/form-data">
+    <form class="newcupon" method="POST">
       <div class="box">
       <a>Nombre de promocion:</a>
       <input name="nombre_promo" id="nombre_promo" type="text" class="form-control">
@@ -63,7 +62,7 @@ function readURL(input) {
       <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
       </div>
       </div>
-      <button type="button" onclick="window.location.href='pag_inicio'">Crear cupon</button>
+      <button type="button" class="btn btn-light" onclick="window.location.href='Pag_inicio'">Crear cupon</button>
 
 
     </form>

@@ -9,41 +9,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class LogInController {
     @RequestMapping("/")
-    public String index() {
+    public String Index() {
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String register() {
+    @RequestMapping("/Register")
+    public String Register() {
         return "register";
     }
 
-    @RequestMapping("/register_local")
-    public String register_local() {
+    @RequestMapping("/Register_local")
+    public String RegisterLocal() {
         return "register_local";
     }
-    @RequestMapping("/register_personal")
-    public String register_personal() {
+    @RequestMapping("/Register_personal")
+    public String RegisterPersonal() {
         return "register_personal";
     }
 
-    @RequestMapping("/register_bank")
-    public String register_bank() {
+    @RequestMapping("/Register_bank")
+    public String RegisterBank() {
         return "register_bank";
     }
 
-    @RequestMapping("/pag_inicio")
-    public String pag_inicio() {
+    @RequestMapping("/Pag_inicio")
+    public String PagInicio() {
         return "pag_inicio";
     }
 
-    @RequestMapping("/show_cupon")
-    public String show_cupon() {
+    @RequestMapping("/Show_cupon")
+    public String ShowCupon() {
         return "show_cupon";
     }
 
-    @RequestMapping("/create_coupon")
-    public String create_coupon() {
+    @RequestMapping("/Create_cupon")
+    public String CreateCupon() {
         return "create_coupon";
     }
 
