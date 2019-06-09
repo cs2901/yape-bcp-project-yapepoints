@@ -26,6 +26,8 @@ public class Auth {
             for (User user: users.findAll()) {
                 System.out.println(user);
             }
+
+
             /*
             if (users.filledBankAccountInformation("12345678")) {
                 System.out.println("Esta funcion será util para el middleware");
