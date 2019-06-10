@@ -1,42 +1,38 @@
-<html>
-<head>
-	<title>YapePromociones</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
 <body>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/static/login.css">
+	<nav th:replace="partial/offline :: navigation"/>
 
 
-<div class="container" name="form_container" style="max-width: 30em;">
-<br>
-<h4 style="text-align: center">Crear cuenta: Paso 1</h4><br>
-	<form action = "/Login" >
+	<div class="container form-box" name="form_container" style="max-width: 30em;">
+	<h4 style="text-align: center">Crear cuenta</h4><br>
+		<form th:action="@{/api/account}"  method="POST">
+			<label for="name_new_user">Nombre: </label>
+			<input type="text" class="form-control" id="name_new_user" name="given_name" required>
 
-		<label for="name_new_user">Nombre: </label>
-		<input type="text" class="form-control" id="name_new_user" required>
+			<label for="lastname_new_user">Apellido: </label>
+			<input type="text" class="form-control" id="lastname_new_user" name="family_name" required>
 
-		<label for="lastname_new_user">Apellido: </label>
-		<input type="text" class="form-control" id="lastname_new_user" required>
+			<label for="dni_new_user">DNI: </label>
+			<input type="number" class="form-control" id="dni_new_user" name="dni" required>
 
-		<label for="dni_new_user">Dni: </label>
-		<input type="number" class="form-control" id="dni_new_user" required>
+			<label for="password_new_user">Contraseña: </label>
+			<input type="password" class="form-control" id="password_new_user" name="password" required>
 
-		<label for="password_new_user">Contraseña: </label>
-		<input type="password" class="form-control" id="password_new_user" required>
+			<label for="verify">Verificar contraseña: </label>
+			<input type="password" class="form-control" id="verify" name="password2" required>
 
-		<label for="verify">Verificar contraseña: </label>
-		<input type="password" class="form-control" id="verify" required>
+			<label for="email_new_user">Email: </label>
+			<input type="mail" class="form-control" id="email_new_user" name="email" required>
 
-		<label for="email_new_user">Email: </label>
-		<input type="mail" class="form-control" id="email_new_user" required>
-
-		<br>
-		<button type="button" class="btn btn-light" onclick="window.location.href='Register_local'">Siguiente</button>
-	<br><a href="/">Volver</a>
-	</form>
+			<br>
+			<button type="submit" class="btn" >Crear cuenta</button>
+		</form>
 
 
-</div>
+	</div>
+	<footer th:replace="partial/offline :: footer"/>
 </body>
 </html>

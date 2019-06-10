@@ -1,15 +1,17 @@
 package YapeCoupons;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import  org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 
 public class LogInController {
-    @RequestMapping("/")
-    public String Index() {
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String Index(ModelMap map) {
+        map.addAttribute("title", "YapePromociones");
         return "login";
     }
 
@@ -32,9 +34,9 @@ public class LogInController {
         return "register_bank";
     }
 
-    @RequestMapping("/Pag_inicio")
+    @RequestMapping("/home")
     public String PagInicio() {
-        return "pag_inicio";
+        return "home";
     }
 
     @RequestMapping("/Show_cupon")
