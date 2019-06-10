@@ -1,13 +1,7 @@
-<html>
-<head>
-	<title>YapePromociones</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
 <body>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/static/login.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="container">
 <style>
   input{
     margin-top: 0.7em;
@@ -40,21 +34,19 @@ function readURL(input) {
 }
 </script>
 
+<nav th:replace="partial/offline :: navigation"/>
+
 <div class="row" style="margin: 2em;">
   <div class="col-lg-5">
 
     <form class="newcupon" method="POST">
       <div class="box">
       <a>Nombre de promocion:</a>
-      <input name="nombre_promo" id="nombre_promo" type="text" class="form-control">
+      <input name="nombre_promo" id="title" type="text" class="form-control">
       </div>
       <div class="box">
       <a>Description</a>
       <input name="description" id="description" type="text" class="form-control" placeholder="¿Que contiene la promocion?">
-      </div>
-      <div class="box">
-      <a>Fecha de expiracion:</a>
-      <input name="fecha_expiracion" id="fecha_expiracion"  class="form-control">
       </div>
       <div class="box">
       <a>Elija una imagen</a>
@@ -69,9 +61,9 @@ function readURL(input) {
   </div>
 
   <div class="col-lg-7">
-    <img id="front-image" src="" alt="your image" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
+    <img id="front-image" src="" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
   </div>
 </div>
-</div>
+<footer th:replace="partial/offline :: footer"/>
 </body>
 </html>

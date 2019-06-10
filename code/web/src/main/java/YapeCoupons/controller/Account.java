@@ -32,27 +32,33 @@ public class Account {
     }
 
     @RequestMapping(path = "/api/account", method = RequestMethod.POST)
-    public String NewAccount(@Valid @ModelAttribute("user")User user,
-                             BindingResult result, ModelMap model
-                            ,HttpServletRequest request) throws Exception {
+    public String newAccount(@Valid @ModelAttribute("user")User user,
+                             BindingResult result, ModelMap model,
+                             HttpServletRequest request) throws Exception {
 
-        if (result.hasErrors()) {
-            return "error";
+        try {
+            if (result.hasErrors()) {
+                model.addAttribute("error", "Algo salio mal");
+                return "register";
+            }
+
+            String password2 = request.getParameter("password2");
+            if (!user.getPassword().equals(password2)) {
+                model.addAttribute("error", "Las contraseñas son distintas");
+                return "register";
+            }
+            users.createUser(
+                    user.getEmail(),
+                    user.getGiven_name(),
+                    user.getFamily_name(),
+                    user.getDni(),
+                    encoder.encode(user.getPassword())
+            );
+            return "home";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "register";
         }
-
-        String password2 = request.getParameter("password2");
-        if(user.getPassword().equals(password2)) {
-
-        }
-        users.createUser(
-                user.getEmail(),
-                user.getGiven_name(),
-                user.getFamily_name(),
-                user.getDni(),
-                encoder.encode(user.getPassword())
-
-        );
-        return "home";
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)

@@ -1,7 +1,6 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-  <title>YapePromociones</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
 <body>
 <style>
   .row{
@@ -9,8 +8,6 @@
   }
 </style>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/static/login.css">
 
 <br>
 <div class="container" name="form_container" style="max-width: 80em; align-items : center;">
@@ -34,7 +31,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="img.jpg" class="card-img" style="width: 190; height: 200">
+            <img src="../static/img/image.jpg" th:src="@{img/image.jpg}" class="card-img" style="width: 190; height: 200">
           </div>
           <div class="col-md-8">
             <div class="card-body">

@@ -22,6 +22,8 @@ public class User {
     private String business_description;
     private String business_map_url;
 
+    private String business_ruc;
+
     public User () {}
 
     public String getEmail() { return email; }
@@ -50,6 +52,9 @@ public class User {
 
     public String getBusiness_map_url() { return business_map_url; }
     public void setBusiness_map_url(String business_map_url) { this.business_map_url = business_map_url; }
+
+    public String getBusiness_ruc() { return business_ruc; }
+    public void setBusiness_ruc(String business_ruc) { this.business_ruc = business_ruc; }
 
     // For debugging
     @Override
