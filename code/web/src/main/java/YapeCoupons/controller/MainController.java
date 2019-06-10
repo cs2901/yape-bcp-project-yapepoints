@@ -1,12 +1,17 @@
-package YapeCoupons;
+package YapeCoupons.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-    @RequestMapping("/login")
+    @RequestMapping("/")
     public String Index() {
+        return "index";
+    }
+
+    @RequestMapping("/login")
+    public String Login() {
         return "login";
     }
 
@@ -31,12 +36,7 @@ public class MainController {
         return "register_bank";
     }
 
-    @RequestMapping("/")
-    public String PagInicio() {
-        return "index";
-    }
-
-    @RequestMapping("/create_cupon")
+    @RequestMapping("/create_coupon")
     public String CreateCupon() {
         return "create_coupon";
     }
