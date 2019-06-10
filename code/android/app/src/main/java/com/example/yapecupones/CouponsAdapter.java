@@ -52,7 +52,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 CouponsList couponsList1 = couponsLists.get(position);
-                Intent skipIntent = new Intent(v.getContext(), ProfileActivity2.class);
+                Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
                 skipIntent.putExtra(KEY_NAME, couponsList1.getBusiness_name());
                 skipIntent.putExtra(KEY_BDESCRIPTION, couponsList1.getBusiness_description());
                 skipIntent.putExtra(KEY_MAP, couponsList1.getBusiness_map_url());
