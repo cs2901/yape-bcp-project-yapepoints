@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
     @RequestMapping("/")
     public String Index() {
-        return "index";
+        return "home";
     }
 
     @RequestMapping("/login")
@@ -30,6 +30,10 @@ public class MainController {
         return "register_bank";
     }
 
+    @RequestMapping("/create_coupon")
+    public String CreateCouponHTML() {
+        return "create_coupon";
+    }
 
     // TODO : Distribute Mappings into lower level controller classes
 
