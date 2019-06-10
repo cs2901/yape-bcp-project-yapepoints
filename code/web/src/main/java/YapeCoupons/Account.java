@@ -1,6 +1,9 @@
 package YapeCoupons;
 
 import YapeCoupons.model.User;
+import YapeCoupons.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,6 +17,13 @@ import javax.validation.Valid;
 
 @Controller
 public class Account {
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private UserService users;
+
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public ModelAndView showForm() {
         return new ModelAndView("userView", "userName", new User());
@@ -22,7 +32,7 @@ public class Account {
     @RequestMapping(path = "/api/account", method = RequestMethod.POST)
     public String NewAccount(@Valid @ModelAttribute("user")User user,
                              BindingResult result, ModelMap model
-                            ,HttpServletRequest request) {
+                            ,HttpServletRequest request) throws Exception {
 
         if (result.hasErrors()) {
             return "error";
@@ -32,6 +42,14 @@ public class Account {
         if(user.getPassword().equals(password2)) {
 
         }
+        users.createUser(
+                user.getEmail(),
+                user.getGiven_name(),
+                user.getFamily_name(),
+                user.getDni(),
+                encoder.encode(user.getPassword())
+
+        );
         return "home";
     }
 

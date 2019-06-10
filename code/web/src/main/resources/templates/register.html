@@ -7,7 +7,7 @@
 
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
 		<h4 style="text-align: center">Crear cuenta</h4>
-		<form th:action="@{/login}"  method="POST">
+		<form th:action="@{/api/account}"  method="POST">
 			<label for="name_new_user">Nombre: </label>
 			<input type="text" class="form-control" id="name_new_user" name="given_name" required>
 
