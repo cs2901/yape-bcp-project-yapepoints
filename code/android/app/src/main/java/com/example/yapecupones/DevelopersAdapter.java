@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -55,7 +54,7 @@ public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.Vi
             @Override
             public void onClick(View v) {
                 DevelopersList developersList1 = developersLists.get(position);
-                Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
+                Intent skipIntent = new Intent(v.getContext(), ProfileActivity2.class);
                 skipIntent.putExtra(KEY_NAME, developersList1.getLogin());
                 skipIntent.putExtra(KEY_URL, developersList1.getHtml_url());
                 skipIntent.putExtra(KEY_IMAGE, developersList1.getAvatar_url());

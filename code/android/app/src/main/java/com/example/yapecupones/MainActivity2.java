@@ -25,15 +25,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String URL_DATA = "SERVER";
+public class MainActivity2 extends AppCompatActivity {
+
+    private static final String URL_DATA = "https://api.github.com/search/users?q=language:java+location:chicago";//Se cambia por el de Yape, se puede poner cualquier ciudad para probar
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<CouponsList> couponsLists;
+    private List<DevelopersList> developersLists;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {// inicializa la vista de repeticion y el array de tarjetas (solo su info, no los objetos)
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -41,54 +42,56 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        couponsLists = new ArrayList<>();
+        developersLists = new ArrayList<>();
 
         loadUrlData();
     }
 
     private void loadUrlData() {
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {//extrae los JSONs
             @Override
             public void onResponse(String response) {
+
                 progressDialog.dismiss();
 
                 try {
+
                     JSONObject jsonObject = new JSONObject(response);
 
                     JSONArray array = jsonObject.getJSONArray("items");
 
-                    for (int i = 0; i < array.length(); i++) {
+                    for (int i = 0; i < array.length(); i++){
+
                         JSONObject jo = array.getJSONObject(i);
 
-                        CouponsList coupons = new CouponsList(jo.getString("business_name"),
-                                jo.getString("business_description"),
-                                jo.getString("business_map_url"),
-                                jo.getString("title"),
-                                jo.getString("description"),
-                                jo.getString("image_path"));
-                        couponsLists.add(coupons);
+                        DevelopersList developers = new DevelopersList(jo.getString("login"), jo.getString("html_url"), jo.getString("avatar_url"));
+                        developersLists.add(developers);
+
                     }
 
-                    adapter = new CouponsAdapter(couponsLists, getApplicationContext());
+                    adapter = new DevelopersAdapter(developersLists, getApplicationContext());
                     recyclerView.setAdapter(adapter);
+
                 } catch (JSONException e) {
+
                     e.printStackTrace();
                 }
             }
-        }, new Response.ErrorListener() {
+        }, new Response.ErrorListener() {//porsiaca
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(MainActivity2.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
     }
 }
