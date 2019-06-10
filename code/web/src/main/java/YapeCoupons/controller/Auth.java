@@ -21,7 +21,7 @@ public class Auth {
             // En el segundo formulario llamar a este método
             users.setBankInformation("12345678", "Mi numero de cuenta");
             // En el tercer formulario llamar a este método
-            users.setBusiness("12345678", "Negocio1", "Un negocio", "url");
+            users.setBusiness("12345678", "Negocio1", "Un negocio", "url", "ruc");
             // For debugging
             for (User user: users.findAll()) {
                 System.out.println(user);

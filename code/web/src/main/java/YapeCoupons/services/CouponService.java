@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -86,11 +87,20 @@ public class CouponService {
         }
     }
 
-    public List<Coupon> getActiveCoupons () {
+    public List<Coupon> getActiveCoupons (String dni_user) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("active").is(true));
+        query.addCriteria(Criteria.where("dni_user").is(dni_user));
+        query.with(new Sort(Sort.Direction.ASC, "update_at"));
+        return mongoTemplate.find(query, Coupon.class);
+    }
+
+    public List<Coupon> getAllActiveCoupons () {
         Query query = new Query();
         query.addCriteria(Criteria.where("active").is(true));
         query.with(new Sort(Sort.Direction.ASC, "update_at"));
-        return mongoTemplate.find(query, Coupon.class);
+        List<Coupon> activeCoupons = mongoTemplate.find(query, Coupon.class);
+        return activeCoupons;
     }
 
     // For testing
