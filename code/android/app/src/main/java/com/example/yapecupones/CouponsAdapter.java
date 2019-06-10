@@ -1,5 +1,6 @@
 package com.example.yapecupones;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +17,11 @@ import java.util.List;
 
 public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHolder> {
 
-    public static final String KEY_NAME = "name";
-    public static final String KEY_BDESCRIPTION = "bdescription";
-    public static final String KEY_MAP = "map";
+    //public static final String KEY_ID = "_id";
     public static final String KEY_TITLE = "title";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
+    public static final String KEY_BNAME = "bname";
 
     private List<CouponsList> couponsLists;
     private Context context;
@@ -38,27 +38,49 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final CouponsList couponsList = couponsLists.get(position);
-        holder.business_name.setText(couponsList.getBusiness_name());
-        holder.business_description.setText(couponsList.getBusiness_description());
-        holder.map_url.setText(couponsList.getBusiness_map_url());
-        holder.title.setText(couponsList.getTitle());
+        //holder._id.setText(couponsList.get_id());        final CouponsList couponsList = couponsLists.get(position);
+        //holder._id.setText(couponsList.get_id());
         holder.description.setText(couponsList.getDescription());
+        holder.title.setText(couponsList.getTitle());
+        //Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
+        holder.image_path.setText(couponsList.getImage_path());
+        holder.business_name.setText(couponsList.getBusiness_name());
 
-        Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CouponsList couponsList1 = couponsLists.get(position);
                 Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
-                skipIntent.putExtra(KEY_NAME, couponsList1.getBusiness_name());
-                skipIntent.putExtra(KEY_BDESCRIPTION, couponsList1.getBusiness_description());
-                skipIntent.putExtra(KEY_MAP, couponsList1.getBusiness_map_url());
-                skipIntent.putExtra(KEY_TITLE, couponsList1.getTitle());
+                //skipIntent.putExtra(KEY_ID, couponsList1.get_id());
                 skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
+                skipIntent.putExtra(KEY_TITLE, couponsList1.getTitle());
                 skipIntent.putExtra(KEY_IMAGE, couponsList1.getImage_path());
+                skipIntent.putExtra(KEY_BNAME, couponsList1.getBusiness_name());
+                v.getContext().startActivity(skipIntent);
+            }
+        });
+
+        holder.description.setText(couponsList.getDescription());
+        holder.title.setText(couponsList.getTitle());
+        //Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
+        holder.image_path.setText(couponsList.getImage_path());
+        holder.business_name.setText(couponsList.getBusiness_name());
+
+
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CouponsList couponsList1 = couponsLists.get(position);
+                Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
+                //skipIntent.putExtra(KEY_ID, couponsList1.get_id());
+                skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
+                skipIntent.putExtra(KEY_TITLE, couponsList1.getTitle());
+                skipIntent.putExtra(KEY_IMAGE, couponsList1.getImage_path());
+                skipIntent.putExtra(KEY_BNAME, couponsList1.getBusiness_name());
                 v.getContext().startActivity(skipIntent);
             }
         });
@@ -70,23 +92,21 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView business_name;
-        public TextView business_description;
-        public TextView map_url;
-        public TextView title;
+        //public TextView _id;
         public TextView description;
-        public ImageView image_path;
+        public TextView title;
+        public TextView image_path;
+        public TextView business_name;
         public LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            business_name = (TextView) itemView.findViewById(R.id.business_name);
-            business_description = (TextView) itemView.findViewById(R.id.business_description);
-            map_url = (TextView) itemView.findViewById(R.id.map_url);
-            title = (TextView) itemView.findViewById(R.id.title);
+            //_id = (TextView) itemView.findViewById(R.id._id);
             description = (TextView) itemView.findViewById(R.id.description);
-            image_path = (ImageView) itemView.findViewById(R.id.image);
+            title = (TextView) itemView.findViewById(R.id.title);
+            image_path = (TextView) itemView.findViewById(R.id.image);
+            business_name = (TextView) itemView.findViewById(R.id.business_name);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
         }
     }

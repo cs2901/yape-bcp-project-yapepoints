@@ -17,37 +17,25 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        TextView businessName = (TextView) findViewById(R.id.business_name);
+        //TextView _id = (TextView) findViewById(R.id._id);
         TextView title = (TextView) findViewById(R.id.title);
-        ImageView image = (ImageView) findViewById(R.id.image);
         TextView description = (TextView) findViewById(R.id.description);
-        TextView mapUrl = (TextView) findViewById(R.id.map_url);
+        TextView image = (TextView) findViewById(R.id.image);
+        TextView businessName = (TextView) findViewById(R.id.business_name);
 
         Intent intent = getIntent();
-        final String bName = intent.getStringExtra(CouponsAdapter.KEY_NAME);
+        //final String c_id = intent.getStringExtra(CouponsAdapter.KEY_ID);
         final String cTitle = intent.getStringExtra(CouponsAdapter.KEY_TITLE);
-        String cImage = intent.getStringExtra(CouponsAdapter.KEY_IMAGE);
         final String cDescription = intent.getStringExtra(CouponsAdapter.KEY_DESCRIPTION);
-        final String cMapUrl = intent.getStringExtra(CouponsAdapter.KEY_MAP);
+        String cImage = intent.getStringExtra(CouponsAdapter.KEY_IMAGE);
+        String bName = intent.getStringExtra(CouponsAdapter.KEY_BNAME);
 
-
-        businessName.setText(bName);
+        //_id.setText(c_id);
         title.setText(cTitle);
-        Picasso.with(this).load(cImage).into(image);
         description.setText(cDescription);
-        mapUrl.setText(cMapUrl);
-
-        mapUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = cMapUrl;
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-            }
-        });
-
-
+        //Picasso.with(this).load(cImage).into(image);
+        image.setText(cImage);
+        businessName.setText(bName);
 
 
 
