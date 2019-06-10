@@ -2,9 +2,11 @@ package YapeCoupons.services;
 
 import YapeCoupons.model.Coupon;
 import YapeCoupons.model.CouponRepository;
+import com.mongodb.BasicDBObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 @Service
 public class CouponService {
@@ -95,12 +99,23 @@ public class CouponService {
         return mongoTemplate.find(query, Coupon.class);
     }
 
-    public List<Coupon> getAllActiveCoupons () {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("active").is(true));
-        query.with(new Sort(Sort.Direction.ASC, "update_at"));
-        List<Coupon> activeCoupons = mongoTemplate.find(query, Coupon.class);
-        return activeCoupons;
+    public List<BasicDBObject> getAllActiveCoupons () {
+        LookupOperation lookupOperation = LookupOperation.newLookup().
+                from("user").
+                localField("dni_user").
+                foreignField("dni").
+                as("user");
+        AggregationOperation matchActive = Aggregation.match(Criteria.where("active").is(true));
+        AggregationOperation sort = Aggregation.sort(Sort.Direction.ASC, "update_at");
+        Aggregation aggregation = Aggregation.newAggregation(
+                lookupOperation,
+                matchActive,
+                sort,
+                unwind("$user"),
+                project("title", "description", "image_path", "user.business_name")
+        );
+        List<BasicDBObject> results = mongoTemplate.aggregate(aggregation, "coupon", BasicDBObject.class).getMappedResults();
+        return results;
     }
 
     // For testing

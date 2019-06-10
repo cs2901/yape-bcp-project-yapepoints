@@ -22,6 +22,7 @@ public class Board {
             coupons.deleteAll();
             coupons.createCoupon("12345678", "Super promocion", "Valido en UTEC", "imagen.jpg");
             coupons.createCoupon("12345678", "Super promocion 2", "UTEC", "imagen2.jpg");
+            coupons.createCoupon("179", "Super promocion 2", "UTEC", "imagen2.jpg");
             //for (Coupon coupon: coupons.getActiveCoupons("12345678")) {
             //    System.out.println(coupon);
             //}
