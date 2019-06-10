@@ -11,11 +11,12 @@
 <body>
 
 
-<nav th:fragment="navigation">
+<nav th:fragment="navigation" class="navbar navbar-light" style="background-color: #610A73">
     <div class="container">
         <a href="/" class="logo">
             <img th:src="@{/img/yape.png}" alt="yape.png">
         </a>
+
         <ul class="nav-links">
             <li class="nav-item"><a href="/login">Iniciar sesión</a></li>
             <li class="nav-item"><a href="/register">Crear cuenta</a></li>
@@ -24,8 +25,8 @@
     </div>
 </nav>
 
-<footer th:fragment="footer" id="sticky-footer" class="py-4 bg-dark text-white-50" >
-    <div class="container text-center">
+<footer th:fragment="footer" id="sticky-footer">
+    <div class="container">
         <small>Copyright &copy; YapePromociones</small>
     </div>
 </footer>
