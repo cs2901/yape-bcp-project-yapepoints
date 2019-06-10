@@ -2,9 +2,7 @@
 <head th:replace="partial/offline :: head">
 <body>
 	<nav th:replace="partial/offline :: navigation"></nav>
-	<div>
 
-	</div>
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
 		<h4 style="text-align: center">Iniciar sesión</h4><br>
 		<form action = "/Login" >
@@ -17,7 +15,7 @@
 			<br>
 			<button type="button" class="btn" onclick="window.location.href='Pag_inicio'">Entrar</button>
 			<br> <br>
-			¿No tienes cuenta? <a href="/Register">Registrate</a>
+			¿No tienes cuenta? <a href="/register">Registrate</a>
 		</form>
 	</div>
 	<footer th:replace="partial/offline :: footer"></footer>
