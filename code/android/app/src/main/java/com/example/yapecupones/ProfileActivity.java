@@ -20,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
         //TextView _id = (TextView) findViewById(R.id._id);
         TextView title = (TextView) findViewById(R.id.title);
         TextView description = (TextView) findViewById(R.id.description);
-        TextView image = (TextView) findViewById(R.id.image);
+        ImageView image = (ImageView) findViewById(R.id.image);
         TextView businessName = (TextView) findViewById(R.id.business_name);
 
         Intent intent = getIntent();
@@ -33,8 +33,8 @@ public class ProfileActivity extends AppCompatActivity {
         //_id.setText(c_id);
         title.setText(cTitle);
         description.setText(cDescription);
-        //Picasso.with(this).load(cImage).into(image);
-        image.setText(cImage);
+        Picasso.with(this).load(cImage).into(image);
+        //image.setText(cImage);
         businessName.setText(bName);
 
 
