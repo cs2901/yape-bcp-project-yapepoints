@@ -7,21 +7,21 @@ public class Middleware {
 
     private UserService users;
 
-    public String CouponFilter(Model model) {
+    public String CouponFilter(String dni) {
         try {
-            if (users.filledBankAccountInformation("12345678")) {
+            if (users.filledBankAccountInformation(dni)) {
             } else{
-                return "/login2"
+                return "login2"
             }
-            if (users.filledBusinessInformation("12345678")) {
+            if (users.filledBusinessInformation(dni)) {
 
             } else{
-                return "/login3";
+                return "login3";
             }
 
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
         }
-        return "/coupons";
+        return "coupons";
     }
 }
