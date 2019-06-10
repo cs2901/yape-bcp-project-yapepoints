@@ -1,14 +1,11 @@
 package YapeCoupons;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-
-public class LogInController {
-    @RequestMapping("/")
+public class MainController {
+    @RequestMapping("/login")
     public String Index() {
         return "login";
     }
@@ -23,6 +20,7 @@ public class LogInController {
         return "register_local";
     }
 
+    // What is register_personal?
     @RequestMapping("/register_personal")
     public String RegisterPersonal() {
         return "register_personal";
@@ -33,14 +31,9 @@ public class LogInController {
         return "register_bank";
     }
 
-    @RequestMapping("/pag_inicio")
+    @RequestMapping("/")
     public String PagInicio() {
-        return "pag_inicio";
-    }
-
-    @RequestMapping("/show_cupon")
-    public String ShowCupon() {
-        return "show_cupon";
+        return "index";
     }
 
     @RequestMapping("/create_cupon")
