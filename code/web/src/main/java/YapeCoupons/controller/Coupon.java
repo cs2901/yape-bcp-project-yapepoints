@@ -4,39 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class MainController {
-    @RequestMapping("/")
-    public String Index() {
-        return "home";
-    }
-
-    @RequestMapping("/login")
-    public String Login() {
-        return "login";
-    }
-
-    @RequestMapping("/register")
-    public String Register() {
-        return "register";
-    }
-
-    @RequestMapping("/register_local")
-    public String RegisterLocal() {
-        return "register_local";
-    }
-
-    @RequestMapping("/register_bank")
-    public String RegisterBank() {
-        return "register_bank";
-    }
-
-    @RequestMapping("/create_coupon")
-    public String CreateCouponHTML() {
-        return "create_coupon";
-    }
-
-    // TODO : Distribute Mappings into lower level controller classes
-
+public class Coupon {
     @PostMapping("/coupon")
     @ResponseBody
     public String CreateCoupon() {

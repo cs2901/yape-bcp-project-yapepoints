@@ -1,4 +1,4 @@
-package YapeCoupons;
+package YapeCoupons.controller;
 
 import YapeCoupons.model.User;
 import org.springframework.stereotype.Controller;
