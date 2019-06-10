@@ -10,12 +10,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
+@SessionAttributes("name")
 public class Account {
 
     @Autowired
@@ -53,5 +55,23 @@ public class Account {
         return "home";
     }
 
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String Login(@Valid @ModelAttribute("user")User user,
+                             BindingResult result, ModelMap model
+            ,HttpServletRequest request) throws Exception {
+
+        if (result.hasErrors()) {
+            return "error";
+        }
+        User _user = users.findByEmail(user.getEmail());
+        System.out.println(user);
+        System.out.println(_user);
+        if( _user.getPassword().equals(user.getPassword())){
+            model.put("name", _user.getGiven_name());
+            //model.put("name", _user.getGiven_name());
+            return "home";
+        }
+        return "login";
+    }
 
 }
