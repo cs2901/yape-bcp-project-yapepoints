@@ -12,7 +12,6 @@ public class UserService {
     @Autowired
     private UserRepository users;
 
-
     // TO DO
     // ENCRYPT PASSWORD
     public void createUser (String email, String given_name, String family_name, String dni, String password) throws Exception {
@@ -45,12 +44,14 @@ public class UserService {
         }
     }
 
-    public void setBusiness (String dni, String business_name, String business_description, String business_map_url) throws Exception {
+    public void setBusiness (String dni, String business_name, String business_description,
+                             String business_map_url, String business_ruc) throws Exception {
         try {
             User user = findByDni(dni);
             user.setBusiness_name(business_name);
             user.setBusiness_description(business_description);
             user.setBusiness_map_url(business_map_url);
+            user.setBusiness_ruc(business_ruc);
             users.save(user);
         } catch (Exception e) {
             throw new Exception("Error vinculando la información del negocio");
