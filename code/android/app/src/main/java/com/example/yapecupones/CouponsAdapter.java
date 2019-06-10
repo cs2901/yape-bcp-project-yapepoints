@@ -44,8 +44,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         //holder._id.setText(couponsList.get_id());
         holder.description.setText(couponsList.getDescription());
         holder.title.setText(couponsList.getTitle());
-        //Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
-        holder.image_path.setText(couponsList.getImage_path());
+        Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
+        //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
 
 
@@ -65,8 +65,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
 
         holder.description.setText(couponsList.getDescription());
         holder.title.setText(couponsList.getTitle());
-        //Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
-        holder.image_path.setText(couponsList.getImage_path());
+        Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
+        //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
 
 
@@ -95,7 +95,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         //public TextView _id;
         public TextView description;
         public TextView title;
-        public TextView image_path;
+        public ImageView image_path;
         public TextView business_name;
         public LinearLayout linearLayout;
 
@@ -105,7 +105,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
             //_id = (TextView) itemView.findViewById(R.id._id);
             description = (TextView) itemView.findViewById(R.id.description);
             title = (TextView) itemView.findViewById(R.id.title);
-            image_path = (TextView) itemView.findViewById(R.id.image);
+            image_path = (ImageView) itemView.findViewById(R.id.image);
             business_name = (TextView) itemView.findViewById(R.id.business_name);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
         }

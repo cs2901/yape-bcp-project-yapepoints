@@ -49,17 +49,12 @@
                 android:background="#8c000000"/>
 
 
-            <TextView
+            <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:gravity="center"
-                android:padding="20dp"
-                android:textColor="@android:color/white"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                tools:text="business_name"
+                tools:text="image"
                 android:background="#8c000000"/>
 
             <TextView
