@@ -13,36 +13,37 @@ public class LogInController {
         return "login";
     }
 
-    @RequestMapping("/Register")
+    @RequestMapping("/register")
     public String Register() {
         return "register";
     }
 
-    @RequestMapping("/Register_local")
+    @RequestMapping("/register_local")
     public String RegisterLocal() {
         return "register_local";
     }
-    @RequestMapping("/Register_personal")
+
+    @RequestMapping("/register_personal")
     public String RegisterPersonal() {
         return "register_personal";
     }
 
-    @RequestMapping("/Register_bank")
+    @RequestMapping("/register_bank")
     public String RegisterBank() {
         return "register_bank";
     }
 
-    @RequestMapping("/Pag_inicio")
+    @RequestMapping("/pag_inicio")
     public String PagInicio() {
         return "pag_inicio";
     }
 
-    @RequestMapping("/Show_cupon")
+    @RequestMapping("/show_cupon")
     public String ShowCupon() {
         return "show_cupon";
     }
 
-    @RequestMapping("/Create_cupon")
+    @RequestMapping("/create_cupon")
     public String CreateCupon() {
         return "create_coupon";
     }
