@@ -6,32 +6,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Redirect {
     @RequestMapping("/")
-    public String Index() {
+    public String index() {
         return "login";
     }
 
     @RequestMapping("/home")
-    public String Login() {
+    public String login() {
         return "home";
     }
 
     @RequestMapping("/register")
-    public String Register() {
+    public String register() {
         return "register";
     }
 
     @RequestMapping("/register_local")
-    public String RegisterLocal() {
+    public String registerLocal() {
         return "register_local";
     }
 
     @RequestMapping("/register_bank")
-    public String RegisterBank() {
+    public String registerBank() {
         return "register_bank";
     }
 
     @RequestMapping("/create_coupon")
-    public String CreateCouponHTML() {
+    public String createCouponHTML() {
         return "create_coupon";
     }
 }

@@ -7,31 +7,31 @@ import org.springframework.web.bind.annotation.*;
 public class Coupon {
     @PostMapping("/coupon")
     @ResponseBody
-    public String CreateCoupon() {
+    public String createCoupon() {
         return "TODO : Create new coupon\n";
     }
 
     @GetMapping("/coupon")
     @ResponseBody
-    public String GetCoupons() {
+    public String getCoupons() {
         return "TODO : Return list of coupons\n";
     }
 
     @GetMapping("/coupon/{id}")
     @ResponseBody
-    public String GetCoupon(@PathVariable String id) {
+    public String getCoupon(@PathVariable String id) {
         return "TODO : Return coupon " + id + "\n";
     }
 
     @PutMapping("/coupon/{id}")
     @ResponseBody
-    public String UpdateCoupon(@PathVariable String id) {
+    public String updateCoupon(@PathVariable String id) {
         return "TODO : Update coupon " + id + "\n";
     }
 
     @DeleteMapping("/coupon/{id}")
     @ResponseBody
-    public String DeleteCoupon(@PathVariable String id) {
+    public String deleteCoupon(@PathVariable String id) {
         return "TODO : Delete coupon " + id + "\n";
     }
 

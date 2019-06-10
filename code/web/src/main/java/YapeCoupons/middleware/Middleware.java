@@ -1,6 +1,5 @@
 package YapeCoupons.middleware;
 
-import YapeCoupons.model.User;
 import YapeCoupons.services.UserService;
 
 public class Middleware {
