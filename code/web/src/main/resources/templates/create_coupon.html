@@ -36,10 +36,11 @@ function readURL(input) {
 
 <nav th:replace="partial/offline :: navigation"/>
 <div class="container">
+  <br>
 <div class="row" style="margin: 2em;">
   <div class="col-lg-5">
-
     <form class="newcupon" method="POST" action="/add-coupon" enctype="multipart/form-data">
+      <a>Crear cupon</a>
       <div class="box">
       <a>Nombre de promocion:</a>
       <input name="title" id="title" type="text" class="form-control">
