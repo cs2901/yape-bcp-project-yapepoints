@@ -18,10 +18,13 @@ public class Auth {
             users.deleteAll();
             // En el primer formulario llamar a este método
             users.createUser("jose.garcia@utec.edu.pe", "Jose Leonidas", "Garcia Gonzales", "12345678", "1234");
+            users.createUser("otro.correo@utec.edu.pe", "Juanito Peres", "Garcia Gonzales", "179", "179");
             // En el segundo formulario llamar a este método
             users.setBankInformation("12345678", "Mi numero de cuenta");
+            users.setBankInformation("179", "Otra cuenta");
             // En el tercer formulario llamar a este método
             users.setBusiness("12345678", "Negocio1", "Un negocio", "url", "ruc");
+            users.setBusiness("179", "Pollos Hermanos", "Polleria", "url", "ruc");
             // For debugging
             for (User user: users.findAll()) {
                 System.out.println(user);
