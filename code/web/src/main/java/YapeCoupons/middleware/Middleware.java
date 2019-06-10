@@ -11,7 +11,7 @@ public class Middleware {
         try {
             if (users.filledBankAccountInformation(dni)) {
             } else{
-                return "login2"
+                return "login2";
             }
             if (users.filledBusinessInformation(dni)) {
 
@@ -20,7 +20,7 @@ public class Middleware {
             }
 
         } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
+            //model.addAttribute("error", e.getMessage());
         }
         return "coupons";
     }
