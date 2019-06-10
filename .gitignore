@@ -6,3 +6,4 @@ code/web/.idea/
 code/web/out/
 code/web/gradlew
 code/web/gradlew.bat
+code/web/src/main/resources/static/img/uploads/

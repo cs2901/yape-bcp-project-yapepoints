@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+import static com.mongodb.client.model.Projections.exclude;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 @Service
@@ -26,6 +27,7 @@ public class CouponService {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+    private List<BasicDBObject> results;
 
     public void createCoupon (String dni_user, String title, String description, String image_path) throws Exception {
         try {
