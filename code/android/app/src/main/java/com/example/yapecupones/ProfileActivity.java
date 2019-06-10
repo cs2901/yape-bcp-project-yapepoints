@@ -18,22 +18,23 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         //TextView _id = (TextView) findViewById(R.id._id);
-        TextView description = (TextView) findViewById(R.id.description);
         TextView title = (TextView) findViewById(R.id.title);
-        ImageView image = (ImageView) findViewById(R.id.image);
+        TextView description = (TextView) findViewById(R.id.description);
+        TextView image = (TextView) findViewById(R.id.image);
         TextView businessName = (TextView) findViewById(R.id.business_name);
 
         Intent intent = getIntent();
         //final String c_id = intent.getStringExtra(CouponsAdapter.KEY_ID);
-        final String cDescription = intent.getStringExtra(CouponsAdapter.KEY_DESCRIPTION);
         final String cTitle = intent.getStringExtra(CouponsAdapter.KEY_TITLE);
+        final String cDescription = intent.getStringExtra(CouponsAdapter.KEY_DESCRIPTION);
         String cImage = intent.getStringExtra(CouponsAdapter.KEY_IMAGE);
         String bName = intent.getStringExtra(CouponsAdapter.KEY_BNAME);
 
         //_id.setText(c_id);
-        description.setText(cDescription);
         title.setText(cTitle);
-        Picasso.with(this).load(cImage).into(image);
+        description.setText(cDescription);
+        //Picasso.with(this).load(cImage).into(image);
+        image.setText(cImage);
         businessName.setText(bName);
 
 
