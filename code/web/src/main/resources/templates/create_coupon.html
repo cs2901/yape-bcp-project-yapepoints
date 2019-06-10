@@ -1,13 +1,8 @@
-<html>
-<head>
-	<title>YapePromociones</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
 <body>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/static/login.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="container">
 <style>
   input{
     margin-top: 0.7em;
@@ -24,17 +19,6 @@
     margin-bottom: 2em;
   }
 
-   .footer {
-     position: fixed;
-     left: 0;
-     bottom: 0;
-     width: 100%;
-     height:15%;
-     max-height:30em;
-     background-color: #E5E7E9;
-     color: black;
-     text-align: center;
-   }
 </style>
 
 <script>
@@ -51,14 +35,9 @@ function readURL(input) {
   }
 }
 </script>
-  <nav class="navbar navbar-light" style="background-color: #610A73">
-    <a class="navbar-brand" href="/" style="color: aliceblue">
-      <img src="/static/img/yape.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      YapePromociones
-    </a>
-  </nav>
-
-<div class="row" style="margin: 2em;">
+<nav th:replace="partial/offline :: navigation"/>
+<div class="container">
+  <div class="row" style="margin: 2em;">
   <div class="col-lg-5">
 
     <form class="newcupon" method="POST">
@@ -80,7 +59,7 @@ function readURL(input) {
       <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
       </div>
       </div>
-      <button type="button" class="btn btn-light" onclick="window.location.href='Pag_inicio'">Crear cupon</button>
+      <button type="button" class="btn btn-light" onclick="window.location.href='pag_inicio'">Crear cupon</button>
 
 
     </form>
@@ -92,10 +71,5 @@ function readURL(input) {
 </div>
 </div>
 
-<div class="footer">
-  <div class="container">
-    <h6>Sugerencias y problemas contactar a : some@gmail.com</h6>
-  </div>
-</div>
 </body>
 </html>

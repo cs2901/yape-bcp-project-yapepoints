@@ -76,6 +76,16 @@ public class CouponService {
         }
     }
 
+    public void setImageUrl (String coupon_id, String image_path) throws Exception {
+        try {
+            Coupon coupon = findById(coupon_id);
+            coupon.setImage_path(image_path);
+            coupons.save(coupon);
+        } catch (Exception e) {
+            throw new Exception("Error guardando la imagen");
+        }
+    }
+
     public List<Coupon> getActiveCoupons () {
         Query query = new Query();
         query.addCriteria(Criteria.where("active").is(true));

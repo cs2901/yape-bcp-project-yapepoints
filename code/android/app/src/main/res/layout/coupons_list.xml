@@ -19,27 +19,50 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/business_name"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="business"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="title"/>
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/description"
                 android:layout_margin="5dp"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="username"/>
+                android:text="description"/>
 
             <TextView
-                android:id="@+id/htmUrl"
+                android:id="@+id/map_url"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:text="map"/>
 
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
