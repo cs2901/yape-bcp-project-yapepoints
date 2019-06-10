@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
+<body>
+	<nav th:replace="partial/offline :: navigation"></nav>
+
+	<div class="container form-box" name="form_container" style="max-width: 30em;">
+		<h4 style="text-align: center">Iniciar sesión</h4><br>
+		<form action = "/Login" >
+			<label for="email">Email: </label>
+			<input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+
+			<label for="password">Contraseña: </label>
+			<input type="password" class="form-control" id="password" aria-describedby="emailHelp" required>
+
+			<br>
+			<button type="button" class="btn" onclick="window.location.href='Pag_inicio'">Entrar</button>
+			<br> <br>
+			¿No tienes cuenta? <a href="/register">Registrate</a>
+		</form>
+	</div>
+	<footer th:replace="partial/offline :: footer"></footer>
+</body>
+</html>

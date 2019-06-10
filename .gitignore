@@ -1,5 +1,2 @@
-code/.grandle/
-code/grandle/
-code/.idea/
-code/out/
-
+*gradle*
+*.idea*

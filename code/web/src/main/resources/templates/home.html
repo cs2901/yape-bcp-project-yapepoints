@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>YapePromociones</title>
+</head>
+<body>
+<style>
+  .row{
+    margin-top: 2em;
+  }
+</style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/login.css">
+
+<br>
+<div class="container" name="form_container" style="max-width: 80em; align-items : center;">
+  <div class="container">
+  <h2 style="text-align: left;">Don Bigotes</h2><br>
+  <a href="/"><h6 style="text-align: left;">Salir</h6></a>
+  <a href="/"><h6 style="text-align: left;">Cambiar informacion</h6></a>
+
+  <button type="button" class="btn btn-light" onclick="window.location.href='create_cupon'">Crear cupon</button>
+
+
+  <div class="row">
+    <div class="col-8">Promociones</div>
+    <div class="col-4">Opciones</div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-8">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="img.jpg" class="card-img" style="width: 190; height: 200">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href="/cupon"><h5 class="card-title">Oferta: 2 x 1 en emparedados</h5></a>
+              <p class="card-text">Text text text text text text text text text text text text text text text text text tet</p>
+              <p class="card-text"><small class="text-muted">Date</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <button type="button" class="btn btn-warning" onclick="window.location.href='create_cupon'">Editar</button>
+      <br><br>
+      <button type="button" class="btn btn-danger" onclick="window.location.href='create_cupon'">Borrar</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
