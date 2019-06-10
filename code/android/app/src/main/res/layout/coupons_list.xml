@@ -20,13 +20,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/business_name"
+                android:id="@+id/description"
                 android:layout_margin="5dp"
                 android:layout_gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="business"/>
+                android:text="description"/>
 
             <TextView
                 android:id="@+id/title"
@@ -44,22 +44,14 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/business_name"
                 android:layout_margin="5dp"
                 android:layout_gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="description"/>
+                android:text="business"/>
 
-            <TextView
-                android:id="@+id/map_url"
-                android:layout_margin="5dp"
-                android:layout_gravity="center"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="map"/>
 
         </LinearLayout>
 

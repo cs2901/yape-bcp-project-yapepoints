@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String URL_DATA = "SERVER";
+    private static final String URL_DATA = "http://localhost:9000/getAllCoupons";
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -64,12 +64,11 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject jo = array.getJSONObject(i);
 
-                        CouponsList coupons = new CouponsList(jo.getString("business_name"),
-                                jo.getString("business_description"),
-                                jo.getString("business_map_url"),
-                                jo.getString("title"),
+                        CouponsList coupons = new CouponsList(jo.getString("_id"),
                                 jo.getString("description"),
-                                jo.getString("image_path"));
+                                jo.getString("title"),
+                                jo.getString("image_path"),
+                                jo.getString("business_name"));
                         couponsLists.add(coupons);
                     }
 
