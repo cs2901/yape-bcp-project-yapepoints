@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
+<body>
+
+<nav th:replace="partial/offline :: navigation"/>
+
+<div class="container form-box" name="form_container" style="max-width: 30em;">
+    <h4 style="text-align: center">Actualizar cuenta</h4>
+    <form th:action="@{/settings/profile}"  method="PUT">
+        <label for="new_name">Nombre: </label>
+        <input th:value="${user.getGiven_name()}" type="text" class="form-control" id="new_name" name="given_name" required>
+
+        <label for="new_lastname">Apellido: </label>
+        <input th:value="${user.getFamily_name()}" type="text" class="form-control" id="new_lastname" name="family_name" required>
+
+        <label for="new_email">Email: </label>
+        <input th:value="${user.getEmail()}" type="mail" class="form-control" id="new_email" name="email" required>
+
+        <br>
+        <button type="submit" class="btn" >Update profile</button>
+    </form>
+</div>
+<footer th:replace="partial/offline :: footer"/>
+</body>
+</html>

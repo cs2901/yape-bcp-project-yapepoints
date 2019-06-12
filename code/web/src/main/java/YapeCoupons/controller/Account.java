@@ -5,12 +5,10 @@ import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,4 +78,31 @@ public class Account {
         return "login";
     }
 
+    @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)
+    public String ProfileSettings(Model model) throws Exception {
+        // TODO : Replace implicit declaration with session
+        String dni = "12345678";
+
+        User user;
+
+        try {
+            user = users.findByDni(dni);
+        } catch (Exception e) {
+            throw new Exception("Error intentando obtener usuario con dni " + dni);
+        }
+
+        model.addAttribute("user", user);
+
+        return "update_account";
+    }
+
+    @PutMapping("update_account")
+    public void updateAccount(
+        @RequestParam("new_name") String name,
+        @RequestParam("new_lastname") String lastname,
+        @RequestParam("new_email") String email) {
+
+        // TODO : Create method that allows the update of only email, name and lastname attributes.
+        users.createUser(email, name, lastname, "12345678", "");
+    }
 }
