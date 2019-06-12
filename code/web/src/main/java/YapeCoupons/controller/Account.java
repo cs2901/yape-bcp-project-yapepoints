@@ -60,7 +60,7 @@ public class Account {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String Login(@Valid @ModelAttribute("user")User user,
+    public String login(@Valid @ModelAttribute("user")User user,
                              BindingResult result, ModelMap model
             ,HttpServletRequest request) throws Exception {
 
@@ -79,7 +79,7 @@ public class Account {
     }
 
     @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)
-    public String ProfileSettings(Model model) throws Exception {
+    public String profileSettings(Model model) throws Exception {
         // TODO : Replace implicit declaration with session
         String dni = "12345678";
 
@@ -96,13 +96,21 @@ public class Account {
         return "update_account";
     }
 
-    @PutMapping("update_account")
-    public void updateAccount(
+    @PostMapping("settings/profile/update")
+    public String updateAccount(
         @RequestParam("new_name") String name,
         @RequestParam("new_lastname") String lastname,
         @RequestParam("new_email") String email) {
 
+        System.out.println("Updated account " + name);
+
         // TODO : Create method that allows the update of only email, name and lastname attributes.
-        users.createUser(email, name, lastname, "12345678", "");
+        try {
+            users.createUser(email, name, lastname, "12345678", "");
+        } catch (Exception e) {
+
+        }
+
+        return "redirect:/settings/profile";
     }
 }

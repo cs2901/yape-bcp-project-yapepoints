@@ -7,15 +7,15 @@
 
 <div class="container form-box" name="form_container" style="max-width: 30em;">
     <h4 style="text-align: center">Actualizar cuenta</h4>
-    <form th:action="@{/settings/profile}"  method="PUT">
+    <form th:action="@{/settings/profile/update}"  method="POST">
         <label for="new_name">Nombre: </label>
-        <input th:value="${user.getGiven_name()}" type="text" class="form-control" id="new_name" name="given_name" required>
+        <input th:value="${user.getGiven_name()}" type="text" class="form-control" id="new_name" name="new_name" required>
 
         <label for="new_lastname">Apellido: </label>
-        <input th:value="${user.getFamily_name()}" type="text" class="form-control" id="new_lastname" name="family_name" required>
+        <input th:value="${user.getFamily_name()}" type="text" class="form-control" id="new_lastname" name="new_lastname" required>
 
         <label for="new_email">Email: </label>
-        <input th:value="${user.getEmail()}" type="mail" class="form-control" id="new_email" name="email" required>
+        <input th:value="${user.getEmail()}" type="mail" class="form-control" id="new_email" name="new_email" required>
 
         <br>
         <button type="submit" class="btn" >Update profile</button>
