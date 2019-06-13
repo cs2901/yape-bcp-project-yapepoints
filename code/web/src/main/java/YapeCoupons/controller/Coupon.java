@@ -17,7 +17,8 @@ public class Coupon {
     @Autowired
     private CouponService coupons;
 
-    private static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/img/uploads";
+    public static final String UPLOAD_DIRECTORY = System.getProperty("user.home") + "/uploads/";
+    public static final String URI = "http://localhost:9000/images/";
 
     // TODO : Adjust to CRUD notation: /coupon with POST method
     @RequestMapping("/add-coupon")
@@ -25,10 +26,8 @@ public class Coupon {
                                @RequestParam("title") String title,
                                @RequestParam("description") String description,
                                @RequestParam("image") MultipartFile file) {
-        System.out.println(title);
-        System.out.println(description);
-        Path file_path = Paths.get(uploadDirectory, file.getOriginalFilename());
-        String image_path = "http://localhost:9000/img/uploads/" + file.getOriginalFilename();
+        Path file_path = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+        String image_path = URI + file.getOriginalFilename();
         try {
             Files.write(file_path, file.getBytes());
             coupons.createCoupon("12345678", title, description, image_path);

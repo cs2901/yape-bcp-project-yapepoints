@@ -107,7 +107,7 @@ public class CouponService {
                 foreignField("dni").
                 as("user");
         AggregationOperation matchActive = Aggregation.match(Criteria.where("active").is(true));
-        AggregationOperation sort = Aggregation.sort(Sort.Direction.ASC, "update_at");
+        AggregationOperation sort = Aggregation.sort(Sort.Direction.DESC, "update_at");
         Aggregation aggregation = Aggregation.newAggregation(
                 lookupOperation,
                 matchActive,
