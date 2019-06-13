@@ -14,6 +14,7 @@ public class RestCoupon {
     @Autowired
     private CouponService coupons;
 
+    // TODO : Integrate into /coupons CRUD
     @GetMapping("/getAllCoupons")
     public HashMap<String, List<BasicDBObject>> getAllCoupons() {
         final List<BasicDBObject> allActiveCoupons = coupons.getAllActiveCoupons();

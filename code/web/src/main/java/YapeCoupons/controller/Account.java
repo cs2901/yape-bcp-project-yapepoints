@@ -96,8 +96,9 @@ public class Account {
         return "update_account";
     }
 
-    @PostMapping("settings/profile/update")
+    @PostMapping("/settings/profile/update")
     public String updateAccount(
+            // TODO : Rename parameters: More descriptive, less redundant
         @RequestParam("new_name") String name,
         @RequestParam("new_lastname") String lastname,
         @RequestParam("new_email") String email) {

@@ -18,6 +18,7 @@ public class Coupon {
 
     public Coupon () {}
 
+    // TODO : Rename method: Use lowerCamelCase
     public String getDni_user() { return dni_user; }
     public void setDni_user(String dni_user) { this.dni_user = dni_user; }
 

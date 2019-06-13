@@ -19,6 +19,7 @@ public class Coupon {
 
     private static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/img/uploads";
 
+    // TODO : Adjust to CRUD notation: /coupon with POST method
     @RequestMapping("/add-coupon")
     public String createCoupon(Model model,
                                @RequestParam("title") String title,
