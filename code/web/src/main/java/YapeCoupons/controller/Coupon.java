@@ -18,7 +18,7 @@ public class Coupon {
     private CouponService coupons;
 
     public static final String UPLOAD_DIRECTORY = System.getProperty("user.home") + "/uploads/";
-    public static final String URI = "http://localhost:9000/images/";
+    public static final String URI = "http://178.128.216.229:9000/images/";
 
     // TODO : Adjust to CRUD notation: /coupon with POST method
     @RequestMapping("/add-coupon")
