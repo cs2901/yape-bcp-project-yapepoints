@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
+<body>
+<style>
+  input{
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    max-width: 35em;
+  }
+
+  .newcupon{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .box {
+    margin-bottom: 2em;
+  }
+</style>
+
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#front-image')
+        .attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+
+<nav th:replace="partial/offline :: navigation"/>
+<div class="container">
+  <br>
+<div class="row" style="margin: 2em;">
+  <div class="col-lg-5">
+    <form class="newcupon" method="POST" action="/add-coupon" enctype="multipart/form-data">
+      <a>Crear cupon</a>
+      <div class="box">
+      <a>Nombre de promocion:</a>
+      <input name="title" id="title" type="text" class="form-control">
+      </div>
+      <div class="box">
+      <a>Description</a>
+      <input name="description" id="description" type="text" class="form-control" placeholder="¿Que contiene la promocion?">
+      </div>
+      <div class="box">
+        <a>Precio de promocion:</a>
+        <input name="precio" id="precio" type="number" class="form-control">
+      </div>
+      <div class="box">
+      <a>Elija una imagen</a>
+      <div class="custom-file">
+      <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
+      </div>
+      </div>
+      <button type="submit" class="btn btn-light">Crear cupon</button>
+
+    </form>
+  </div>
+
+  <div class="col-lg-7">
+    <img id="front-image" src="" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
+  </div>
+</div>
+</div>
+<footer th:replace="partial/offline :: footer"/>
+</body>
+</html>

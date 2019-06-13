@@ -21,6 +21,21 @@ public class Redirect {
         return "register";
     }
 
+    @RequestMapping("/restorePassword")
+    public String restorePassword() {
+        return "restorePassword";
+    }
+
+    @RequestMapping("/restoreProcess")
+    public String restoreProcess() {
+        return "restoreProcess";
+    }
+
+    @RequestMapping("/restoreFinal")
+    public String restoreFinal() {
+        return "restoreFinal";
+    }
+
     @RequestMapping("/register_local")
     public String registerLocal() {
         return "register_local";
