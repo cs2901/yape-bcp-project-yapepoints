@@ -42,8 +42,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         final CouponsList couponsList = couponsLists.get(position);
         //holder._id.setText(couponsList.get_id());        final CouponsList couponsList = couponsLists.get(position);
         //holder._id.setText(couponsList.get_id());
-        holder.description.setText(couponsList.getDescription());
         holder.title.setText(couponsList.getTitle());
+        holder.description.setText(couponsList.getDescription());
         Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
         //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
@@ -55,16 +55,16 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
                 CouponsList couponsList1 = couponsLists.get(position);
                 Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
                 //skipIntent.putExtra(KEY_ID, couponsList1.get_id());
-                skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
                 skipIntent.putExtra(KEY_TITLE, couponsList1.getTitle());
+                skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
                 skipIntent.putExtra(KEY_IMAGE, couponsList1.getImage_path());
                 skipIntent.putExtra(KEY_BNAME, couponsList1.getBusiness_name());
                 v.getContext().startActivity(skipIntent);
             }
         });
 
-        holder.description.setText(couponsList.getDescription());
         holder.title.setText(couponsList.getTitle());
+        holder.description.setText(couponsList.getDescription());
         Picasso.with(context).load(couponsList.getImage_path()).into(holder.image_path);
         //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
@@ -77,8 +77,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
                 CouponsList couponsList1 = couponsLists.get(position);
                 Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
                 //skipIntent.putExtra(KEY_ID, couponsList1.get_id());
-                skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
                 skipIntent.putExtra(KEY_TITLE, couponsList1.getTitle());
+                skipIntent.putExtra(KEY_DESCRIPTION, couponsList1.getDescription());
                 skipIntent.putExtra(KEY_IMAGE, couponsList1.getImage_path());
                 skipIntent.putExtra(KEY_BNAME, couponsList1.getBusiness_name());
                 v.getContext().startActivity(skipIntent);
@@ -93,8 +93,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         //public TextView _id;
-        public TextView description;
         public TextView title;
+        public TextView description;
         public ImageView image_path;
         public TextView business_name;
         public LinearLayout linearLayout;
@@ -103,8 +103,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
             super(itemView);
 
             //_id = (TextView) itemView.findViewById(R.id._id);
-            description = (TextView) itemView.findViewById(R.id.description);
             title = (TextView) itemView.findViewById(R.id.title);
+            description = (TextView) itemView.findViewById(R.id.description);
             image_path = (ImageView) itemView.findViewById(R.id.image);
             business_name = (TextView) itemView.findViewById(R.id.business_name);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
