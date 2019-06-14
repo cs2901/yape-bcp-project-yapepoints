@@ -23,5 +23,4 @@ public class CouponsList {
         this.image_path = image_path;
         this.business_name = business_name;
     }
-
 }
