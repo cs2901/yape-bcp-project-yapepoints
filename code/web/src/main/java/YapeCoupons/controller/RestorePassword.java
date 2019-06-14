@@ -21,15 +21,29 @@ import javax.validation.Valid;
 public class RestorePassword {
     private Mail mail;
 
+    @Autowired
+    private UserService users;
+
     @RequestMapping(path = "/restorePassword", method = RequestMethod.POST)
-    public String restorePassword(@Valid @ModelAttribute("user")User user,
+    public String restorePassword(@ModelAttribute("email") String email,
                         BindingResult result, ModelMap model
             , HttpServletRequest request) throws Exception {
         if (result.hasErrors()) {
             return "error";
         }
-        mail.PasswordRectification(user.getEmail());
-        return "restoreProcess";
+        try {
+            System.out.println(email);
+            User user = users.findByEmail(email);
+            if (user == null) {
+                model.addAttribute("error", "El correo no está asociado a ninguna cuenta");
+                return "restorePassword";
+            }
+            mail.PasswordRectification(user.getEmail());
+            return "restoreProcess";
+        } catch (Exception e){
+            model.addAttribute("error", "Error enviando el correo");
+            return "restorePassword";
+        }
     }
 
     @RequestMapping(path = "/restoreProcess", method = RequestMethod.POST)
