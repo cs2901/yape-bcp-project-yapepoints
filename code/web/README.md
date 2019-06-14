@@ -1,13 +1,12 @@
 # Web
 
 La página esta corriendo en [http://178.128.216.229:8080/](http://178.128.216.229:8080/)
-
-Se puede correr el proyecto ubicandose en esta carpeta y ejecutando
+Se puede correr el proyecto ubicandose en esta carpeta y ejecutando.
 
 ```
 java -jar build/libs/gs-serving-web-content-0.1.0.jar
 ```
-## Implemtación
+## Implementación
 
 ### Vistas
 - [x] Home
@@ -19,6 +18,7 @@ java -jar build/libs/gs-serving-web-content-0.1.0.jar
 - [x] Cupones
 - [x] Usuarios
 - [x] Roles
+
 ### Configuración
 - [ ] Sesiones
 - [x] Spring security
