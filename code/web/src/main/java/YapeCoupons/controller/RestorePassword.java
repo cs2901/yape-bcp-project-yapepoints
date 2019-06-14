@@ -25,7 +25,7 @@ public class RestorePassword {
     private UserService users;
 
     @RequestMapping(path = "/restorePassword", method = RequestMethod.POST)
-    public String restorePassword(@ModelAttribute("email") String email,
+    public String restorePassword(@Valid @ModelAttribute("email") String email,
                         BindingResult result, ModelMap model
             , HttpServletRequest request) throws Exception {
         if (result.hasErrors()) {
@@ -36,7 +36,7 @@ public class RestorePassword {
             User user = users.findByEmail(email);
             if (user == null) {
                 model.addAttribute("error", "El correo no está asociado a ninguna cuenta");
-                return "restorePassword";
+                return "redirect:/restorePassword";
             }
             mail.PasswordRectification(user.getEmail());
             return "restoreProcess";
@@ -54,23 +54,25 @@ public class RestorePassword {
             return "error";
         }
         if (code == 42069){
-            return "restoreFinal";
+            // Hacer aqui que el usuario se loguee y redireccionarlo a que cambie su contraseña
+            return "redirect:/changePassword";
         }
         return "restoreProcess";
     }
 
     //TODO: Set the new password!
     @RequestMapping(path = "/restoreFinal", method = RequestMethod.POST)
-    public String restoreFinal(@Valid @ModelAttribute("newPassword")String newPassword,
-                               @Valid @ModelAttribute("againNewPassword")String againNewPassword,
+    public String restoreFinal(@Valid @ModelAttribute("newPassword")String new_password,
+                               @Valid @ModelAttribute("againNewPassword")String again_new_password,
                                  BindingResult result, ModelMap model
             , HttpServletRequest request) throws Exception {
         if (result.hasErrors()) {
-            return "error";
+            return "redirect:/error";
         }
-        if (newPassword.equals(againNewPassword)){
-            return "login";
+        if (new_password.equals(again_new_password)){
+            return "redirect:/login";
         }
-        return "restoreFinal";
+        users.setPassword("12345678", new_password);
+        return "changePassword";
     }
 }
