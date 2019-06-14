@@ -37,25 +37,27 @@ public class Account {
         try {
             if (result.hasErrors()) {
                 model.addAttribute("error", "Algo salio mal");
-                return "register";
+                return "redirect:/register";
             }
 
             String password2 = request.getParameter("password2");
             if (!user.getPassword().equals(password2)) {
                 model.addAttribute("error", "Las contraseñas son distintas");
-                return "register";
+                return "redirect:/register";
             }
             users.createUser(
                     user.getEmail(),
                     user.getGiven_name(),
                     user.getFamily_name(),
                     user.getDni(),
-                    encoder.encode(user.getPassword())
+                    user.getPassword() // TO DO: encoder.encode(user.getPassword())
             );
-            return "home";
+            // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
+            // SE GUARDE SU DNI COMO SESION
+            return "redirect:/home";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "register";
+            return "redirect:/register";
         }
     }
 
@@ -65,15 +67,13 @@ public class Account {
             ,HttpServletRequest request) throws Exception {
 
         if (result.hasErrors()) {
-            return "error";
+            return "redirect:/error";
         }
         User _user = users.findByEmail(user.getEmail());
-        System.out.println(user);
-        System.out.println(_user);
         if( _user.getPassword().equals(user.getPassword())){
             model.put("name", _user.getGiven_name());
             //model.put("name", _user.getGiven_name());
-            return "home";
+            return "redirect:/home";
         }
         return "login";
     }
@@ -111,7 +111,6 @@ public class Account {
         } catch (Exception e) {
 
         }
-
         return "redirect:/settings/profile";
     }
 }

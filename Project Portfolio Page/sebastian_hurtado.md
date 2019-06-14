@@ -23,3 +23,6 @@ app de Yape.
 ### Other Contributions
 
 - Update de toda la documentacion anterior.
+- Middlewares
+- Envío de correos
+- Flujo para recuperación de contraseña.
