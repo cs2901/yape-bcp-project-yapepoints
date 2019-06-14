@@ -20,6 +20,7 @@ java -jar build/libs/gs-serving-web-content-0.1.0.jar
 - [x] Roles
 
 ### Configuración
+- [ ] Actualizar favicon
 - [ ] Sesiones
 - [x] Spring security
 - [x] Almacenamiento de imágenes
