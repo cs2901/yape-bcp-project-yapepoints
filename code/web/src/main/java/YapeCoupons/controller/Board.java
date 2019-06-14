@@ -4,9 +4,18 @@ import YapeCoupons.model.Coupon;
 import YapeCoupons.services.CouponService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.io.IOException;
+
+// Why this class?
 
 @Controller
 public class Board {
@@ -31,5 +40,14 @@ public class Board {
             model.addAttribute("error", e.getMessage());
         }
         return "greeting";
+    }
+
+    @RequestMapping(value = "/sid", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<InputStreamResource> getImage() throws IOException {
+        ClassPathResource imgFile = new ClassPathResource("static/img/uploads/money.jpg");
+        System.out.println(imgFile.getPath());
+        return ResponseEntity.ok()
+                             .contentType(MediaType.IMAGE_JPEG)
+                             .body(new InputStreamResource(((ClassPathResource) imgFile).getInputStream()));
     }
 }

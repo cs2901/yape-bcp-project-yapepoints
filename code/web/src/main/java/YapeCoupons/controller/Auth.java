@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// TODO : Remove this example class
+
 @Controller
 public class Auth {
     @Autowired

@@ -26,6 +26,7 @@ public class User {
 
     public User () {}
 
+    // TODO : Rename methods: Use lowerCamelCase
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
