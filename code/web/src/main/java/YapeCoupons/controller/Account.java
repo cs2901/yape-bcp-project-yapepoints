@@ -1,6 +1,7 @@
 package YapeCoupons.controller;
 
 import YapeCoupons.model.User;
+import YapeCoupons.services.CustomUserDetailsService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 @Controller
 @SessionAttributes("name")
 public class Account {
+    private CustomUserDetailsService userService;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -50,7 +52,8 @@ public class Account {
                     user.getGiven_name(),
                     user.getFamily_name(),
                     user.getDni(),
-                    encoder.encode(user.getPassword())
+                    user.getPassword()
+                    //encoder.encode(user.getPassword())
             );
             return "home";
         } catch (Exception e) {
