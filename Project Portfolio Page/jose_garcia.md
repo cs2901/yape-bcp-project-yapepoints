@@ -8,8 +8,6 @@ app de Yape.
 
 ### Summary of Contributions:
 
-
-
 ### Contributions to the User Guide:
 
 - Ayude a señalar error en los use cases
@@ -25,3 +23,9 @@ app de Yape.
 - Diagram: Sequence PostSignIn
 - Diagram: Sequence PostSignUp
 - Code Structure
+
+### Contribution to the code
+
+- Code structure
+- Declaration of clases for the database and clases for interact with the database
+- Upload images
