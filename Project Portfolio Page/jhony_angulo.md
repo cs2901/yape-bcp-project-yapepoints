@@ -11,3 +11,9 @@
 
 ### Contributions to the Developer Guide:
 - Como desarrollador contribui en el diseño del diagrama de clases.
+
+### Contributions to the code
+- Ayude en la implementación de las plantillas para el frontend de la página web
+- Implementación de la sesión
+- Ayude en la implementación de los modelos
+- Implentación del login
