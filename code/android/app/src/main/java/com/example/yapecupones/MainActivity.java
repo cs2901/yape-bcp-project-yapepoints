@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String URL_DATA = "http://10.0.2.2:9000/getAllCoupons";
+    private static final String URL_DATA = "http://178.128.216.229:8080/getAllCoupons";
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
