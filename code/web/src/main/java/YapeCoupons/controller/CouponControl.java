@@ -1,5 +1,6 @@
 package YapeCoupons.controller;
 
+import YapeCoupons.model.Coupon;
 import YapeCoupons.services.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,9 +11,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
-public class Coupon {
+public class CouponControl {
 
     @Autowired
     private CouponService coupons;
@@ -40,26 +43,39 @@ public class Coupon {
 
     @GetMapping("/coupon")
     @ResponseBody
-    public String getCoupons() {
-        return "TODO : Return list of coupons\n";
+    public List<Coupon> getCoupons() {
+
+        List<Coupon> coupons = new LinkedList<>();
+
+        return coupons;
     }
 
     @GetMapping("/coupon/{id}")
     @ResponseBody
-    public String getCoupon(@PathVariable String id) {
-        return "TODO : Return coupon " + id + "\n";
+    public Coupon getCoupon(@PathVariable String id) throws Exception {
+        Coupon coupon = new Coupon();
+
+        coupon = coupons.findById(id);
+
+        return coupon;
     }
 
-    @PutMapping("/coupon/{id}")
+    @PutMapping("/update_coupon/{id}")
     @ResponseBody
-    public String updateCoupon(@PathVariable String id) {
-        return "TODO : Update coupon " + id + "\n";
+    public void updateCoupon(@PathVariable String id) throws Exception {
+        Coupon coupon = coupons.findById(id);
+
+        String title = "test";
+        String description = "Hello, World!";
+
+        coupons.update(id, title, description);
     }
 
     @DeleteMapping("/coupon/{id}")
     @ResponseBody
-    public String deleteCoupon(@PathVariable String id) {
-        return "TODO : Delete coupon " + id + "\n";
+    public void deleteCoupon(@PathVariable String id) throws Exception{
+        coupons.toggleState(id);
+
     }
 
 }
