@@ -54,6 +54,7 @@ public class Account {
                     user.getDni(),
                     user.getPassword() // TO DO: encoder.encode(user.getPassword())
             );
+
             // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
             // SE GUARDE SU DNI COMO SESION
             return "redirect:/home";
@@ -75,6 +76,7 @@ public class Account {
         if( _user.getPassword().equals(user.getPassword())){
             model.put("name", _user.getGiven_name());
             //model.put("name", _user.getGiven_name());
+            request.getSession().setAttribute("name", user.getGiven_name());
             return "redirect:/home";
         }
         return "login";
