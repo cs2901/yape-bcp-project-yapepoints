@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Redirect {
     @RequestMapping("/")
-    public String index() {
-        return "login";
-    }
+    public String index() { return "login"; }
+
+    @RequestMapping("/login")
+    public String login() { return "login"; }
 
     @RequestMapping("/home")
-    public String login() {
+    public String home() {
         return "home";
     }
 
@@ -20,6 +21,13 @@ public class Redirect {
     public String register() {
         return "register";
     }
+
+    @RequestMapping("/restorePassword")
+    public String restorePassword() { return "restorePassword"; }
+
+    @RequestMapping("/changePassword")
+    public String changePassword() { return "changePassword"; }
+
 
     @RequestMapping("/register_local")
     public String registerLocal() {
@@ -32,7 +40,6 @@ public class Redirect {
     }
 
     @RequestMapping("/create_coupon")
-    public String createCouponHTML() {
-        return "create_coupon";
-    }
+    public String createCouponHTML() { return "create_coupon"; }
+
 }

@@ -29,14 +29,15 @@ public class MailUtil {
         Session session = Session.getInstance(properties, new Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(myAccountEmail, password);
+                final PasswordAuthentication passwordAuthentication = new PasswordAuthentication(myAccountEmail, password);
+                return passwordAuthentication;
             }
         });
 
         Message message = prepareMessage(session, myAccountEmail, recepient, messageText);
-
+        System.out.println("Se está por enviar el correo");
+        System.out.println("Si estas desde la red de Utec Alumnos no funcionará y el programa se congelara aquí");
         Transport.send(message);
-
         System.out.println("Se envio el correo");
 
     }

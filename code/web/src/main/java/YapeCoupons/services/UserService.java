@@ -96,6 +96,15 @@ public class UserService {
         }
     }
 
+    public void setPassword (String dni, String password) throws Exception {
+        try {
+             User user = findByDni(dni);
+             user.setPassword(password);
+        } catch (Exception e) {
+            throw new Exception("Error cambiando contraseña");
+        }
+    }
+
     // For testing
     public List<User> findAll () { return users.findAll(); }
     public void deleteAll () { users.deleteAll(); }

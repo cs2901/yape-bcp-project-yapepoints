@@ -15,6 +15,11 @@ para que estas puedan ser mostradas en la app de Yape.
 - User stories
 
 ### Contributions to the Developer Guide:
-- Diagramas de secuencia
+- Diagramas de secuencia para YapeCupones
+- Diagramas de secuencia para el usuario
+- List of features
 
-
+### Contribution to the code
+- Frontend de la pagina web
+- Ayude con la implementacion de platillas
+- Visualizacion de los cupones
