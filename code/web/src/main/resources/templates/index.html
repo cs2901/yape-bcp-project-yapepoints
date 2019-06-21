@@ -9,9 +9,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="../static/css/mdb.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="../static/css/index.min.css" rel="stylesheet">
     <style type="text/css">
@@ -246,7 +246,7 @@
           <!--Grid column-->
           <div class="col-md-6 mb-4">
 
-            <img src="../static/img/board.jpeg" class="img-fluid z-depth-1-half" alt="">
+            <img th:src="@{img/board.jpeg}" alt="" class="img-fluid z-depth-1-half">
 
           </div>
           <!--Grid column-->
@@ -339,7 +339,7 @@
           <div class="col-lg-6 col-md-12">
 
             <p class="h5 text-center mb-4">Los Cupones</p>
-              <img src="../static/img/board2.jpeg">
+              <img th:src="@{img/board2.jpeg}" alt ="">
             </div>
           </div>
           <!--/Grid column-->
@@ -409,7 +409,7 @@
 
           <!--Second column-->
           <div class="col-md-4 flex-center">
-            <img src="../static/img/yape_01.jpeg" alt="Yape_Visual_01" class="img-fluid" style="width: 65%">
+            <img th:src="@{img/yape_01.jpeg}" alt="Yape_Visual_01" class="img-fluid" style="width: 65%">
           </div>
           <!--/Second column-->
 
