@@ -1,27 +1,24 @@
 package YapeCoupons.controller;
 
 import YapeCoupons.model.User;
+import YapeCoupons.services.CustomUserDetailsService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 public class Account {
+    private CustomUserDetailsService userService;
 
     @Autowired
     private UserService users;
-
-    @RequestMapping("/home")
-    public String home() { return "home"; }
 
     @RequestMapping(path = "/register", method = RequestMethod.GET)
     public String getRegister() { return "register"; }
@@ -47,6 +44,7 @@ public class Account {
                     user.getDni(),
                     user.getPassword() // TO DO: encoder.encode(user.getPassword())
             );
+
             // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
             // SE GUARDE SU DNI COMO SESION
             return "redirect:/register-local";
@@ -65,20 +63,17 @@ public class Account {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String getLogin() { return "login"; }
+    public String login() { return "login"; }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String postLogin(@Valid @ModelAttribute("user")User user,
-                             BindingResult result, ModelMap model
-            ,HttpServletRequest request) throws Exception {
+    public String postLogin(@RequestParam("email") String email,
+                            @RequestParam("password") String password,
+                            HttpServletRequest request) throws Exception {
 
-        if (result.hasErrors()) {
-            return "redirect:/error";
-        }
-        User _user = users.findByEmail(user.getEmail());
-        if( _user.getPassword().equals(user.getPassword())){
-            model.put("name", _user.getGiven_name());
+        User _user = users.findByEmail(email);
+        if( _user.getPassword().equals(password)){
             //model.put("name", _user.getGiven_name());
+            request.getSession().setAttribute("name", _user.getGiven_name());
             return "redirect:/home";
         }
         return "redirect:/login";

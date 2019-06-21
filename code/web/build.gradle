@@ -32,5 +32,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile('javax.mail:mail:1.4.7')
     compile(group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.2.RELEASE')
+    compile(group: 'org.springframework.session', name: 'spring-session-data-mongodb', version: '2.1.4.RELEASE')
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.5.RELEASE')
     testCompile("junit:junit")
 }

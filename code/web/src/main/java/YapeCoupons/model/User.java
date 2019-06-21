@@ -3,7 +3,12 @@ package YapeCoupons.model;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Set;
+
+@Document(collection = "user")
 public class User {
     @Id
     private ObjectId _id;
@@ -23,6 +28,9 @@ public class User {
     private String business_map_url;
 
     private String business_ruc;
+    private boolean enabled;
+    @DBRef
+    private Set<Role> roles;
 
     public User () {}
 
@@ -64,5 +72,20 @@ public class User {
                 "User[id=%s, given_name=%s, dni=%s, email=%s, password=%s, bank_account=%s, business_name=%s]",
                 _id, given_name, dni, email, password, bank_account, business_name
         );
+    }
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

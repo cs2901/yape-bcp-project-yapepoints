@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partial/offline :: head">
+<body>
+<style>
+    .show_cupon{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .box {
+        margin-bottom: 2em;
+    }
+</style>
+
+<nav th:replace="partial/offline :: navigation"/>
+<div class="container">
+    <br>
+    <div class="row" style="margin: 2em;">
+        <div class="col-lg-5">
+            <form class="show_cupon" enctype="multipart/form-data">
+                <div class="box">
+                    <h4>Bigotes</h4>
+                </div>
+                <div class="box">
+                    <h3>Promocion: Emparedados 2 x 1</h3>
+                </div>
+                <div class="box">
+                    <h4>Todo julio hay 2 x 1 en emparedados vegetarianos.</h4>
+                </div>
+                <div class="box">
+                    <h4>S/24</h4>
+                </div>
+                <div class="box">
+                    <h4>S/24</h4>
+                </div>
+                <button class="btn btn-light">Ver en mapa</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="partial/offline :: footer"/>
+</body>
+</html>
