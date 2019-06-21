@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class Redirect {
     @RequestMapping("/")
-    public String index() { return "login"; }
+    public String index() { return "index"; }
 
     @RequestMapping("/home")
     public String home(final HttpServletRequest req, ModelMap map) {
