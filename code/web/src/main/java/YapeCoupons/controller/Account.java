@@ -1,45 +1,32 @@
 package YapeCoupons.controller;
 
 import YapeCoupons.model.User;
+import YapeCoupons.services.CustomUserDetailsService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes("name")
 public class Account {
-
-    @Autowired
-    private BCryptPasswordEncoder encoder;
+    private CustomUserDetailsService userService;
 
     @Autowired
     private UserService users;
 
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView showForm() {
-        return new ModelAndView("userView", "userName", new User());
-    }
+    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    public String getRegister() { return "register"; }
 
-    @RequestMapping(path = "/api/account", method = RequestMethod.POST)
-    public String newAccount(@Valid @ModelAttribute("user")User user,
-                             BindingResult result, ModelMap model,
-                             HttpServletRequest request) throws Exception {
-
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public String postRegister(@Valid @ModelAttribute("user")User user,
+                               ModelMap model,
+                               HttpServletRequest request) throws Exception {
         try {
-            if (result.hasErrors()) {
-                model.addAttribute("error", "Algo salio mal");
-                return "redirect:/register";
-            }
-
             String password2 = request.getParameter("password2");
             if (!user.getPassword().equals(password2)) {
                 model.addAttribute("error", "Las contraseñas son distintas");
@@ -52,30 +39,43 @@ public class Account {
                     user.getDni(),
                     user.getPassword() // TO DO: encoder.encode(user.getPassword())
             );
+
             // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
             // SE GUARDE SU DNI COMO SESION
-            return "redirect:/home";
+            return "redirect:/register-local";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "redirect:/register";
+            return "register";
         }
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(@Valid @ModelAttribute("user")User user,
-                             BindingResult result, ModelMap model
-            ,HttpServletRequest request) throws Exception {
+    @RequestMapping(path = "/register-local", method = RequestMethod.GET)
+    public String getRegisterLocal () { return "register_local"; }
 
-        if (result.hasErrors()) {
-            return "redirect:/error";
+    @RequestMapping(path = "/register-local", method = RequestMethod.POST)
+    public String postRegisterLocal () {
+        return "redirect:/home";
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    public String login() { return "login"; }
+
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String postLogin(@RequestParam("dni") String dni,
+                            @RequestParam("password") String password,
+                            HttpServletRequest request) throws Exception {
+        try {
+            User expected_user = users.findByDni(dni);
+            if (expected_user.getPassword().equals(password)) {
+                request.getSession().setAttribute("dni", expected_user.getDni());
+                return "redirect:/home";
+            }
+            // Add flash message here
+            return "login";
+        } catch (Exception e) {
+            // Add flash message here
+            return "login";
         }
-        User _user = users.findByEmail(user.getEmail());
-        if( _user.getPassword().equals(user.getPassword())){
-            model.put("name", _user.getGiven_name());
-            //model.put("name", _user.getGiven_name());
-            return "redirect:/home";
-        }
-        return "login";
     }
 
     @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)

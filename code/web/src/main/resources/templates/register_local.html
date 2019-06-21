@@ -6,27 +6,25 @@
 
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
 
-	<h4 style="text-align: center">Crear cuenta: Paso 2</h4><br>
+	<h4 style="text-align: center">Agregar información de negocio</h4><br>
 		<form>
-			<label for="nombre_local">Nombre del local: </label>
-			<input type="text" class="form-control" id="nombre_local" required>
+			<label for="nombre_local">Ruc del negocio: </label>
+			<input type="text" class="form-control" name="ruc" id="ruc" required>
 
-			<label for="distrito_local">Distrito: </label>
-			<input type="text" class="form-control" id="distrito_local" required>
+			<label for="nombre_local">Nombre del negocio: </label>
+			<input type="text" class="form-control" name="business_name" id="business_name" required>
 
-			<label for="direccion_local">Direccion: </label>
-			<input type="text" class="form-control" id="direccion_local" required>
+			<label for="distrito_local">Descripción del negocio: </label>
+			<input type="text" class="form-control" name="business_description" id="business_description" required>
+
+			<label for="direccion_local">Dirección: </label>
+			<input type="text" class="form-control" name="business_map_url" id="business_map_url" required>
 
 			<label for="celular">Celular: </label>
-			<input type="number" class="form-control" id="celular" required>
-
-			<label for="local_ubicacion_maps">Ingrese el url de la ubicacion en google maps de su local: </label>
-			<input type="url" class="form-control" id="local_ubicacion_maps" required>
+			<input type="text" class="form-control" name="celular" id="celular" required>
 
 			<br>
-			<button type="button" class="btn" onclick="window.location.href='/register_bank'">Siguiente</button>
-		<br><br><a href="/register">Volver atras</a>
-		<br><a href="/login">Volver al incio</a>
+			<button type="button" class="btn" onclick="window.location.href='/register-local'">Registrar negocio</button>
 		</form>
 	</div>
 	<footer th:replace="partial/offline :: footer"/>
