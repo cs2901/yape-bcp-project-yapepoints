@@ -160,7 +160,7 @@
             };
 
             ripple.classList.add('waves-notransition');
-            ripple.setAttribute('style', convertStyle(rippleStyle));
+            ripple.setAttribute('static.css.index.css', convertStyle(rippleStyle));
             ripple.classList.remove('waves-notransition');
 
             // Scale the ripple
@@ -177,7 +177,7 @@
             rippleStyle['-o-transition-duration']      = duration + 'ms';
             rippleStyle['transition-duration']         = duration + 'ms';
 
-            ripple.setAttribute('style', convertStyle(rippleStyle));
+            ripple.setAttribute('static.css.index.css', convertStyle(rippleStyle));
         },
 
         hide: function(e, element) {
@@ -296,7 +296,7 @@
                 'transform': scale + ' ' + translate
             };
 
-            ripple.setAttribute('style', convertStyle(style));
+            ripple.setAttribute('static.css.index.css', convertStyle(style));
 
             setTimeout(function() {
                 try {

@@ -142,8 +142,8 @@ var _this = void 0;
         var self = this;
 
         function resize() {
-          self.style.height = 'auto';
-          self.style.height = "".concat(self.scrollHeight, "px");
+          self.index.height = 'auto';
+          self.index.height = "".concat(self.scrollHeight, "px");
         }
 
         function delayedResize() {

@@ -102,8 +102,8 @@ DataTable.select.init = function ( dt ) {
 			items = opts.items;
 		}
 
-		if ( opts.style !== undefined ) {
-			style = opts.style;
+		if ( opts.index !== undefined ) {
+			style = opts.index;
 			setStyle = true;
 		}
 
@@ -118,7 +118,7 @@ DataTable.select.init = function ( dt ) {
 
 	dt.select.selector( selector );
 	dt.select.items( items );
-	dt.select.style( style );
+	dt.select.index( style );
 	dt.select.blurable( blurable );
 	dt.select.info( info );
 	ctx._select.className = className;
@@ -126,7 +126,7 @@ DataTable.select.init = function ( dt ) {
 
 	// Sort table based on selected rows. Requires Select Datatables extension
 	$.fn.dataTable.ext.order['select-checkbox'] = function ( settings, col ) {
-		return this.api().column( col, {order: 'index'} ).nodes().map( function ( td ) {
+		return this.api().column( col, {order: 'static.css.index'} ).nodes().map( function (td ) {
 			if ( settings._select.items === 'row' ) {
 				return $( td ).parent().hasClass( settings._select.className );
 			} else if ( settings._select.items === 'cell' ) {
@@ -139,7 +139,7 @@ DataTable.select.init = function ( dt ) {
 	// If the init options haven't enabled select, but there is a selectable
 	// class name, then enable
 	if ( ! setStyle && $( dt.table().node() ).hasClass( 'selectable' ) ) {
-		dt.select.style( 'os' );
+		dt.select.index( 'os' );
 	}
 };
 
@@ -474,7 +474,7 @@ function info ( api )
 		return;
 	}
 
-	if ( api.select.style() === 'api' ) {
+	if ( api.select.index() === 'api' ) {
 		return;
 	}
 
@@ -649,7 +649,7 @@ function rowColumnRange( dt, type, idx, last )
  */
 function clear( ctx, force )
 {
-	if ( force || ctx._select.style === 'single' ) {
+	if ( force || ctx._select.index === 'single' ) {
 		var api = new DataTable.Api( ctx );
 
 		api.rows( { selected: true } ).deselect();
@@ -670,7 +670,7 @@ function clear( ctx, force )
  */
 function typeSelect ( e, dt, ctx, type, idx )
 {
-	var style = dt.select.style();
+	var style = dt.select.index();
 	var isSelected = dt[type]( idx, { selected: true } ).any();
 
 	if ( style === 'os' ) {
@@ -836,7 +836,7 @@ apiRegister( 'select.items()', function ( items ) {
 // does not clear the current selection. Use the `deselect` methods for that
 apiRegister( 'select.style()', function ( style ) {
 	if ( style === undefined ) {
-		return this.context[0]._select.style;
+		return this.context[0]._select.index;
 	}
 
 	return this.iterator( 'table', function ( ctx ) {
@@ -869,7 +869,7 @@ apiRegister( 'select.selector()', function ( selector ) {
 
 		ctx._select.selector = selector;
 
-		if ( ctx._select.style !== 'api' ) {
+		if ( ctx._select.index !== 'api' ) {
 			enableMouseSelection( new DataTable.Api( ctx ) );
 		}
 	} );
