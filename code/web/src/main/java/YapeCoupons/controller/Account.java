@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +24,9 @@ public class Account {
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String postRegister(@Valid @ModelAttribute("user")User user,
-                             BindingResult result, ModelMap model,
-                             HttpServletRequest request) throws Exception {
+                               ModelMap model,
+                               HttpServletRequest request) throws Exception {
         try {
-            if (result.hasErrors()) {
-                model.addAttribute("error", "Algo salio mal");
-                return "redirect:/register";
-            }
             String password2 = request.getParameter("password2");
             if (!user.getPassword().equals(password2)) {
                 model.addAttribute("error", "Las contraseñas son distintas");
@@ -50,7 +45,7 @@ public class Account {
             return "redirect:/register-local";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "redirect:/register";
+            return "register";
         }
     }
 
@@ -66,17 +61,21 @@ public class Account {
     public String login() { return "login"; }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String postLogin(@RequestParam("email") String email,
+    public String postLogin(@RequestParam("dni") String dni,
                             @RequestParam("password") String password,
                             HttpServletRequest request) throws Exception {
-
-        User _user = users.findByEmail(email);
-        if( _user.getPassword().equals(password)){
-            //model.put("name", _user.getGiven_name());
-            request.getSession().setAttribute("name", _user.getGiven_name());
-            return "redirect:/home";
+        try {
+            User expected_user = users.findByDni(dni);
+            if (expected_user.getPassword().equals(password)) {
+                request.getSession().setAttribute("dni", expected_user.getDni());
+                return "redirect:/home";
+            }
+            // Add flash message here
+            return "login";
+        } catch (Exception e) {
+            // Add flash message here
+            return "login";
         }
-        return "redirect:/login";
     }
 
     @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)

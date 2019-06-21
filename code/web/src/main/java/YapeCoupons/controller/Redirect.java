@@ -14,7 +14,7 @@ public class Redirect {
 
     @RequestMapping("/home")
     public String home(final HttpServletRequest req, ModelMap map) {
-        String name = req.getSession().getAttribute("name").toString();
+        String name = req.getSession().getAttribute("dni").toString();
         map.addAttribute("name", name);
         return "home";
     }
