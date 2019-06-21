@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.IOException;
 
 // Why this class?
+// Is for an example, then we should delete it
 
 @Controller
 public class Board {

@@ -15,31 +15,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes("name")
 public class Account {
-
-    @Autowired
-    private BCryptPasswordEncoder encoder;
 
     @Autowired
     private UserService users;
 
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView showForm() {
-        return new ModelAndView("userView", "userName", new User());
-    }
+    @RequestMapping("/home")
+    public String home() { return "home"; }
 
-    @RequestMapping(path = "/api/account", method = RequestMethod.POST)
-    public String newAccount(@Valid @ModelAttribute("user")User user,
+    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    public String getRegister() { return "register"; }
+
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public String postRegister(@Valid @ModelAttribute("user")User user,
                              BindingResult result, ModelMap model,
                              HttpServletRequest request) throws Exception {
-
         try {
             if (result.hasErrors()) {
                 model.addAttribute("error", "Algo salio mal");
                 return "redirect:/register";
             }
-
             String password2 = request.getParameter("password2");
             if (!user.getPassword().equals(password2)) {
                 model.addAttribute("error", "Las contraseñas son distintas");
@@ -54,15 +49,26 @@ public class Account {
             );
             // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
             // SE GUARDE SU DNI COMO SESION
-            return "redirect:/home";
+            return "redirect:/register-local";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "redirect:/register";
         }
     }
 
+    @RequestMapping(path = "/register-local", method = RequestMethod.GET)
+    public String getRegisterLocal () { return "register_local"; }
+
+    @RequestMapping(path = "/register-local", method = RequestMethod.POST)
+    public String postRegisterLocal () {
+        return "redirect:/home";
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    public String getLogin() { return "login"; }
+
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(@Valid @ModelAttribute("user")User user,
+    public String postLogin(@Valid @ModelAttribute("user")User user,
                              BindingResult result, ModelMap model
             ,HttpServletRequest request) throws Exception {
 
@@ -75,7 +81,7 @@ public class Account {
             //model.put("name", _user.getGiven_name());
             return "redirect:/home";
         }
-        return "login";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)
