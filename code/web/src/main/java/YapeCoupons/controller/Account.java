@@ -4,6 +4,7 @@ import YapeCoupons.model.User;
 import YapeCoupons.services.CustomUserDetailsService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,9 @@ public class Account {
 
     @Autowired
     private UserService users;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @RequestMapping(path = "/register", method = RequestMethod.GET)
     public String getRegister() { return "register"; }
@@ -37,11 +41,10 @@ public class Account {
                     user.getGiven_name(),
                     user.getFamily_name(),
                     user.getDni(),
-                    user.getPassword() // TO DO: encoder.encode(user.getPassword())
+                    encoder.encode(user.getPassword())
             );
-
-            // TO DO: HACER QUE AQUI EL USUARIO SE LOGUEE Y
-            // SE GUARDE SU DNI COMO SESION
+            request.getSession().setAttribute("dni", user.getDni());
+            request.getSession().setAttribute("name", user.getGiven_name());
             return "redirect:/register-local";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -58,7 +61,10 @@ public class Account {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String login() { return "login"; }
+    public String login(ModelMap map) {
+        map.addAttribute("title", "YapePoints - Iniciar Sesión");
+        return "login";
+    }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String postLogin(@RequestParam("dni") String dni,
@@ -68,6 +74,7 @@ public class Account {
             User expected_user = users.findByDni(dni);
             if (expected_user.getPassword().equals(password)) {
                 request.getSession().setAttribute("dni", expected_user.getDni());
+                request.getSession().setAttribute("name", expected_user.getGiven_name());
                 return "redirect:/home";
             }
             // Add flash message here
