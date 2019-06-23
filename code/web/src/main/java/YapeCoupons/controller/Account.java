@@ -41,7 +41,7 @@ public class Account {
                     user.getGiven_name(),
                     user.getFamily_name(),
                     user.getDni(),
-                    encoder.encode(user.getPassword())
+                    user.getPassword()  // TODO encoder.encode(user.getPassword())
             );
             request.getSession().setAttribute("dni", user.getDni());
             request.getSession().setAttribute("name", user.getGiven_name());
