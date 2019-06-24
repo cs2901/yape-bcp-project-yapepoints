@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -83,6 +84,13 @@ public class Account {
             // Add flash message here
             return "login";
         }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) throws Exception {
+        session.removeAttribute("dni");
+        session.removeAttribute("name");
+        return "login";
     }
 
     @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)
