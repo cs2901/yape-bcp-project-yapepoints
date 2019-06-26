@@ -86,13 +86,10 @@ nav a:hover {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    height:15%;
     max-height:30em;
     background-color: #E5E7E9;
+    padding: 10px 0px;
     color: black;
     text-align: center;
 }
