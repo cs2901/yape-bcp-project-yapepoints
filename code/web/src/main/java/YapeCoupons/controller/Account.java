@@ -1,131 +1,148 @@
 package YapeCoupons.controller;
 
+import YapeCoupons.mail.Mail;
 import YapeCoupons.model.User;
-import YapeCoupons.services.CustomUserDetailsService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+
+import static YapeCoupons.middleware.Middleware.isLogged;
 
 @Controller
 public class Account {
-    private CustomUserDetailsService userService;
+
+   private Mail mail;
 
     @Autowired
     private UserService users;
 
-    @Autowired
-    private PasswordEncoder encoder;
+    @RequestMapping(path = "/restore_password", method = RequestMethod.GET)
+    public String restorePasswordGet() { return "restore_password"; }
 
-    @RequestMapping(path = "/register", method = RequestMethod.GET)
-    public String getRegister() { return "register"; }
-
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
-    public String postRegister(@Valid @ModelAttribute("user")User user,
-                               ModelMap model,
-                               HttpServletRequest request) throws Exception {
+    @RequestMapping(path = "/restore_password", method = RequestMethod.POST)
+    public String restorePasswordPost(@RequestParam("email") String email,
+                                  HttpServletRequest request,
+                                  RedirectAttributes redirectAttributes) throws Exception {
         try {
-            String password2 = request.getParameter("password2");
-            if (!user.getPassword().equals(password2)) {
-                model.addAttribute("error", "Las contraseñas son distintas");
-                return "redirect:/register";
+            User user = users.findByEmail(email);
+            if (user == null) {
+                redirectAttributes.addFlashAttribute("error", "El correo no está asociado a ninguna cuenta");
+                return "redirect:restore_password";
             }
-            users.createUser(
-                    user.getEmail(),
-                    user.getGiven_name(),
-                    user.getFamily_name(),
-                    user.getDni(),
-                    user.getPassword()  // TODO encoder.encode(user.getPassword())
-            );
-            request.getSession().setAttribute("dni", user.getDni());
-            request.getSession().setAttribute("name", user.getGiven_name());
-            return "redirect:/register-local";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "register";
+            String code = mail.PasswordRectification(email);
+            request.getSession().setAttribute("code", code);
+            request.getSession().setAttribute("code_email", email);
+            return "restore_process";
+        } catch (Exception e){
+            redirectAttributes.addFlashAttribute("error", "Error enviando el correo");
+            return "redirect:restore_Password";
         }
     }
 
-    @RequestMapping(path = "/register-local", method = RequestMethod.GET)
-    public String getRegisterLocal () { return "register_local"; }
+    @RequestMapping(path = "/restore_process", method = RequestMethod.GET)
+    public String restoreProcessGet() { return "restore_process"; }
 
-    @RequestMapping(path = "/register-local", method = RequestMethod.POST)
-    public String postRegisterLocal () {
-        return "redirect:/home";
-    }
-
-    @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String login(ModelMap map) {
-        map.addAttribute("title", "YapePoints - Iniciar Sesión");
-        return "login";
-    }
-
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String postLogin(@RequestParam("dni") String dni,
-                            @RequestParam("password") String password,
-                            HttpServletRequest request) throws Exception {
+    @RequestMapping(path = "/restore_process", method = RequestMethod.POST)
+    public String restoreProcessPost(@RequestParam("code") String code,
+                                 HttpServletRequest request,
+                                 RedirectAttributes redirectAttributes) throws Exception {
         try {
-            User expected_user = users.findByDni(dni);
-            if (expected_user.getPassword().equals(password)) {
-                request.getSession().setAttribute("dni", expected_user.getDni());
-                request.getSession().setAttribute("name", expected_user.getGiven_name());
-                return "redirect:/home";
+            String expected_code = request.getSession().getAttribute("code").toString();
+            if (code.equals(expected_code)) {
+                String email = request.getSession().getAttribute("code_email").toString();
+                User user = users.findByEmail(email);
+                request.getSession().setAttribute("dni", user.getDni());
+                request.getSession().setAttribute("given_name", user.getGiven_name());
+                return "redirect:/change_password";
             }
-            // Add flash message here
-            return "login";
+            return "redirect:restore_process";
         } catch (Exception e) {
-            // Add flash message here
-            return "login";
+            redirectAttributes.addFlashAttribute("error", "Algo salió mal");
+            return "redirect:/restore_password";
         }
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) throws Exception {
-        session.removeAttribute("dni");
-        session.removeAttribute("name");
-        return "login";
+    @RequestMapping(path = "/change_password", method = RequestMethod.GET)
+    public String changePasswordGet(HttpServletRequest request,
+                                    RedirectAttributes redirectAttributes) {
+        if (!isLogged(request)) {
+            redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
+            return "redirect:login";
+        }
+        return "change_password";
     }
 
-    @RequestMapping(value = "/settings/profile", method = RequestMethod.GET)
-    public String profileSettings(Model model) throws Exception {
-        // TODO : Replace implicit declaration with session
-        String dni = "12345678";
-
-        User user;
-
+    @RequestMapping(path = "/change_password", method = RequestMethod.POST)
+    public String changePasswordPost(@RequestParam("newPassword") String password,
+                                     @RequestParam("againNewPassword") String confirm_password,
+                                     HttpServletRequest request,
+                                     RedirectAttributes redirectAttributes) {
         try {
-            user = users.findByDni(dni);
+            if (!isLogged(request)) {
+                redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
+                return "redirect:login";
+            }
+            if (!password.equals(confirm_password)) {
+                redirectAttributes.addFlashAttribute("error", "Las contraseñas no coinciden");
+                return "redirect:change_password";
+            }
+            String dni = request.getSession().getAttribute("dni").toString();
+            users.setPassword(dni, password);
+            redirectAttributes.addFlashAttribute("success", "Su contraseña fue cambiado exitosamente");
+            return "redirect:home";
         } catch (Exception e) {
-            throw new Exception("Error intentando obtener usuario con dni " + dni);
+            redirectAttributes.addFlashAttribute("error", e.getMessage().toString());
+            return "redirect:change_password";
         }
-
-        model.addAttribute("user", user);
-
-        return "update_account";
     }
 
-    @PostMapping("/settings/profile/update")
-    public String updateAccount(
-            // TODO : Rename parameters: More descriptive, less redundant
-        @RequestParam("new_name") String name,
-        @RequestParam("new_lastname") String lastname,
-        @RequestParam("new_email") String email) {
-
-        System.out.println("Updated account " + name);
-
-        // TODO : Create method that allows the update of only email, name and lastname attributes.
+    @RequestMapping(path = "/update_information", method = RequestMethod.GET)
+    public String updateInformationGet(HttpServletRequest request,
+                                       ModelMap map,
+                                       RedirectAttributes redirectAttributes) throws Exception {
         try {
-            users.createUser(email, name, lastname, "12345678", "");
+            if (!isLogged(request)) {
+                redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
+                return "redirect:login";
+            }
+            String dni = request.getSession().getAttribute("dni").toString();
+            User user = users.findByDni(dni);
+            map.addAttribute("given_name", user.getGiven_name());
+            map.addAttribute("family_name", user.getFamily_name());
+            map.addAttribute("email", user.getEmail());
+            return "update_information";
         } catch (Exception e) {
-
+            redirectAttributes.addFlashAttribute("error", e.getMessage().toString());
+            return "redirect:home";
         }
-        return "redirect:/settings/profile";
     }
+
+    @RequestMapping(path = "/update_information", method = RequestMethod.POST)
+    public String updateInformationPost(@RequestParam("given_name") String given_name,
+                                        @RequestParam("family_name") String family_name,
+                                        @RequestParam("email") String email,
+                                        HttpServletRequest request,
+                                        RedirectAttributes redirectAttributes) throws Exception {
+        try {
+            if (!isLogged(request)) {
+                redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
+                return "redirect:login";
+            }
+            String dni = request.getSession().getAttribute("dni").toString();
+            users.updateUserInformation(dni, given_name, family_name, email);
+            redirectAttributes.addFlashAttribute("success", "Información actualizada exitosamente");
+            return "redirect:/home";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage().toString());
+            return "redirect:update_information";
+        }
+    }
+
 }

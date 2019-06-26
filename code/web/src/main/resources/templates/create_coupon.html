@@ -1,9 +1,10 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partial/offline :: head">
-  <title>YapeCupones</title>
-  <link rel=icon href=../static/img/favicon.ico>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
 <body>
+
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
+
 <style>
   input{
     margin-top: 0.7em;
@@ -36,12 +37,11 @@ function readURL(input) {
 }
 </script>
 
-<nav th:replace="partial/offline :: navigation"/>
 <div class="container">
   <br>
 <div class="row" style="margin: 2em;">
   <div class="col-lg-5">
-    <form class="newcupon" method="POST" action="/add-coupon" enctype="multipart/form-data">
+    <form class="newcupon" method="POST" action="/create_coupon" enctype="multipart/form-data">
       <a>Crear cupon</a>
       <div class="box">
       <a>Nombre de promocion:</a>
@@ -53,7 +53,7 @@ function readURL(input) {
       </div>
       <div class="box">
         <a>Precio de promocion:</a>
-        <input name="precio" id="precio" type="number" class="form-control">
+        <input name="cost" id="precio" type="number" class="form-control">
       </div>
       <div class="box">
       <a>Elija una imagen</a>
@@ -71,6 +71,9 @@ function readURL(input) {
   </div>
 </div>
 </div>
-<footer th:replace="partial/offline :: footer"/>
+
+	<footer th:replace="partial/footer :: footer"/>
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
 </body>
 </html>

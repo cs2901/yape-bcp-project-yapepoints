@@ -22,12 +22,13 @@ public class User {
     private String given_name;
     private String family_name;
     private String password;
-    private String bank_account;
     private String business_name;
     private String business_description;
-    private String business_map_url;
-
+    private String business_address;
+    private String business_region;
+    private String business_celular;
     private String business_ruc;
+
     private boolean enabled;
     @DBRef
     private Set<Role> roles;
@@ -50,29 +51,24 @@ public class User {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getBank_account() { return bank_account; }
-    public void setBank_account(String bank_account) { this.bank_account = bank_account; }
-
     public String getBusiness_name() { return business_name; }
     public void setBusiness_name(String business_name) { this.business_name = business_name; }
 
     public String getBusiness_description() {  return business_description; }
     public void setBusiness_description(String business_description) { this.business_description = business_description;  }
 
-    public String getBusiness_map_url() { return business_map_url; }
-    public void setBusiness_map_url(String business_map_url) { this.business_map_url = business_map_url; }
+    public String getBusiness_address() { return business_address; }
+    public void setBusiness_address(String business_address) { this.business_address = business_address; }
+
+    public String getBusiness_region() { return business_region; }
+    public void setBusiness_region(String business_region) { this.business_region = business_region; }
+
+    public String getBusiness_celular() { return business_celular; }
+    public void setBusiness_celular(String business_celular) { this.business_celular = business_celular; }
 
     public String getBusiness_ruc() { return business_ruc; }
     public void setBusiness_ruc(String business_ruc) { this.business_ruc = business_ruc; }
 
-    // For debugging
-    @Override
-    public String toString () {
-        return String.format(
-                "User[id=%s, given_name=%s, dni=%s, email=%s, password=%s, bank_account=%s, business_name=%s]",
-                _id, given_name, dni, email, password, bank_account, business_name
-        );
-    }
     public boolean isEnabled() {
         return enabled;
     }

@@ -1,11 +1,8 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partial/offline :: head">
-	<title>YapeCupones</title>
-	<link rel=icon href=../static/img/favicon.ico>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
 <body>
-
-	<nav th:replace="partial/offline :: navigation"/>
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
 
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
 		<h4 style="text-align: center">Crear cuenta</h4>
@@ -23,15 +20,18 @@
 			<input type="password" class="form-control" id="password_new_user" name="password" required>
 
 			<label for="verify">Verificar contraseña: </label>
-			<input type="password" class="form-control" id="verify" name="password2" required>
+			<input type="password" class="form-control" id="verify" name="confirm_password" required>
 
 			<label for="email_new_user">Email: </label>
-			<input type="mail" class="form-control" id="email_new_user" name="email" required>
+			<input type="email" class="form-control" id="email_new_user" name="email" required>
 
 			<br>
 			<button type="submit" class="btn" >Crear cuenta</button>
 		</form>
 	</div>
-	<footer th:replace="partial/offline :: footer"/>
+
+	<footer th:replace="partial/footer :: footer"/>
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
 </body>
 </html>

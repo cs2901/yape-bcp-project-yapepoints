@@ -2,25 +2,13 @@ package YapeCoupons.middleware;
 
 import YapeCoupons.services.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class Middleware {
 
-    private UserService users;
-
-    public String CouponFilter(String dni) {
-        try {
-            if (users.filledBankAccountInformation(dni)) {
-            } else{
-                return "login2";
-            }
-            if (users.filledBusinessInformation(dni)) {
-
-            } else{
-                return "login3";
-            }
-
-        } catch (Exception e) {
-            //model.addAttribute("error", e.getMessage());
-        }
-        return "coupons";
+    static public boolean isLogged (HttpServletRequest request) {
+        String given_name = (String) request.getSession().getAttribute("given_name");
+        return given_name != null;
     }
+
 }

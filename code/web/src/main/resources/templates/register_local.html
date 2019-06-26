@@ -1,34 +1,37 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partial/offline :: head">
-	<title>YapeCupones</title>
-	<link rel=icon href=../static/img/favicon.ico>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
 <body>
-	<nav th:replace="partial/offline :: navigation"/>
-
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
 
 	<h4 style="text-align: center">Agregar información de negocio</h4><br>
-		<form>
-			<label for="nombre_local">Ruc del negocio: </label>
-			<input type="text" class="form-control" name="ruc" id="ruc" required>
+		<form th:action = "@{/register_local}" method="POST">
+			<label for="business_ruc">Ruc del negocio: </label>
+			<input type="text" class="form-control" name="business_ruc" id="business_ruc" required>
 
-			<label for="nombre_local">Nombre del negocio: </label>
+			<label for="business_name">Nombre del negocio: </label>
 			<input type="text" class="form-control" name="business_name" id="business_name" required>
 
-			<label for="distrito_local">Descripción del negocio: </label>
+			<label for="business_description">Descripción del negocio: </label>
 			<input type="text" class="form-control" name="business_description" id="business_description" required>
 
-			<label for="direccion_local">Dirección: </label>
-			<input type="text" class="form-control" name="business_map_url" id="business_map_url" required>
+			<label for="business_address">Dirección: </label>
+			<input type="text" class="form-control" name="business_address" id="business_address" required>
 
-			<label for="celular">Celular: </label>
-			<input type="text" class="form-control" name="celular" id="celular" required>
+			<label for="business_region">Distrito: </label>
+			<input type="text" class="form-control" name="business_region" id="business_region" required>
+
+			<label for="business_celular">Celular: </label>
+			<input type="text" class="form-control" name="business_celular" id="business_celular" required>
 
 			<br>
-			<button type="button" class="btn" onclick="window.location.href='/register-local'">Registrar negocio</button>
+			<button type="submit" class="btn">Registrar negocio</button>
 		</form>
 	</div>
-	<footer th:replace="partial/offline :: footer"/>
+
+	<footer th:replace="partial/footer :: footer"/>
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
 </body>
 </html>

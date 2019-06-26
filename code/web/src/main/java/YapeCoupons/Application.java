@@ -1,6 +1,6 @@
 package YapeCoupons;
 
-import YapeCoupons.controller.CouponControl;
+import YapeCoupons.controller.Coupon;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -15,9 +15,9 @@ public class Application implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        File uploads = new File(CouponControl.UPLOAD_DIRECTORY);
+        File uploads = new File(Coupon.UPLOAD_DIRECTORY);
         uploads.mkdir();
-        registry.addResourceHandler("/images/**").addResourceLocations("file:"+ CouponControl.UPLOAD_DIRECTORY);
+        registry.addResourceHandler("/images/**").addResourceLocations("file:"+ Coupon.UPLOAD_DIRECTORY);
     }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
