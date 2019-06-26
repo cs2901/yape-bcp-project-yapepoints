@@ -12,13 +12,13 @@ public class Coupon {
     private String dni_user;
     private String title;
     private String description;
+    private String cost;
     private String image_path;
     private Boolean active;
     private Date update_at;
 
     public Coupon () {}
 
-    // TODO : Rename method: Use lowerCamelCase
     public String getDni_user() { return dni_user; }
     public void setDni_user(String dni_user) { this.dni_user = dni_user; }
 
@@ -27,6 +27,9 @@ public class Coupon {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public String getCost() { return cost; }
+    public void setCost(String cost) { this.cost = cost; }
 
     public String getImage_path() { return image_path; }
     public void setImage_path(String image_path) { this.image_path = image_path; }
@@ -37,12 +40,4 @@ public class Coupon {
     public Date getUpdate_at() { return update_at; }
     public void setUpdate_at(Date update_at) { this.update_at = update_at; }
 
-    // For testing
-    @Override
-    public String toString () {
-        return String.format(
-                "Coupon[id=%s, dni_user=%s, title=%s, description=%s, image_path=%s, update_at=%s]",
-                _id, dni_user, title, description, image_path, update_at
-        );
-    }
 }
