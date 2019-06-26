@@ -15,6 +15,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
+import static YapeCoupons.helpers.helper.getExtension;
+import static YapeCoupons.helpers.helper.getRandomCode;
 import static YapeCoupons.middleware.Middleware.isLogged;
 
 @Controller
@@ -24,7 +26,8 @@ public class Coupon {
     private CouponService coupons;
 
     public static final String UPLOAD_DIRECTORY = System.getProperty("user.home") + "/uploads/";
-    public static final String URI = "http://178.128.216.229:8080/images/";
+    // public static final String URI = "http://178.128.216.229:8080/images/";
+    public static final String URI = "http://localhost:9000/images/";
 
     @RequestMapping(path = "/getAllCoupons", method = RequestMethod.GET)
     public HashMap<String, List<BasicDBObject>> getAllCoupons() {
@@ -49,8 +52,6 @@ public class Coupon {
         }
     }
 
-    // TO DO: Encriptar nombre con que se guarda
-    // AUn no guardo los atributos del cupon
     @RequestMapping(path = "/create_coupon", method = RequestMethod.POST)
     public String createCouponPost(@RequestParam("title") String title,
                                    @RequestParam("description") String description,
@@ -58,14 +59,16 @@ public class Coupon {
                                    @RequestParam("image") MultipartFile file,
                                    HttpServletRequest request,
                                    RedirectAttributes redirectAttributes) throws Exception {
-        System.out.println("************ Hola ****************");
 
         try {
-            Path file_path = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-            String image_path = URI + file.getOriginalFilename();
+            String extension = getExtension(file.getOriginalFilename());
+            assert extension.length() > 0;
+            String hash_name = getRandomCode(21) + '.' + extension;
+            Path file_path = Paths.get(UPLOAD_DIRECTORY, hash_name);
+            String image_path = URI + hash_name;
             Files.write(file_path, file.getBytes());
             String dni = request.getSession().getAttribute("dni").toString();
-            coupons.createCoupon(dni, title, description, image_path);
+            coupons.createCoupon(dni, title, description, cost, image_path);
             redirectAttributes.addFlashAttribute("success", "Promoción agregada exitosamente");
             return "redirect:home";
         } catch (Exception e) {
