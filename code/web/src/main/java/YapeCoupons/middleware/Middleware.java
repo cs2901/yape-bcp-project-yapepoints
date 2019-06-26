@@ -1,7 +1,5 @@
 package YapeCoupons.middleware;
 
-import YapeCoupons.services.UserService;
-
 import javax.servlet.http.HttpServletRequest;
 
 public class Middleware {
