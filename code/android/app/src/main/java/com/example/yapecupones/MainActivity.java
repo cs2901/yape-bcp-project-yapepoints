@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 jo.getString("business_region"),
                                 jo.getString("business_address"));
 
-                        if (coupons.getBusiness_region().equals(filter)) {
+                        if (coupons.getBusiness_region().equals("Santiago de Surco")) {
                             couponsLists.add(coupons);
                         }
 
