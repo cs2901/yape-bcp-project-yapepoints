@@ -1,0 +1,28 @@
+<div th:fragment="navigation" class="left-panel">
+    <div class="yape-login">
+        <a href="/home">
+            <img th:src="@{/img/yape.png}" alt="Yape">
+        </a>
+
+    </div>
+    <div class="yape-menu">
+        <ul>
+            <li>
+                <a href="/update_information">Cambiar información</a>
+            </li>
+            <li>
+                <a href="/change_password">Cambiar contraseña</a>
+            </li>
+            <li>
+                <a href="/create_coupon">Agregar cupón</a>
+            </li>
+            <li>
+                <a href="/logout">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:fragment="top_panel" class="top-panel">
+    <h2 th:text="${business_name}"></h2>
+</div>
