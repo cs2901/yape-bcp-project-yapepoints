@@ -10,7 +10,6 @@ public class UserService {
     @Autowired
     private UserRepository users;
 
-    // TODO : ENCRYPT PASSWORD
     public void createUser (String email, String given_name, String family_name, String dni, String password) throws Exception {
         try {
             if (findByDni(dni) != null) {

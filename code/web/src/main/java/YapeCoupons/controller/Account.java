@@ -19,7 +19,6 @@ import static YapeCoupons.middleware.Middleware.isLogged;
 public class Account {
 
    private Mail mail;
-
     @Autowired
     private UserService users;
 
@@ -71,11 +70,17 @@ public class Account {
 
     @RequestMapping(path = "/change_password", method = RequestMethod.GET)
     public String changePasswordGet(HttpServletRequest request,
-                                    RedirectAttributes redirectAttributes) {
+                                    RedirectAttributes redirectAttributes,
+                                    ModelMap map
+    ) throws Exception{
         if (!isLogged(request)) {
             redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
             return "redirect:login";
         }
+        User user = users.findByDni(request.getSession().getAttribute("dni").toString());
+
+        map.addAttribute("business_name", "Cambiar contraseña");
+        map.addAttribute("title", "YapeCupones - Cambiar contraseña");
         return "change_password";
     }
 
@@ -117,6 +122,8 @@ public class Account {
             map.addAttribute("given_name", user.getGiven_name());
             map.addAttribute("family_name", user.getFamily_name());
             map.addAttribute("email", user.getEmail());
+            map.addAttribute("business_name", "Actualizar cuenta");
+            map.addAttribute("title", "YapeCupones - Actualizar información");
             return "update_information";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());

@@ -29,7 +29,7 @@ public class CouponService {
     private MongoTemplate mongoTemplate;
     private List<BasicDBObject> results;
 
-    public void createCoupon (String dni_user, String title, String description, String image_path) throws Exception {
+    public void createCoupon (String dni_user, String title, String description, String cost, String image_path) throws Exception {
         try {
             if (users.findByDni(dni_user) == null) {
                 throw new Exception("DNI invalido");
@@ -38,6 +38,7 @@ public class CouponService {
             coupon.setDni_user(dni_user);
             coupon.setTitle(title);
             coupon.setDescription(description);
+            coupon.setCost(cost);
             coupon.setImage_path(image_path);
             coupon.setActive(true);
             coupon.setUpdate_at(new Date());
@@ -113,13 +114,10 @@ public class CouponService {
                 matchActive,
                 sort,
                 unwind("$user"),
-                project("title", "description", "image_path", "user.business_name")
+                project("title", "description", "image_path", "cost", "user.business_name", "user.business_region", "user.business_address")
         );
         List<BasicDBObject> results = mongoTemplate.aggregate(aggregation, "coupon", BasicDBObject.class).getMappedResults();
         return results;
     }
 
-    // For testing
-    public List<Coupon> findAll () { return coupons.findAll(); }
-    public void deleteAll () { coupons.deleteAll(); }
 }

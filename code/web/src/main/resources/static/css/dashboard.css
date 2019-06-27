@@ -1,0 +1,63 @@
+.left-panel{
+    position: fixed;
+    height: 100vh;
+    width: 200px;
+    background: #6a0073;
+    z-index: 4;
+}
+.top-panel{
+    padding: 20px;
+    top: 0px;
+    margin-left: 200px;
+    position: fixed;
+    width: calc(100vw - 200px);
+    box-shadow: 0 0 5px -1px black;
+    background: white;
+    z-index: 2;
+}
+
+.yape-menu{
+    display: flex;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.yape-menu  ul {
+    padding: 0;
+}
+
+.yape-menu  li {
+    list-style-type: none;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 10px;
+}
+
+.yape-menu  li:hover {
+    cursor: pointer;
+    background: #8F30A8;
+    border-radius: 50px;
+}
+
+.yape-menu  a{
+    color: white;
+    text-decoration: none;
+
+}
+.container-dashboard{
+    padding: 20px;
+    z-index: 0;
+    top: 86.4px;
+    margin-left: 200px;
+    position: relative;
+
+}
+.container-dashboard .form-box{
+    max-width: 400px;
+
+}
