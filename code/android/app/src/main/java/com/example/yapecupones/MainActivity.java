@@ -2,10 +2,17 @@ package com.example.yapecupones;
 
 //dependencias
 import android.app.ProgressDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 //Request
@@ -25,28 +32,42 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String URL_DATA = "http://178.128.216.229:8080/getAllCoupons";
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<CouponsList> couponsLists;
+    private Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        spinner = findViewById(R.id.districts_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.districts, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         couponsLists = new ArrayList<>();
 
-        loadUrlData();
+        loadUrlData(null);
     }
 
-    private void loadUrlData() {
+    private void loadUrlData(final String filter) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -68,9 +89,15 @@ public class MainActivity extends AppCompatActivity {
                                 jo.getJSONObject("_id"),
                                 jo.getString("title"),
                                 jo.getString("description"),
+                                jo.getString("cost"),
                                 jo.getString("image_path"),
-                                jo.getString("business_name"));
-                        couponsLists.add(coupons);
+                                jo.getString("business_name"),
+                                jo.getString("business_region"),
+                                jo.getString("business_address"));
+
+                        if (coupons.getBusiness_region().equals(filter)) {
+                            couponsLists.add(coupons);
+                        }
 
                     }
 
@@ -89,7 +116,15 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        loadUrlData(parent.getItemAtPosition(position).toString());
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        loadUrlData(null);
     }
 }
