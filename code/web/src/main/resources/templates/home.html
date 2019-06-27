@@ -9,17 +9,18 @@
 
 <body>
 	<nav th:replace="partial/navbar :: navigation"></nav>
-	<div th:replace="partial/flash :: flash"></di
+	<div th:replace="partial/flash :: flash"></div
 <br>
 <div class="container" name="form_container" style="max-width: 80em; align-items : center;">
+
+<nav th:replace="partial/dashboard :: navigation"></nav>
+<nav th:replace="partial/dashboard :: top_panel"></nav>
+<div th:replace="partial/flash :: flash"></div>
+
+<div class="container-dashboard" name="form_container" style="max-width: 80em; align-items : center;">
+
   <div class="container">
-  <h2 style="text-align: left;" th:text="${business_name}"></h2><br>
   <h5 th:text="'Bienvenido, ' + ${given_name}"></h5><br>
-  <a href="/update_information"><h6 style="text-align: left;">Actualizar informacion</h6></a>
-   <a href="/change_password"><h6 style="text-align: left;">Cambiar contraseña</h6></a>
-
-  <button type="button" class="btn btn-light" onclick="window.location.href='/create_coupon'">Crear cupon</button>
-
 
   <div class="row">
     <div class="col-8"><b>Promociones</b></div>
@@ -58,7 +59,7 @@
 
 </div>
 
-	<footer th:replace="partial/footer :: footer"/>
+
 	<div th:replace="partial/body-scripts :: body-scripts"></div>
 
 </body>
