@@ -18,7 +18,13 @@ public class Coupon {
 
     public Coupon () {}
 
-    // TODO : Rename method: Use lowerCamelCase
+    public ObjectId getId() {
+        return _id;
+    }
+    public void setId(ObjectId _id) {
+        this._id = _id;
+    }
+
     public String getDni_user() { return dni_user; }
     public void setDni_user(String dni_user) { this.dni_user = dni_user; }
 
