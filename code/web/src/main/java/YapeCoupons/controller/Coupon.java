@@ -117,9 +117,11 @@ public class Coupon {
         coupons.update(id, title, description);
     }
 
-    @RequestMapping(path = "/coupon/{id}", method = RequestMethod.DELETE)
-    public void deleteCoupon(@PathVariable String id) throws Exception{
+    @RequestMapping(path = "/coupon/delete/{id}")
+    public String deleteCoupon(@PathVariable String id) throws Exception{
         coupons.toggleState(id);
+
+        return "redirect:/home";
     }
 
 }
