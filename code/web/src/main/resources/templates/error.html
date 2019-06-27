@@ -1,10 +1,8 @@
-
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partial/offline :: head">
-	<title>YapeCupones</title>
-	<link rel=icon href=../static/img/favicon.ico>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
 <body>
-	<nav th:replace="partial/offline :: navigation"></nav>
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
 
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
         <h1 style="text-align: center">Algo salió mal...</h1><br>
@@ -15,6 +13,9 @@
             <br>
 		</form>
 	</div>
-	<footer th:replace="partial/offline :: footer"/>
+
+	<footer th:replace="partial/footer :: footer"/>
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
 </body>
 </html>

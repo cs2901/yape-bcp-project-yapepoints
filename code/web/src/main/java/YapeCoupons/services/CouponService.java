@@ -114,13 +114,10 @@ public class CouponService {
                 matchActive,
                 sort,
                 unwind("$user"),
-                project("title", "description", "image_path", "user.business_name")
+                project("title", "description", "image_path", "cost", "user.business_name", "user.business_region", "user.business_address")
         );
         List<BasicDBObject> results = mongoTemplate.aggregate(aggregation, "coupon", BasicDBObject.class).getMappedResults();
         return results;
     }
 
-    // For testing
-    public List<Coupon> findAll () { return coupons.findAll(); }
-    public void deleteAll () { coupons.deleteAll(); }
 }
