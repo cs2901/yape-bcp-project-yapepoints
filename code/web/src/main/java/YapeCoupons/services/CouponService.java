@@ -56,12 +56,13 @@ public class CouponService {
         }
     }
 
-    public void update (String coupon_id, String title, String description) throws Exception {
+    public void update (String coupon_id, String title, String description, String cost) throws Exception {
         try {
             Coupon coupon = findById(coupon_id);
             coupon.setTitle(title);
             coupon.setDescription(description);
             coupon.setUpdate_at(new Date());
+            coupon.setCost(cost);
             coupons.save(coupon);
         } catch (Exception e) {
             throw new Exception("Error actualizando la información del cupón");

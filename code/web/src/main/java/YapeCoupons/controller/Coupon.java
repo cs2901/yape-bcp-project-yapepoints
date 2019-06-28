@@ -88,12 +88,16 @@ public class Coupon {
         }
     }
 
-    @ResponseBody
     @RequestMapping("/coupon/edit/{id}")
     public String editCouponGet(@PathVariable("id") String id,
+                                  ModelMap map,
                                   HttpServletRequest request,
                                   RedirectAttributes redirectAttributes) throws Exception {
-        return "TODO : Show edit view for coupon with id " + id;
+        map.addAttribute("coupon", coupons.findById(id));
+
+        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        map.addAttribute("qr_link", qr_link);
+        return "edit_coupon";
     }
 
     // Las funciones de abajo hasta ahora no se usan para nada
@@ -101,20 +105,22 @@ public class Coupon {
     @RequestMapping(path = "/coupon/{id}", method = RequestMethod.GET)
     public String getCoupon(@PathVariable String id,
                             ModelMap map) throws Exception {
-        System.out.println(id);
         map.addAttribute("coupon", coupons.findById(id));
 
+        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        map.addAttribute("qr_link", qr_link);
         return "coupon";
     }
 
     @RequestMapping(path = "/update_coupon/{id}", method = RequestMethod.POST)
-    public void updateCoupon(@PathVariable String id) throws Exception {
-        YapeCoupons.model.Coupon coupon = coupons.findById(id);
+    public String updateCoupon(@PathVariable String id,
+                               @RequestParam("title") String title,
+                               @RequestParam("description") String description,
+                               @RequestParam("cost") String cost
+    ) throws Exception {
+        coupons.update(id, title, description, cost);
 
-        String title = "test";
-        String description = "Hello, World!";
-
-        coupons.update(id, title, description);
+        return "redirect:/coupon/" + id;
     }
 
     @RequestMapping(path = "/coupon/delete/{id}")
