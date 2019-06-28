@@ -32,7 +32,9 @@ public class UserService {
 
     public void setBusiness (String dni, String business_name, String business_description,
                              String business_address, String business_region,
-                             String business_celular, String business_ruc) throws Exception {
+                             String business_celular, String business_ruc,
+                             String business_latitud, String business_longitud
+    ) throws Exception {
         try {
             User user = findByDni(dni);
             user.setBusiness_name(business_name);
@@ -41,6 +43,8 @@ public class UserService {
             user.setBusiness_region(business_region);
             user.setBusiness_celular(business_celular);
             user.setBusiness_ruc(business_ruc);
+            user.setBusiness_latitud(business_latitud);
+            user.setBusiness_longitud(business_longitud);
             users.save(user);
         } catch (Exception e) {
             throw new Exception("Error vinculando la información del negocio");

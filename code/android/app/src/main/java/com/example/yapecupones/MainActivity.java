@@ -2,6 +2,7 @@ package com.example.yapecupones;
 
 //dependencias
 import android.app.ProgressDialog;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<CouponsList> couponsLists;
+    private SwipeRefreshLayout mySwipeRefreshLayout;
     private Spinner spinner;
 
 
@@ -64,7 +66,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         couponsLists = new ArrayList<>();
 
-        loadUrlData(null);
+        mySwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        mySwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+
+            private void refreshContent() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        couponsLists.clear();
+                        String filter = spinner.getSelectedItem().toString();
+                        loadUrlData(filter);
+                        mySwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1);
+            }
+        });
+
+        loadUrlData("Todos");
     }
 
     private void loadUrlData(final String filter) {
@@ -95,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 jo.getString("business_region"),
                                 jo.getString("business_address"));
 
-                        if (coupons.getBusiness_region().equals("Santiago de Surco")) {
+                        if (coupons.getBusiness_region().equals(filter)) {
                             couponsLists.add(coupons);
                         }
 

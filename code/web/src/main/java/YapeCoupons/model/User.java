@@ -25,6 +25,8 @@ public class User {
     private String business_name;
     private String business_description;
     private String business_address;
+    private String business_latitud;
+    private String business_longitud;
     private String business_region;
     private String business_celular;
     private String business_ruc;
@@ -68,6 +70,12 @@ public class User {
 
     public String getBusiness_ruc() { return business_ruc; }
     public void setBusiness_ruc(String business_ruc) { this.business_ruc = business_ruc; }
+
+    public String getBusiness_latitud() { return business_latitud; }
+    public void setBusiness_latitud(String business_latitud) { this.business_latitud = business_latitud; }
+
+    public String getBusiness_longitud() { return business_longitud; }
+    public void setBusiness_longitud(String business_latitud) { this.business_longitud = business_longitud; }
 
     public boolean isEnabled() {
         return enabled;

@@ -110,6 +110,8 @@ public class Auth {
                                      @RequestParam("business_address") String business_address,
                                      @RequestParam("business_region") String business_region,
                                      @RequestParam("business_celular") String business_celular,
+                                     @RequestParam("business_latitud") String business_latitud,
+                                     @RequestParam("business_longitud") String business_longitud,
                                      HttpServletRequest request,
                                      RedirectAttributes redirectAttributes) throws Exception {
         try {
@@ -119,7 +121,8 @@ public class Auth {
             }
             String dni = request.getSession().getAttribute("dni").toString();
             System.out.println(dni);
-            users.setBusiness(dni, business_name, business_description, business_address, business_region, business_celular, business_ruc);
+            users.setBusiness(dni, business_name, business_description, business_address, business_region,
+                    business_celular, business_ruc, business_latitud, business_longitud);
             redirectAttributes.addFlashAttribute("success", "Información del negocio registrada");
             return "redirect:home";
         } catch (Exception e) {

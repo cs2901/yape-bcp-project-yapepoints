@@ -1,10 +1,15 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
 <head th:replace="partial/head :: head">
 <body>
+	<style>
+		.login{
+			min-height: calc(100vh - 300px);
+		}
+	</style>
 	<nav th:replace="partial/navbar :: navigation"></nav>
 	<div th:replace="partial/flash :: flash"></div>
 
-	<div class="container form-box" name="form_container" style="max-width: 30em;">
+	<div class="login container form-box" name="form_container" style="max-width: 30em;">
 		<h4 style="text-align: center">Iniciar sesión</h4><br>
 		<form th:action = "@{/login}" method="POST">
 			<label for="dni">DNI: </label>
@@ -16,6 +21,7 @@
 			<br>
 			<button type="submit" class="btn">Entrar</button>
 			<br> <br>
+			<a href="/terms">Términos y condiciones</a>
 			¿No tienes cuenta? <a href="/register">Registrate</a>
 			<br>
 			¿Olvidaste tu contraseña? <a href="/restore_password">Recuperar</a>
