@@ -112,6 +112,8 @@ public class Auth {
                                      @RequestParam("business_address") String business_address,
                                      @RequestParam("business_region") String business_region,
                                      @RequestParam("business_celular") String business_celular,
+                                     @RequestParam("business_latitud") String business_latitud,
+                                     @RequestParam("business_longitud") String business_longitud,
                                      HttpServletRequest request,
                                      RedirectAttributes redirectAttributes) throws Exception {
         try {

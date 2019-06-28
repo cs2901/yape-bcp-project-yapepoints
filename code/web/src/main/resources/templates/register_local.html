@@ -8,6 +8,9 @@
 			border: 1px solid grey;
 			margin: 5px 0;
 		}
+		#business_latitud, #business_longitud {
+			display: none;
+		}
 	</style>
 	<nav th:replace="partial/navbar :: navigation"></nav>
 	<div th:replace="partial/flash :: flash"></div>
@@ -26,6 +29,8 @@
 
 			<label for="business_address">Dirección: </label>
 			<input type="text" class="form-control" name="business_address" id="business_address" style="margin-bottom: 1em" required>
+			<input type="text" class="form-control" name="business_latitud" id="business_latitud" style="margin-bottom: 1em" required>
+			<input type="text" class="form-control" name="business_longitud" id="business_longitud" style="margin-bottom: 1em" required>
 
 			<label for="map" >Ubica la ubicación en el mapa: </label>
 			<div id="map"></div>
@@ -37,7 +42,7 @@
 			<input type="text" class="form-control" name="business_celular" id="business_celular" required>
 
 			<br>
-			<button id="send_form" type="button" class="btn">Registrar negocio</button>
+			<button id="send_form" type="submit" class="btn">Registrar negocio</button>
 		</form>
 	</div>
 
@@ -48,10 +53,17 @@
 	<script>
 		var map, geocoder, marker
 		var position
+		function setPosition(pos) {
+			$("#business_latitud").val(pos.lat)
+			$("#business_longitud").val(pos.lng)
+		}
 		function initMap() {
 			let center = {lat: -12, lng: -77}
-			let mapCanvas = document.getElementById("map")
+
 			position = center
+
+			setPosition(position)
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: center,
 				zoom: 15
@@ -65,30 +77,11 @@
 			google.maps.event.addListener(map, 'click', (ev) => {
 				position = ev.latLng
 				marker.setPosition(position)
-
+				setPosition(position)
 			});
 
 		}
-		$('#send_form').click(()=>{
-			let business_ruc = $("#business_ruc").val()
-			let business_name = $("#business_name").val()
-			let business_description = $("#business_description").val()
-			let business_region = $("#business_region").val()
-			let business_celular = $("#business_celular").val()
-			if (business_ruc) {
-				console.log("LLENO")
-			}else{
-				console.log("VACIO")
-			}
-			let _form = {
-				business_celular,
-				business_description,
-				business_ruc,
-				business_name,
-				business_region
-			}
-			console.log(_form)
-		})
+
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvVrj9ac0vHxFGxY0ZHTmvRNfTZyS_pTo&callback=initMap"
 			async defer></script>
