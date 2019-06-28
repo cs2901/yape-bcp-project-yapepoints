@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                         if (coupons.getBusiness_region().equals(filter)) {
                             couponsLists.add(coupons);
+                        }else if (!coupons.getBusiness_region().equals(filter) && filter.equals("Todos")) {
+                            couponsLists.add(coupons);
                         }
 
                     }
