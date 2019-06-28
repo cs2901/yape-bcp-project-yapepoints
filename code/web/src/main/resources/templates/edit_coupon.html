@@ -1,34 +1,37 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partial/head :: head">
+    <title>YapeCupones</title>
+    <link rel=icon href=../static/img/favicon.ico>
+</head>
+
+<nav th:replace="partial/dashboard :: navigation"></nav>
+<nav th:replace="partial/dashboard :: top_panel"></nav>
+<div th:replace="partial/flash :: flash"></div>
 
 <div class="container">
     <br>
     <div class="row" style="margin: 2em;">
         <div class="col-lg-5">
             <form class="newcupon" method="post" action="/create_coupon" enctype="multipart/form-data">
-                <a>crear cupon</a>
+                <a>Crear cupon</a>
                 <div class="box">
-                    <a>nombre de promocion:</a>
-                    <input name="title" id="title" type="text" class="form-control">
+                    <a>Nombre de promocion:</a>
+                    <input name="title" id="title" type="text" class="form-control" th:value="${coupon.getTitle()}">
                 </div>
                 <div class="box">
-                    <a>description</a>
-                    <input name="description" id="description" type="text" class="form-control" placeholder="¿que contiene la promocion?">
+                    <a>Description</a>
+                    <input name="description" id="description" type="text" class="form-control" placeholder="¿que contiene la promocion?"th:value="${coupon.getDescription()}">
                 </div>
                 <div class="box">
-                    <a>precio de promocion:</a>
-                    <input name="cost" id="precio" type="number" class="form-control">
+                    <a>Precio de Promocion:</a>
+                    <input name="cost" id="precio" type="number" class="form-control" th:value="${coupon.getCost()}">
                 </div>
-                <div class="box">
-                    <a>elija una imagen</a>
-                </div>
-                <button type="submit" class="btn btn-light">crear cupon</button>
 
             </form>
         </div>
 
         <div class="col-lg-7">
-            <img id="front-image" src="" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #eee;"/>
+            <img id="front-image" th:src="${coupon.getImage_path()}" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #eee;"/>
         </div>
     </div>
 </div>

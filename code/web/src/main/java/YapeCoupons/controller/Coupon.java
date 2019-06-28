@@ -88,12 +88,14 @@ public class Coupon {
         }
     }
 
-    @ResponseBody
     @RequestMapping("/coupon/edit/{id}")
     public String editCouponGet(@PathVariable("id") String id,
+                                  ModelMap map,
                                   HttpServletRequest request,
                                   RedirectAttributes redirectAttributes) throws Exception {
-        return "TODO : Show edit view for coupon with id " + id;
+        map.addAttribute("coupon", coupons.findById(id));
+        
+        return "edit_coupon";
     }
 
     // Las funciones de abajo hasta ahora no se usan para nada
