@@ -17,23 +17,22 @@
 
 <div class="container-dashboard" name="form_container" style="max-width: 80em; align-items : center;">
   <div th:replace="partial/flash :: flash"></div>
-  <div class="container">
   <h5 th:text="'Bienvenido, ' + ${given_name}"></h5><br>
 
   <div class="row">
-    <div class="col-8"><b>Promociones</b></div>
-    <div class="col-4"><b>Opciones</b></div>
+    <div class="col-10"><b>Promociones</b></div>
+    <div class="col-2"><b>Opciones</b></div>
   </div>
 
   <th:block th:each="coupon : ${coupons}">
     <div class="row">
-      <div class="col-8">
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img th:src="${coupon.getImage_path()}" alt="image.png" class="card-img" style="width: 190; height: 200">
+      <div class="col-10">
+        <div class="card mb-3" style="max-width: 100%;">
+          <div class="row no-gutters" style="height:100%;">
+            <div class="col-md-5">
+              <img th:src="${coupon.getImage_path()}" alt="image.png" class="card-img" style="width: 100%;">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
               <div class="card-body">
                 <a th:href="'/coupon/' + ${coupon.getId().toString()}"><h5 class="card-title" th:text="${coupon.getTitle()}"></h5></a>
                 <p class="card-text" th:text="${coupon.getDescription()}"></p>
@@ -43,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-2">
         <br>
         <a th:href="'/coupon/edit/' + ${coupon.getId().toString()}"><button type="button" class="btn btn-warning">Editar</button></a>
         <br><br>
@@ -51,12 +50,13 @@
       </div>
     </div>
   </th:block>
-</div>
 
 </div>
 
-
-	<div th:replace="partial/body-scripts :: body-scripts"></div>
-
+</div>
+<!--
+  <footer th:replace="partial/footer :: footer"/>
+  <div th:replace="partial/body-scripts :: body-scripts"/>
+-->
 </body>
 </html>
