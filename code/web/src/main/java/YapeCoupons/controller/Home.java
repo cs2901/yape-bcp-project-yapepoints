@@ -28,6 +28,11 @@ public class Home {
         return "faq";
     }
 
+    @RequestMapping("/terms")
+    public String terms(ModelMap map) {
+        return "terminos";
+    }
+
     @RequestMapping("/home")
     public String home(HttpServletRequest request,
                        ModelMap map,
@@ -46,6 +51,8 @@ public class Home {
             map.addAttribute("given_name", given_name);
             User user = users.findByDni(dni);
             map.addAttribute("business_name", user.getBusiness_name());
+            String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + dni + "&choe=UTF-8";
+            map.addAttribute("qr_link", qr_link);
             return "home";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());

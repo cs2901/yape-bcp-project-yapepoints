@@ -8,17 +8,17 @@
 </style>
 
 <body>
-	<nav th:replace="partial/navbar :: navigation"></nav>
-	<div th:replace="partial/flash :: flash"></div
+
+    <nav th:replace="partial/dashboard :: navigation"></nav>
+    <nav th:replace="partial/dashboard :: top_panel"></nav>
+
 <br>
 <div class="container" name="form_container" style="max-width: 80em; align-items : center;">
 
-<nav th:replace="partial/dashboard :: navigation"></nav>
-<nav th:replace="partial/dashboard :: top_panel"></nav>
-<div th:replace="partial/flash :: flash"></div>
+
 
 <div class="container-dashboard" name="form_container" style="max-width: 80em; align-items : center;">
-
+  <div th:replace="partial/flash :: flash"></div>
   <div class="container">
   <h5 th:text="'Bienvenido, ' + ${given_name}"></h5><br>
 
