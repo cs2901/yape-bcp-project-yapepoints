@@ -116,9 +116,9 @@ public class Coupon {
     public String updateCoupon(@PathVariable String id,
                                @RequestParam("title") String title,
                                @RequestParam("description") String description,
-                               @RequestParam("cost") String precio
+                               @RequestParam("cost") String cost
     ) throws Exception {
-        coupons.update(id, title, description);
+        coupons.update(id, title, description, cost);
 
         return "redirect:/coupon/" + id;
     }
