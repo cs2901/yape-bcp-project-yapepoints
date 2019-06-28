@@ -109,13 +109,14 @@ public class Coupon {
     }
 
     @RequestMapping(path = "/update_coupon/{id}", method = RequestMethod.POST)
-    public void updateCoupon(@PathVariable String id) throws Exception {
-        YapeCoupons.model.Coupon coupon = coupons.findById(id);
-
-        String title = "test";
-        String description = "Hello, World!";
-
+    public String updateCoupon(@PathVariable String id,
+                               @RequestParam("title") String title,
+                               @RequestParam("description") String description,
+                               @RequestParam("cost") String precio
+    ) throws Exception {
         coupons.update(id, title, description);
+
+        return "redirect:/coupon/" + id;
     }
 
     @RequestMapping(path = "/coupon/delete/{id}")

@@ -12,8 +12,8 @@
     <br>
     <div class="row" style="margin: 2em;">
         <div class="col-lg-5">
-            <form class="newcupon" method="post" action="/create_coupon" enctype="multipart/form-data">
-                <a>Crear cupon</a>
+            <form class="newcupon" method="post" th:action="'/update_coupon/' + ${coupon.getId().toString()}" enctype="multipart/form-data">
+                <a>Editar cupon</a>
                 <div class="box">
                     <a>Nombre de promocion:</a>
                     <input name="title" id="title" type="text" class="form-control" th:value="${coupon.getTitle()}">
@@ -26,7 +26,9 @@
                     <a>Precio de Promocion:</a>
                     <input name="cost" id="precio" type="number" class="form-control" th:value="${coupon.getCost()}">
                 </div>
-
+                <button type="submit" class="btn" style="background: #01C4A4;font-weight: bold; color: white; margin-top: 20px">
+                    Guardar cambios
+                </button>
             </form>
         </div>
 
