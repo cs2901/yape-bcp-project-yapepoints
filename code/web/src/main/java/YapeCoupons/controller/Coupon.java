@@ -99,12 +99,12 @@ public class Coupon {
     // Las funciones de abajo hasta ahora no se usan para nada
 
     @RequestMapping(path = "/coupon/{id}", method = RequestMethod.GET)
-    public YapeCoupons.model.Coupon getCoupon(@PathVariable String id) throws Exception {
-        YapeCoupons.model.Coupon coupon = new YapeCoupons.model.Coupon();
+    public String getCoupon(@PathVariable String id,
+                            ModelMap map) throws Exception {
+        System.out.println(id);
+        map.addAttribute("coupon", coupons.findById(id));
 
-        coupon = coupons.findById(id);
-
-        return coupon;
+        return "coupon";
     }
 
     @RequestMapping(path = "/update_coupon/{id}", method = RequestMethod.POST)
