@@ -66,8 +66,36 @@
                 android:textColor="@android:color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
-                tools:text="decsription"
+                tools:text="description"
                 android:background="#8c000000"/>
+
+            <TextView
+                android:id="@+id/cost"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/business_region"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="business"/>
+
+            <TextView
+                android:id="@+id/business_address"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="business"/>
 
 
 
