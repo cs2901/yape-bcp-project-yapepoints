@@ -1,6 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
 <head th:replace="partial/head :: head">
 <body>
+	<style>
+		#map{
+			max-width: 800px;
+			height: 400px;
+			border: 1px solid grey;
+			margin: 5px 0;
+		}
+		#business_latitud, #business_longitud {
+			display: none;
+		}
+	</style>
 	<nav th:replace="partial/navbar :: navigation"></nav>
 	<div th:replace="partial/flash :: flash"></div>
 	<div class="container form-box" name="form_container" style="max-width: 30em;">
@@ -17,7 +28,11 @@
 			<input type="text" class="form-control" name="business_description" id="business_description" required>
 
 			<label for="business_address">Dirección: </label>
-			<input type="text" class="form-control" name="business_address" id="business_address" required>
+			<input type="text" class="form-control" name="business_latitud" id="business_latitud" style="margin-bottom: 1em" required>
+			<input type="text" class="form-control" name="business_longitud" id="business_longitud" style="margin-bottom: 1em" required>
+
+			<label for="map" >Ubica la ubicación en el mapa: </label>
+			<div id="map"></div>
 
 			<label for="business_region">Distrito: </label>
 			<input type="text" class="form-control" name="business_region" id="business_region" required>
@@ -26,12 +41,49 @@
 			<input type="text" class="form-control" name="business_celular" id="business_celular" required>
 
 			<br>
-			<button type="submit" class="btn">Registrar negocio</button>
+			<button id="send_form" type="submit" class="btn">Registrar negocio</button>
 		</form>
 	</div>
 
 	<footer th:replace="partial/footer :: footer"/>
 	<div th:replace="partial/body-scripts :: body-scripts"></div>
 
+
+	<script>
+		var map, geocoder, marker
+		var position
+		function setPosition(pos) {
+			$("#business_latitud").val(pos.lat)
+			$("#business_longitud").val(pos.lng)
+		}
+		function initMap() {
+			let center = {lat: -12, lng: -77}
+
+			position = center
+
+			setPosition(position)
+
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: center,
+				zoom: 15
+			});
+			marker = new google.maps.Marker({
+				position: center,
+				map: map,
+				draggable: true,
+				title: "Ubica tu dirección"
+			});
+			google.maps.event.addListener(map, 'click', (ev) => {
+				position = ev.latLng
+				marker.setPosition(position)
+				setPosition(position)
+			});
+
+		}
+
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvVrj9ac0vHxFGxY0ZHTmvRNfTZyS_pTo&callback=initMap"
+			async defer></script>
 </body>
+
 </html>

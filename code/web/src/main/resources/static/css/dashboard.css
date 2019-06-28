@@ -5,6 +5,12 @@
     background: #6a0073;
     z-index: 4;
 }
+.left-panel img{
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+    padding: 10px;
+}
 .top-panel{
     padding: 20px;
     top: 0px;
@@ -52,12 +58,81 @@
 .container-dashboard{
     padding: 20px;
     z-index: 0;
-    top: 86.4px;
+    top: 135.9px;
     margin-left: 200px;
     position: relative;
 
 }
 .container-dashboard .form-box{
     max-width: 400px;
+
+}
+
+@media only screen and (max-width : 600px){
+    .left-panel{
+        width: 100px;
+        background: #6a0073;
+        z-index: 4;
+        padding: 3px
+    }
+    .left-panel img{
+        height: 70px;
+        padding: 10px;
+    }
+    .top-panel{
+        padding: 10px;
+        top: 0px;
+        margin-left: 100px;
+        position: fixed;
+        width: calc(100vw - 100px);
+        box-shadow: 0 0 5px -1px black;
+        background: white;
+        z-index: 2;
+    }
+
+    .yape-menu{
+        display: flex;
+        height: 300px;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .yape-menu  ul {
+        padding: 0;
+    }
+
+    .yape-menu  li {
+        list-style-type: none;
+        display: block;
+        margin: 10px auto;
+        padding: 10px 10px;
+    }
+
+    .yape-menu  li:hover {
+        cursor: pointer;
+        background: none;
+        border-radius: 50px;
+    }
+
+    .yape-menu  a{
+        color: white;
+        text-decoration: none;
+
+    }
+    .container-dashboard{
+        padding: 5px;
+        top: 135.9px;
+        margin-left: 100px;
+        position: relative;
+
+    }
+    .container-dashboard .form-box{
+        max-width: 400px;
+
+    }
 
 }

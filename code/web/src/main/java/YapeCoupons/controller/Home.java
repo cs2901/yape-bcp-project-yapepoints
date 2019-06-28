@@ -1,6 +1,7 @@
 package YapeCoupons.controller;
 
 import YapeCoupons.model.User;
+import YapeCoupons.services.CouponService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static YapeCoupons.middleware.Middleware.isLogged;
 
 @Controller
@@ -17,6 +20,9 @@ public class Home {
 
     @Autowired
     private UserService users;
+
+    @Autowired
+    private CouponService coupons;
 
     @RequestMapping("/")
     public String index(ModelMap map) {
@@ -51,6 +57,11 @@ public class Home {
             map.addAttribute("given_name", given_name);
             User user = users.findByDni(dni);
             map.addAttribute("business_name", user.getBusiness_name());
+
+            map.addAttribute("coupons", coupons.getActiveCoupons(dni));
+
+            String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + dni + "&choe=UTF-8";
+            map.addAttribute("qr_link", qr_link);
             return "home";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());

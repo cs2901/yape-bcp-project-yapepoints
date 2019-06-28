@@ -107,9 +107,10 @@ public class Auth {
     public String postRegisterLocal (@RequestParam("business_ruc") String business_ruc,
                                      @RequestParam("business_name") String business_name,
                                      @RequestParam("business_description") String business_description,
-                                     @RequestParam("business_address") String business_address,
                                      @RequestParam("business_region") String business_region,
                                      @RequestParam("business_celular") String business_celular,
+                                     @RequestParam("business_latitud") String business_latitud,
+                                     @RequestParam("business_longitud") String business_longitud,
                                      HttpServletRequest request,
                                      RedirectAttributes redirectAttributes) throws Exception {
         try {
@@ -118,8 +119,8 @@ public class Auth {
                 return "redirect:login";
             }
             String dni = request.getSession().getAttribute("dni").toString();
-            System.out.println(dni);
-            users.setBusiness(dni, business_name, business_description, business_address, business_region, business_celular, business_ruc);
+            users.setBusiness(dni, business_name, business_description, business_region,
+                    business_celular, business_ruc, business_latitud, business_longitud);
             redirectAttributes.addFlashAttribute("success", "Información del negocio registrada");
             return "redirect:home";
         } catch (Exception e) {
