@@ -28,8 +28,8 @@ public class Home {
         return "faq";
     }
 
-    @RequestMapping("/terminos")
-    public String faq(ModelMap map) {
+    @RequestMapping("/terms")
+    public String terms(ModelMap map) {
         return "terminos";
     }
 
