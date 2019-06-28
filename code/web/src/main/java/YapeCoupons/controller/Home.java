@@ -23,6 +23,16 @@ public class Home {
         return "index";
     }
 
+    @RequestMapping("/faq")
+    public String faq(ModelMap map) {
+        return "faq";
+    }
+
+    @RequestMapping("/terms")
+    public String terms(ModelMap map) {
+        return "terminos";
+    }
+
     @RequestMapping("/home")
     public String home(HttpServletRequest request,
                        ModelMap map,

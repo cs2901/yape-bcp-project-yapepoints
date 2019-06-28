@@ -1,7 +1,7 @@
 package YapeCoupons.controller;
 
 import YapeCoupons.services.CouponService;
-import com.mongodb.BasicDBObject;
+import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
 
 import static YapeCoupons.helpers.helper.getExtension;
 import static YapeCoupons.helpers.helper.getRandomCode;
@@ -24,19 +22,14 @@ import static YapeCoupons.middleware.Middleware.isLogged;
 public class Coupon {
 
     @Autowired
+    private UserService users;
+
+    @Autowired
     private CouponService coupons;
 
     public static final String UPLOAD_DIRECTORY = System.getProperty("user.home") + "/uploads/";
     // public static final String URI = "http://178.128.216.229:8080/images/";
     public static final String URI = "http://localhost:9000/images/";
-
-    @RequestMapping(path = "/getAllCoupons", method = RequestMethod.GET)
-    public HashMap<String, List<BasicDBObject>> getAllCoupons() {
-        final List<BasicDBObject> allActiveCoupons = coupons.getAllActiveCoupons();
-        HashMap<String, List <BasicDBObject>> response = new HashMap<>();
-        response.put("coupons", allActiveCoupons);
-        return response;
-    }
 
     @RequestMapping(path = "/create_coupon", method = RequestMethod.GET)
     public String createCouponGet(HttpServletRequest request,
@@ -48,10 +41,13 @@ public class Coupon {
                 redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
                 return "redirect:login";
             }
+            String dni = request.getSession().getAttribute("dni").toString();
+            if (!users.filledBusinessInformation(dni)) {
+                redirectAttributes.addFlashAttribute("error", "Por favor, rellena la información de tu negocio");
+                return "redirect:register_local";
+            }
             map.addAttribute("business_name", "Agregar cupón");
             map.addAttribute("title", "YapeCupones - Agregar cupón");
-
-
             return "create_coupon";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());
@@ -68,13 +64,21 @@ public class Coupon {
                                    RedirectAttributes redirectAttributes) throws Exception {
 
         try {
+            if (!isLogged(request)) {
+                redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
+                return "redirect:login";
+            }
+            String dni = request.getSession().getAttribute("dni").toString();
+            if (!users.filledBusinessInformation(dni)) {
+                redirectAttributes.addFlashAttribute("error", "Por favor, rellena la información de tu negocio");
+                return "redirect:register_local";
+            }
             String extension = getExtension(file.getOriginalFilename());
             assert extension.length() > 0;
             String hash_name = getRandomCode(21) + '.' + extension;
             Path file_path = Paths.get(UPLOAD_DIRECTORY, hash_name);
             String image_path = URI + hash_name;
             Files.write(file_path, file.getBytes());
-            String dni = request.getSession().getAttribute("dni").toString();
             coupons.createCoupon(dni, title, description, cost, image_path);
             redirectAttributes.addFlashAttribute("success", "Promoción agregada exitosamente");
             return "redirect:home";
