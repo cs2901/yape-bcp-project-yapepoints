@@ -28,6 +28,11 @@ public class Home {
         return "faq";
     }
 
+    @RequestMapping("/terminos")
+    public String faq(ModelMap map) {
+        return "terminos";
+    }
+
     @RequestMapping("/home")
     public String home(HttpServletRequest request,
                        ModelMap map,
