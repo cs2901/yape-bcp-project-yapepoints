@@ -3,7 +3,6 @@
         <a href="/home">
             <img th:src="@{/img/yape.png}" alt="Yape">
         </a>
-
     </div>
     <div class="yape-menu">
         <ul>
@@ -24,8 +23,21 @@
 </div>
 
 <div th:fragment="top_panel" class="top-panel">
-    <h2 th:text="${business_name}"></h2>
-    <p>Pon este QR en tu negocio y comienza a aceptar pagos desde Yape</p>
+    <style>
+        .__title-top-panel{
+            display: inline-block;
+            width: calc(100% - 100px);
+            margin: 0;
+        }
+
+    </style>
+    <div class="__title-top-panel">
+        <h2 th:text="${business_name}"></h2>
+        <p>Pon este QR en tu negocio y comienza a aceptar pagos desde Yape</p>
+    </div>
+
     <img th:src="${qr_link}" alt="QR.png" class="" >
+
+
 
 </div>
