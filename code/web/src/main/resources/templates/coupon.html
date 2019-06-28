@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partial/offline :: head">
+<head th:replace="partial/head :: head">
     <title>YapeCupones</title>
     <link rel=icon href=../static/img/favicon.ico>
 <body>
@@ -15,23 +15,23 @@
     }
 </style>
 
-<nav th:replace="partial/offline :: navigation"/>
+<nav th:replace="partial/navbar :: navigation"></nav>
+<div th:replace="partial/flash :: flash"></div>
+
 <div class="container">
     <br>
     <div class="row" style="margin: 2em;">
         <div class="col-lg-5">
             <form class="show_cupon" enctype="multipart/form-data">
+                <img th:src="${coupon.getImage_path()}" alt="image.png" class="card-img" style="width: 190; height: 200">
                 <div class="box">
-                    <h4>Bigotes</h4>
+                    <h3 th:text="${coupon.getTitle()}"></h3>
                 </div>
                 <div class="box">
-<!--                    <h3 th:text="${coupon.getTitle()}"></h3>-->
+                    <h4 th:text="${coupon.getDescription()}"></h4>
                 </div>
                 <div class="box">
-<!--                    <h4 th:text="${coupon.getDescription()}"></h4>-->
-                </div>
-                <div class="box">
-<!--                    <h4 th:text="'S/. ' + ${coupon.getCost()} + '.00'"></h4>-->
+                    <h4 th:text="'S/. ' + ${coupon.getCost()} + '.00'"></h4>
                 </div>
                 <button class="btn btn-light">Ver en mapa</button>
 
@@ -39,6 +39,6 @@
         </div>
     </div>
 </div>
-<footer th:replace="partial/offline :: footer"/>
+<footer th:replace="partial/footer :: footer"/>
 </body>
 </html>

@@ -101,7 +101,6 @@ public class Coupon {
     @RequestMapping(path = "/coupon/{id}", method = RequestMethod.GET)
     public String getCoupon(@PathVariable String id,
                             ModelMap map) throws Exception {
-        System.out.println(id);
         map.addAttribute("coupon", coupons.findById(id));
 
         return "coupon";
