@@ -94,7 +94,9 @@ public class Coupon {
                                   HttpServletRequest request,
                                   RedirectAttributes redirectAttributes) throws Exception {
         map.addAttribute("coupon", coupons.findById(id));
-        
+
+        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        map.addAttribute("qr_link", qr_link);
         return "edit_coupon";
     }
 
@@ -105,6 +107,8 @@ public class Coupon {
                             ModelMap map) throws Exception {
         map.addAttribute("coupon", coupons.findById(id));
 
+        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        map.addAttribute("qr_link", qr_link);
         return "coupon";
     }
 
