@@ -87,16 +87,12 @@
                     android:textAlignment="center"
                     android:text="business"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/business_address"
-                    android:layout_margin="5dp"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:autoLink="web"
-                    android:text="business"/>
+                    android:src="@drawable/outline_place_black_18dp"
+                    android:onClick="goToURL"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>

@@ -1,5 +1,8 @@
 package com.example.yapecupones;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.content.Context;
@@ -53,7 +56,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
         holder.business_region.setText(couponsList.getBusiness_region());
-        holder.business_address.setText(couponsList.getBusiness_address());
+        holder.business_address.setContentDescription(couponsList.getBusiness_address());
 
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +83,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         //holder.image_path.setText(couponsList.getImage_path());
         holder.business_name.setText(couponsList.getBusiness_name());
         holder.business_region.setText(couponsList.getBusiness_region());
-        holder.business_address.setText(couponsList.getBusiness_address());
+        holder.business_region.setText(couponsList.getBusiness_region());
+        holder.business_address.setContentDescription(couponsList.getBusiness_address());
 
 
 
@@ -115,7 +119,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         public ImageView image_path;
         public TextView business_name;
         public TextView business_region;
-        public TextView business_address;
+        public ImageView business_address;
         public LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
@@ -128,7 +132,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
             image_path = (ImageView) itemView.findViewById(R.id.image);
             business_name = (TextView) itemView.findViewById(R.id.business_name);
             business_region = (TextView) itemView.findViewById(R.id.business_region);
-            business_address = (TextView) itemView.findViewById(R.id.business_address);
+            business_address = (ImageView) itemView.findViewById(R.id.business_address);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
         }
     }

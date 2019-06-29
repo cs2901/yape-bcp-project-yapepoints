@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView image = findViewById(R.id.image);
         TextView businessName = findViewById(R.id.business_name);
         TextView businessRegion = findViewById(R.id.business_region);
-        TextView businessAddress = findViewById(R.id.business_address);
+        ImageView businessAddress = findViewById(R.id.business_address);
 
         Intent intent = getIntent();
         //final String c_id = intent.getStringExtra(CouponsAdapter.KEY_ID);
@@ -44,9 +44,16 @@ public class ProfileActivity extends AppCompatActivity {
         //image.setText(cImage);
         businessName.setText(bName);
         businessRegion.setText(bRegion);
-        businessAddress.setText(bAddress);
+        businessAddress.setContentDescription(bAddress);
 
 
 
+    }
+
+    public void goToURL(View view) {
+        String url = view.findViewById(R.id.business_address).getContentDescription().toString();
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 }
