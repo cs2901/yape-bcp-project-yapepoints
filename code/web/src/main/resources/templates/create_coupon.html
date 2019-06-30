@@ -18,47 +18,51 @@
   .box {
     margin-bottom: 2em;
   }
+  #front-image{
+    max-height: 500px;
+  }
 </style>
 
   <nav th:replace="partial/dashboard :: navigation"></nav>
   <nav th:replace="partial/dashboard :: top_panel"></nav>
   <div th:replace="partial/flash :: flash"></div>
+  <form class="newcupon" method="POST" action="/create_coupon" enctype="multipart/form-data">
 
-  <div class="container-dashboard">
-      <div class="row" style="margin: 2em;">
-        <div class="col-lg-5">
-          <form class="newcupon" method="POST" action="/create_coupon" enctype="multipart/form-data">
-            <div class="box">
-              <span>Nombre de promocion:</span>
-              <input name="title" id="title" type="text" class="form-control">
-            </div>
-            <div class="box">
-              <span>Description</span>
-              <input name="description" id="description" type="text" class="form-control" placeholder="¿Que contiene la promocion?">
-            </div>
-            <div class="box">
-              <a>Precio de promocion (Soles):</a>
-              <input name="cost" id="precio" type="number" class="form-control">
-            </div>
-            <div class="box">
-              <span>Elija una imagen</span>
-              <div class="custom-file">
-                <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
+    <div class="container-dashboard">
+        <div class="row" style="margin: 2em;">
+          <div class="col-lg-5">
+                      <div class="box">
+                <span>Nombre de promocion:</span>
+                <input name="title" id="title" type="text" class="form-control">
               </div>
-            </div>
-            <button type="submit" class="btn" style="background: #01C4A4;font-weight: bold; color: white; margin-top: 20px">
-              Crear cupon
-            </button>
+              <div class="box">
+                <span>Description</span>
+                <input name="description" id="description" type="text" class="form-control" placeholder="¿Que contiene la promocion?">
+              </div>
+              <div class="box">
+                <a>Precio de promocion (Soles):</a>
+                <input name="cost" id="precio" type="number" class="form-control">
+              </div>
+              <div class="box">
+                <span>Elija una imagen</span>
+                <div class="custom-file">
+                  <input class="btn btn-light upload" id="customFile" type="file" name="image" accept="image/*" onchange="readURL(this);"  multiple>
+                </div>
+              </div>
 
-          </form>
-        </div>
 
-        <div class="col-lg-7">
-          <img id="front-image" src="" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
+          </div>
+          <div class="col-lg-7">
+            <img id="front-image" src="" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #EEE;"/>
+          </div>
+          <button type="submit" class="btn" style="background: #01C4A4;font-weight: bold; color: white; margin-top: 20px">
+            Crear cupon
+          </button>
+
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <div th:replace="partial/body-scripts :: body-scripts"></div>
 </body>
 <script>
