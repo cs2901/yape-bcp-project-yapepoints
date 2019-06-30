@@ -33,7 +33,9 @@
         </div>
 
         <div class="col-lg-7">
-            <img id="front-image" th:src="${coupon.getImage_path()}" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #eee;"/>
+            <object th:data="@{img/yape.png}" type="image/png">
+                <img id="front-image" th:src="${coupon.getImage_path()}" alt="" style="width: 100%; border-radius: 0.5em; border-style: solid; border-width: 0.05em; border-color: #eee;"/>
+            </object>
         </div>
     </div>
 </div>

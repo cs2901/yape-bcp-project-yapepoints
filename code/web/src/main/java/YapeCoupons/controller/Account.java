@@ -81,6 +81,9 @@ public class Account {
 
         map.addAttribute("business_name", "Cambiar contraseña");
         map.addAttribute("title", "YapeCupones - Cambiar contraseña");
+        
+        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
+        map.addAttribute("qr_link", qr_link);
         return "change_password";
     }
 
