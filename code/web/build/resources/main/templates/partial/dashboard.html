@@ -1,0 +1,43 @@
+<div th:fragment="navigation" class="left-panel">
+    <div class="yape-login">
+        <a href="/home">
+            <img th:src="@{/img/yape.png}" alt="Yape">
+        </a>
+    </div>
+    <div class="yape-menu">
+        <ul>
+            <li>
+                <a href="/update_information">Cambiar información</a>
+            </li>
+            <li>
+                <a href="/change_password">Cambiar contraseña</a>
+            </li>
+            <li>
+                <a href="/create_coupon">Agregar cupón</a>
+            </li>
+            <li>
+                <a href="/logout">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:fragment="top_panel" class="top-panel">
+    <style>
+        .__title-top-panel{
+            display: inline-block;
+            width: calc(100% - 100px);
+            margin: 0;
+        }
+
+    </style>
+    <div class="__title-top-panel">
+        <h2 th:text="${business_name}"></h2>
+        <p>Pon este QR en tu negocio y comienza a aceptar pagos desde Yape</p>
+    </div>
+
+    <img th:src="${qr_link}" alt="QR.png" class="" >
+
+
+
+</div>

@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
+<body>
+	<style>
+		.login{
+			min-height: calc(100vh - 300px);
+		}
+	</style>
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
+
+	<div class="login container form-box" name="form_container" style="max-width: 30em;">
+		<h4 style="text-align: center">Iniciar sesión</h4><br>
+		<form th:action = "@{/login}" method="POST">
+			<label for="dni">DNI: </label>
+			<input type="text" class="form-control" id="dni" aria-describedby="dniHelp" name="dni" required>
+
+			<label for="password">Contraseña: </label>
+			<input type="password" class="form-control" id="password" aria-describedby="dniHelp" name="password" required>
+
+			<br>
+			<button type="submit" class="btn">Entrar</button>
+			<br> <br>
+			<a href="/terms">Términos y condiciones</a> <br>
+			¿No tienes cuenta? <a href="/register">Registrate</a>
+			<br>
+			¿Olvidaste tu contraseña? <a href="/restore_password">Recuperar</a>
+		</form>
+	</div>
+
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
+</body>
+</html>

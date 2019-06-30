@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
+<body>
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
+
+	<div class="container form-box" name="form_container" style="max-width: 30em;">
+        <h1 style="text-align: center">Algo salió mal...</h1><br>
+        <h2 style="text-align: center">Nuestros desarrolladores están trabajando para solucionarlo.</h2><br>
+			<br> 
+            <br>
+            ¿Perdido? <a href="/">Ir a Home</a>
+            <br>
+		</form>
+	</div>
+
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
+</body>
+</html>

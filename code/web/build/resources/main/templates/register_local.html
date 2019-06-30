@@ -1,0 +1,139 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tx="http://www.w3.org/1999/xhtml">
+<head th:replace="partial/head :: head">
+<body>
+	<style>
+		#map{
+			max-width: 800px;
+			height: 400px;
+			border: 1px solid grey;
+			margin: 5px 0;
+		}
+		#business_latitud, #business_longitud {
+			display: none;
+		}
+	</style>
+	<nav th:replace="partial/navbar :: navigation"></nav>
+	<div th:replace="partial/flash :: flash"></div>
+	<div class="container form-box" name="form_container" style="max-width: 30em;">
+
+	<h4 style="text-align: center">Agregar información de negocio</h4><br>
+		<form th:action = "@{/register_local}" method="POST">
+			<label for="business_ruc">Ruc del negocio: </label>
+			<input type="text" class="form-control" name="business_ruc" id="business_ruc" required>
+
+			<label for="business_name">Nombre del negocio: </label>
+			<input type="text" class="form-control" name="business_name" id="business_name" required>
+
+			<label for="business_description">Descripción del negocio: </label>
+			<input type="text" class="form-control" name="business_description" id="business_description" required>
+
+			<label for="business_address">Dirección: </label>
+			<input type="text" class="form-control" name="business_latitud" id="business_latitud" style="margin-bottom: 1em" required>
+			<input type="text" class="form-control" name="business_longitud" id="business_longitud" style="margin-bottom: 1em" required>
+
+			<label for="map" >Ubica la ubicación en el mapa: </label>
+			<div id="map"></div>
+
+			<label for="business_region">Distrito: </label>
+				<select type="text" class="form-control" name="business_region" id="business_region" required>
+					<option value="Callao">Callao</option>
+					<option value="Bellavista">Bellavista</option>
+					<option value="Carmen de La Legua">Carmen de La Legua</option>
+					<option value="La Perla">La Perla</option>
+					<option value="La Punta">La Punta</option>
+					<option value="Mi Perú">Mi Perú</option>
+					<option value="Ventanilla">Ventanilla</option>
+					<option value="Lima">Lima</option>
+					<option value="Ancón">Ancón</option>
+					<option value="Ate">Ate</option>
+					<option value="Barranco">Barranco</option>
+					<option value="Breña">Breña</option>
+					<option value="Carabayllo">Carabayllo</option>
+					<option value="Cieneguilla">Cieneguilla</option>
+					<option value="Chaclacayo">Chaclacayo</option>
+					<option value="Chorrillos">Chorrillos</option>
+					<option value="Comas">Comas</option>
+					<option value="El Agustino">El Agustino</option>
+					<option value="Independencia">Independencia</option>
+					<option value="Jesús María">Jesús María</option>
+					<option value="La Molina">La Molina</option>
+					<option value="La Victoria">La Victoria</option>
+					<option value="Lince">Lince</option>
+					<option value="Los Olivos">Los Olivos</option>
+					<option value="Lurigancho">Lurigancho</option>
+					<option value="Lurín">Lurín</option>
+					<option value="Magdalena del Mar">Magdalena del Mar</option>
+					<option value="Miraflores">Miraflores</option>
+					<option value="Pachacámac">Pachacámac</option>
+					<option value="Pucusana">Pucusana</option>
+					<option value="Pueblo Libre">Pueblo Libre</option>
+					<option value="Puente Piedra">Puente Piedra</option>
+					<option value="Punta Hermosa">Punta Hermosa</option>
+					<option value="Punta Negra">Punta Negra</option>
+					<option value="Rímac">Rímac</option>
+					<option value="San Bartolo">San Bartolo</option>
+					<option value="San Borja">San Borja</option>
+					<option value="San Isidro">San Isidro</option>
+					<option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+					<option value="San Juan de Miraflores">San Juan de Miraflores</option>
+					<option value="San Luis">San Luis</option>
+					<option value="San Martín de Porres">San Martín de Porres</option>
+					<option value="San Miguel">San Miguel</option>
+					<option value="Santa Anita">Santa Anita</option>
+					<option value="Santa María del Mar">Santa María del Mar</option>
+					<option value="Santa Rosa">Santa Rosa</option>
+					<option value="Santiago de Surco">Santiago de Surco</option>
+					<option value="Surquillo">Surquillo</option>
+					<option value="Villa El Salvador">Villa El Salvador</option>
+					<option value="Villa María del Triunfo">Villa María del Triunfo</option>
+				</select>
+
+			<label for="business_celular">Celular: </label>
+			<input type="text" class="form-control" name="business_celular" id="business_celular" required>
+
+			<br>
+			<button id="send_form" type="submit" class="btn">Registrar negocio</button>
+		</form>
+	</div>
+
+	<div th:replace="partial/body-scripts :: body-scripts"></div>
+
+
+	<script>
+		var map, geocoder, marker
+		var position
+		function setPosition(pos) {
+			$("#business_latitud").val(pos.lat)
+			$("#business_longitud").val(pos.lng)
+		}
+		function initMap() {
+			let center = {lat: -12, lng: -77}
+
+			position = center
+
+			setPosition(position)
+
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: center,
+				zoom: 15
+			});
+			marker = new google.maps.Marker({
+				position: center,
+				map: map,
+				draggable: true,
+				title: "Ubica tu dirección"
+			});
+			google.maps.event.addListener(map, 'click', (ev) => {
+				position = ev.latLng
+				marker.setPosition(position)
+				setPosition(position)
+			});
+
+		}
+
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvVrj9ac0vHxFGxY0ZHTmvRNfTZyS_pTo&callback=initMap"
+			async defer></script>
+</body>
+
+</html>
