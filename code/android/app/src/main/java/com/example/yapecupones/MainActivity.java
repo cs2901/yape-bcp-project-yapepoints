@@ -2,6 +2,8 @@ package com.example.yapecupones;
 
 //dependencias
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -150,5 +152,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         loadUrlData(null);
+    }
+
+    public void goToURL(View view) {
+        String url = view.findViewById(R.id.business_address).getContentDescription().toString();
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 }
