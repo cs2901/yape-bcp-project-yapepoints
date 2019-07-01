@@ -1,5 +1,6 @@
 package YapeCoupons.controller;
 
+import YapeCoupons.model.User;
 import YapeCoupons.services.CouponService;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class Coupon {
     private CouponService coupons;
 
     public static final String UPLOAD_DIRECTORY = System.getProperty("user.home") + "/uploads/";
-    public static final String URI = "http://178.128.216.229:8080/images/";
+    public static final String URI = "http://142.93.160.192/images/";
     // public static final String URI = "http://localhost:9000/images/";
 
     @RequestMapping(path = "/create_coupon", method = RequestMethod.GET)
@@ -46,8 +47,11 @@ public class Coupon {
                 redirectAttributes.addFlashAttribute("error", "Por favor, rellena la información de tu negocio");
                 return "redirect:register_local";
             }
-            map.addAttribute("business_name", "Agregar cupón");
+            User user = users.findByDni(dni);
+            map.addAttribute("business_name", user.getBusiness_name());
             map.addAttribute("title", "YapeCupones - Agregar cupón");
+            String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
+            map.addAttribute("qr_link", qr_link);
             return "create_coupon";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());
@@ -94,19 +98,22 @@ public class Coupon {
                                   HttpServletRequest request,
                                   RedirectAttributes redirectAttributes) throws Exception {
         map.addAttribute("coupon", coupons.findById(id));
-
+        String dni = request.getSession().getAttribute("dni").toString();
+        User user = users.findByDni(dni);
+        map.addAttribute("business_name", user.getBusiness_name());
         String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
         map.addAttribute("qr_link", qr_link);
         return "edit_coupon";
     }
 
-    // Las funciones de abajo hasta ahora no se usan para nada
-
     @RequestMapping(path = "/coupon/{id}", method = RequestMethod.GET)
     public String getCoupon(@PathVariable String id,
+                            HttpServletRequest request,
                             ModelMap map) throws Exception {
         map.addAttribute("coupon", coupons.findById(id));
-
+        String dni = request.getSession().getAttribute("dni").toString();
+        User user = users.findByDni(dni);
+        map.addAttribute("business_name", user.getBusiness_name());
         String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
         map.addAttribute("qr_link", qr_link);
         return "coupon";
@@ -126,7 +133,6 @@ public class Coupon {
     @RequestMapping(path = "/coupon/delete/{id}")
     public String deleteCoupon(@PathVariable String id) throws Exception{
         coupons.toggleState(id);
-
         return "redirect:/home";
     }
 

@@ -4,6 +4,7 @@ import YapeCoupons.model.User;
 import YapeCoupons.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -90,12 +91,16 @@ public class Auth {
 
     @RequestMapping(path = "/register_local", method = RequestMethod.GET)
     public String getRegisterLocal (HttpServletRequest request,
+                                    ModelMap map,
                                     RedirectAttributes redirectAttributes) throws Exception {
         try {
             if (!isLogged(request)) {
                 redirectAttributes.addFlashAttribute("error", "Necesitas logearte");
                 return "redirect:login";
             }
+            String dni = request.getSession().getAttribute("dni").toString();
+            String given_name = request.getSession().getAttribute("given_name").toString();
+            map.addAttribute("given_name", given_name);
             return "register_local";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage().toString());

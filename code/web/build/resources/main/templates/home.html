@@ -19,6 +19,7 @@
   <div th:replace="partial/flash :: flash"></div>
   <h5 th:text="'Bienvenido, ' + ${given_name}"></h5><br>
 
+  <div th:if="${coupons.size()}">
   <div class="row">
     <div class="col-10"><b>Promociones</b></div>
     <div class="col-2"><b>Opciones</b></div>
@@ -30,9 +31,7 @@
         <div class="card mb-3" style="max-width: 100%;">
           <div class="row no-gutters" style="height:100%;">
             <div class="col-md-5">
-              <object data="" type="image/png">
                 <img th:src="${coupon.getImage_path()}" alt="image.png" class="card-img" style="width: 100%;">
-              </object>
             </div>
             <div class="col-md-7">
               <div class="card-body">
@@ -52,6 +51,12 @@
       </div>
     </div>
   </th:block>
+  </div>
+
+  <div th:unless="${coupons.size() == 0}">
+    Aún no tienes promociones registradas
+  </div>
+
 
 </div>
 
