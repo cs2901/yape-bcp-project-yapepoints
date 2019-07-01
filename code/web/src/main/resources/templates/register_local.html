@@ -46,7 +46,7 @@
 					<option value="Lima">Lima</option>
 					<option value="Ancón">Ancón</option>
 					<option value="Ate">Ate</option>
-					<option value="Barranco">Barranco</option>
+					<option value="Barranco" selected>Barranco</option>
 					<option value="Breña">Breña</option>
 					<option value="Carabayllo">Carabayllo</option>
 					<option value="Cieneguilla">Cieneguilla</option>
@@ -107,7 +107,7 @@
 			$("#business_longitud").val(pos.lng)
 		}
 		function initMap() {
-			let center = {lat: -12, lng: -77}
+			let center = {lat: -12.134629, lng: -77.022203}
 
 			position = center
 
@@ -115,7 +115,7 @@
 
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: center,
-				zoom: 15
+				zoom: 16
 			});
 			marker = new google.maps.Marker({
 				position: center,
