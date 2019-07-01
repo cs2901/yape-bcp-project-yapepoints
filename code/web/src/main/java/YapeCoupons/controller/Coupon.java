@@ -101,7 +101,7 @@ public class Coupon {
         String dni = request.getSession().getAttribute("dni").toString();
         User user = users.findByDni(dni);
         map.addAttribute("business_name", user.getBusiness_name());
-        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
         map.addAttribute("qr_link", qr_link);
         return "edit_coupon";
     }
@@ -114,7 +114,7 @@ public class Coupon {
         String dni = request.getSession().getAttribute("dni").toString();
         User user = users.findByDni(dni);
         map.addAttribute("business_name", user.getBusiness_name());
-        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
+        String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + coupons.findById(id).getDni_user() + "&choe=UTF-8";
         map.addAttribute("qr_link", qr_link);
         return "coupon";
     }
