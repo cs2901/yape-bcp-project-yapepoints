@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private static final String URL_DATA = "http://178.128.216.229:8080/getAllCoupons";
+    private static final String URL_DATA = "http://142.93.160.192/getAllCoupons";
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
