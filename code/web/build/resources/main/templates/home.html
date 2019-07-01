@@ -53,7 +53,7 @@
   </th:block>
   </div>
 
-  <div th:unless="${coupons.size() == 0}">
+  <div th:if="${coupons.size() == 0}">
     Aún no tienes promociones registradas
   </div>
 
