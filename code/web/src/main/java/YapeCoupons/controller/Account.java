@@ -81,7 +81,7 @@ public class Account {
 
         map.addAttribute("business_name", user.getBusiness_name());
         map.addAttribute("title", "YapeCupones - Cambiar contraseña");
-        String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
+        String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
         map.addAttribute("qr_link", qr_link);
         return "change_password";
     }
@@ -125,7 +125,7 @@ public class Account {
             map.addAttribute("family_name", user.getFamily_name());
             map.addAttribute("email", user.getEmail());
             map.addAttribute("business_name", user.getBusiness_name());
-            String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
+            String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
             map.addAttribute("qr_link", qr_link);
             map.addAttribute("title", "YapeCupones - Actualizar información");
             return "update_information";
