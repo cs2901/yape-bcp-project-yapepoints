@@ -55,7 +55,9 @@
         <div class="__line"></div>
         <div class="__line"></div>
     </div>
-    <img th:src="${qr_link}" alt="QR.png" class="" >
+    <a th:href="${qr_link}" target="_blank">
+        <img th:src="${qr_link}" alt="QR.png" height="80", width="80">
+    </a>
 
     <script>
         $("#menu-icon").click( () => {

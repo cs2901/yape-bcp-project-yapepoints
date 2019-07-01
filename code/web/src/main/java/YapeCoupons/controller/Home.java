@@ -50,7 +50,7 @@ public class Home {
             }
             String dni = request.getSession().getAttribute("dni").toString();
             if (!users.filledBusinessInformation(dni)) {
-                redirectAttributes.addFlashAttribute("error", "Por favor, rellena la información de tu negocio");
+                redirectAttributes.addFlashAttribute("success", "Por favor, rellena la información de tu negocio");
                 return "redirect:register_local";
             }
             String given_name = request.getSession().getAttribute("given_name").toString();
@@ -60,7 +60,7 @@ public class Home {
 
             map.addAttribute("coupons", coupons.getActiveCoupons(dni));
 
-            String qr_link = "https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
+            String qr_link = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + user.getBusiness_celular() + "&choe=UTF-8";
             map.addAttribute("qr_link", qr_link);
             return "home";
         } catch (Exception e) {
