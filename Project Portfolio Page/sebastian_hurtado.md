@@ -26,3 +26,4 @@ app de Yape.
 - Middlewares
 - Envío de correos
 - Flujo para recuperación de contraseña.
+- Landing Page (Bootstrap)
