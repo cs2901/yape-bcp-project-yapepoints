@@ -4,7 +4,10 @@ El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un 
 
 YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un Yape Negocio para registrarse.
 
-El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima. 
+El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima.
+
+###Pueden ver nuestra pagina entrando al siguiente link:
+http://142.93.160.192/
 
 # Requirements
 ## Functional:
