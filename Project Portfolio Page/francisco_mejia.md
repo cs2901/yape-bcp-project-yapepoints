@@ -16,3 +16,5 @@ pequeños negocios publicar sus ofertas para que estas puedan ser mostradas en l
 
 - Desarrollo de todos los mockups para documentacion y presentaciones.
 - Desarrollo total y testeo del app de Android.
+- Aportes a la Landing Page y la funcionalidad de redireccionamiento web.
+- Testeo del servidor web en Sonar.
