@@ -10,8 +10,8 @@ app de Yape.
 
 ### Contributions to the User Guide:
 
-- Ayude a señalar error en los use cases
-- Ayude a desarrollar escenarios que expliquen el funcionamiento general de la
+- Ayudé a señalar errores en los use cases
+- Ayudé a desarrollar escenarios que expliquen el funcionamiento general de la
   página
 
 ### Contributions to the Developer Guide:
@@ -27,5 +27,10 @@ app de Yape.
 ### Contribution to the code
 
 - Code structure
-- Declaration of clases for the database and clases for interact with the database
-- Upload images
+- Declaration of classes for the database 
+- Helper functions to interact with the databases
+- Upload images functionality
+- Code examples for my peers of how to use the framework
+- QR codes
+- Rest endpoint for listing all the coupons
+- Fixing bugs
