@@ -23,3 +23,7 @@ para que estas puedan ser mostradas en la app de Yape.
 - Frontend de la pagina web
 - Ayude con la implementacion de platillas
 - Visualizacion de los cupones
+- Fronted de YapeCupones
+
+## Otros
+- Ayude con la documentación

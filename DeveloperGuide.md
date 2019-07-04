@@ -5,7 +5,7 @@ YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe conta
 
 El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima. 
 
-###Pueden ver nuestra pagina entrando al siguiente link:
+### Pueden ver nuestra pagina entrando al siguiente link:
 http://142.93.160.192/
 
 
