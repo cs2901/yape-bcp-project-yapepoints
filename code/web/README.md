@@ -1,29 +1,36 @@
 # Web
 
-La página esta corriendo en [http://178.128.216.229:8080/](http://178.128.216.229:8080/)
+La página está corriendo en [http://142.93.160.192/](http://142.93.160.192/)
+hasta fines de Julio del 2019.
 
 Se puede correr el proyecto ubicandose en esta carpeta y ejecutando.
 ```
 java -jar build/libs/gs-serving-web-content-0.1.0.jar
 ```
 
-Para ello se debe tener mongoDB corriendo. Además, por ahora no hay sesiones así que primero se tiene que ir  a http://localhost:9000/example para la creacion de un usuario falso que permitirá el flujo esperado de la página si tuvieramos las sesiones implementada.
+Para ello **se debe tener mongoDB ejecutandose**. Además, por ahora no hay sesiones así que primero se tiene que ir  a http://localhost:9000/example para la creacion de un usuario falso que permitirá el flujo esperado de la página si tuvieramos las sesiones implementada.
 
 ## Implementación
 
 ### Vistas
-- [x] Home
+- [x] Index
 - [x] Login
+- [x] Recover Password
 - [x] Register
-- [ ] Error 404
+- [x] Register Local
+- [x] Home
+- [x] Edit Coupon
+- [x] Add Coupon
+- [x] Update information
+- [x] Change password
+- [x] Error 404
 
-### Api
-- [x] Cupones
-- [x] Usuarios
-- [x] Roles
+### Main Features
+- [x] Sessions (allow login and logout)
+- [x] Select address in a map
+- [x] Send a secret code as a mail
+- [x] CRUD coupons
+- [x] Upload images
+- [x] JSON with all the available coupons
+- [x] QR Codes
 
-### Configuración
-- [ ] Actualizar favicon
-- [ ] Sesiones
-- [x] Spring security
-- [x] Almacenamiento de imágenes
