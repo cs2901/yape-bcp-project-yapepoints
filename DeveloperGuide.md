@@ -45,7 +45,7 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 
     ![](./diagrams/Sequence-PostSignUp.png)
 
-# Sesign Android
+# Design Android
 ![](./diagrams/Android_Studio.png)
 
 # Interacción de la web y el aplicativo Android
