@@ -2,7 +2,7 @@
 
 El proyecto propone brindar a los usuarios de Yape los mejores descuentos en un solo lugar y a los restaurantes, las facilidades para promocionar su negocio mediante cupones de descuento en Yape.
 
-YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un YapeNegocio para registrarse.
+YapeCupones existe fuera del aplicativo Yape. Sin embargo, el usuario debe contar con Yape para entrar a YapeCupones y el restaurante debe ser un Yape Negocio para registrarse.
 
 El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es de 1,1 millones en Lima. 
 
@@ -39,9 +39,11 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 * Ticket: Precio de un almuerzo o menú.
 * Restaurante: Establecimiento en el que se preparan y sirven comidas. Nos enfocamos en restaurantes cercanos al centro laboral y de estudios con un ticket promedio menor a S/.20 por menú o almuerzo.
 * Yape: Sistema creado por el BCP que permite hacer transferencias usando el número de celular.
-* YapeCupones: Plataforma web (disponible en móvil) sincronizada con Yape que permite a un Yapero encontrar los mejores descuentos y a un restaurante administrar información de los cupones que ofrece y de pagos hechos con Yape en su negocio.
+* YapeUser: Plataforma móvil implementada con Yape que permite a un Yapero encontrar los mejores descuentos y a un restaurante administrar información de los cupones que ofrece y de pagos hechos con Yape en su negocio.
 * YapeUser: Pestaña de Yape donde se visualizan los cupones.
 * Yapero: Usuario de Yape.
+* Yape Cupones: Plataforma web para la gestión de cupones para los restaurantes.
+* Yape Negocio: Un negocio que esta afiliado a Yape para usarlo como medio de pago.
 
 # Anexo A (User Stories and Use Cases).
 ### User Stories:

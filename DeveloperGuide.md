@@ -80,12 +80,12 @@ El mercado de jóvenes que comen fuera de casa y tienen el perfil de Yapero es d
 	Java es un lengauge de programación de propósito general que es multiplataforma y orientado objetos. Esto permite que el código funcione en cualquier dispositivo y que el código sea reutilizable.	Además  ofrece manejo automático de la memoria y cuyos objetos no hacen referencia a datos fuera de sí mismos o de otros objetos de Java.
 
 # Glossary
-	- Ticket: Precio de un almuerzo o menú.
-	- Restaurante: Establecimiento en el que se preparan y sirven comidas. Nos enfocamos en restaurantes cercanos al centro laboral y de estudios con un ticket promedio menor a S/.20 por menú o almuerzo.
-	- Yape: Sistema creado por el BCP que permite hacer transferencias usando el número de celular.
-	- YapeUser: Plataforma móvil implementada con Yape que permite a un Yapero encontrar los mejores descuentos 
-	- Yapero: Usuario de Yape.
-	- Yape Cupones: Aplicación para la gestión de cupones para los restaurantes.
-	- Yape Negocio: Un negocio que esta afiliado a Yape para usarlo como medio de pago.
+* Ticket: Precio de un almuerzo o menú.
+* Restaurante: Establecimiento en el que se preparan y sirven comidas. Nos enfocamos en restaurantes cercanos al centro laboral y de estudios con un ticket promedio menor a S/.20 por menú o almuerzo.
+* Yape: Sistema creado por el BCP que permite hacer transferencias usando el número de celular.
+* YapeUser: Plataforma móvil implementada con Yape que permite a un Yapero encontrar los mejores descuentos 
+* Yapero: Usuario de Yape.
+* Yape Cupones: Plataforma web para la gestión de cupones para los restaurantes.
+* Yape Negocio: Un negocio que esta afiliado a Yape para usarlo como medio de pago.
 
 
